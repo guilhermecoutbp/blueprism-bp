@@ -1,0 +1,397 @@
+﻿<process name="CEP - 22770" version="1.0" bpversion="6.7.3.27155" narrative="Correios Web Site" byrefcollection="true" preferredid="bc7b9a01-e2ef-435d-ac82-6b7827ff41cd">
+  <view>
+    <camerax>0</camerax>
+    <cameray>147</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="d6cf8251-cfcf-4a90-920d-11bfa1c252d3" type="Normal" published="False">
+    <name>Launch</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="afbd3b61-f214-4a02-8719-93af8b6c1c9a" type="Normal" published="False">
+    <name>Populate Queue</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="25010574-8cad-4b42-be06-695b14313f51" type="Normal" published="False">
+    <name>Search CEP</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="14554b1d-01d4-4414-a418-366260976796" type="Normal" published="False">
+    <name>Excel</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>126</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="34dec59f-f119-4c94-a846-0c74bd254165" type="Normal" published="False">
+    <name>Mark Completed</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="5cff7e25-db7e-410b-beda-bf0bffebfd89" type="Normal" published="False">
+    <name>Close</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="57e60606-6768-40a7-9fd8-04f7618e262a" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>90d566e7-702e-41c5-9584-3beea55c0108</onsuccess>
+  </stage>
+  <stage stageid="7a5ba618-e97c-4d3e-baaf-b8a7736c2f2a" name="End" type="End">
+    <display x="270" y="-15" />
+  </stage>
+  <stage stageid="16ac1915-d1d8-49fa-bfab-6fffe94afcf0" name="Stage1" type="ProcessInfo">
+    <display x="-150" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="8038deef-0575-42b5-96b1-79eaea5a16e3" name="Launch" type="SubSheetInfo">
+    <subsheetid>d6cf8251-cfcf-4a90-920d-11bfa1c252d3</subsheetid>
+    <display x="-165" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="e3918bd0-ca3c-41f2-b555-f128aee59a18" name="Start" type="Start">
+    <subsheetid>d6cf8251-cfcf-4a90-920d-11bfa1c252d3</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>b69fef71-cdf7-4d08-8cc9-1f77307a35a6</onsuccess>
+  </stage>
+  <stage stageid="acde87d7-003c-47ff-9132-5f3ccc08d8df" name="End" type="End">
+    <subsheetid>d6cf8251-cfcf-4a90-920d-11bfa1c252d3</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="b69fef71-cdf7-4d08-8cc9-1f77307a35a6" name="Launch Web Site" type="Action">
+    <subsheetid>d6cf8251-cfcf-4a90-920d-11bfa1c252d3</subsheetid>
+    <display x="15" y="-15" />
+    <onsuccess>acde87d7-003c-47ff-9132-5f3ccc08d8df</onsuccess>
+    <resource object="Correios - 22770" action="Launch" />
+  </stage>
+  <stage stageid="90d566e7-702e-41c5-9584-3beea55c0108" name="Launch" type="SubSheet">
+    <display x="15" y="-45" />
+    <onsuccess>6f861a97-e504-4cb4-96b9-e5ebbec7c491</onsuccess>
+    <processid>d6cf8251-cfcf-4a90-920d-11bfa1c252d3</processid>
+  </stage>
+  <stage stageid="368b3078-c593-472b-8e73-bb46e480866e" name="Populate Queue" type="SubSheetInfo">
+    <subsheetid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</subsheetid>
+    <display x="-165" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="f96629e2-2d14-4247-936a-be14f19cad6b" name="Start" type="Start">
+    <subsheetid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>70d0a222-2d98-4a81-a585-cea265aec11d</onsuccess>
+  </stage>
+  <stage stageid="ca2d00f1-9807-4444-b247-1f6f3218854d" name="End" type="End">
+    <subsheetid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="a6833c73-ed60-4ab1-a84f-3319e65c76e5" name="Correios - CEP" type="Collection">
+    <subsheetid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</subsheetid>
+    <display x="-165" y="0" w="120" h="30" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="CEP" type="text" />
+    </collectioninfo>
+    <initialvalue>
+      <row>
+        <field name="CEP" type="text" value="22770" />
+      </row>
+    </initialvalue>
+  </stage>
+  <stage stageid="70d0a222-2d98-4a81-a585-cea265aec11d" name="Add To Queue" type="Action">
+    <subsheetid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</subsheetid>
+    <display x="15" y="-15" />
+    <inputs>
+      <input type="text" name="Queue Name" narrative="The name of the queue to add items to" expr="[Work Queue]" />
+      <input type="collection" name="Data" narrative="A collection containing the data, one row for each item to be added" expr="[Correios - CEP]" />
+      <input type="datetime" name="Defer Until" narrative="Optionally, the date/time the new item(s) should be deferred until" expr="" />
+      <input type="number" name="Priority" narrative="Optionally, the priority for the new item(s). Lower numbers represent higher priorities. The default is 0." expr="" />
+      <input type="text" name="Tags" narrative="Optionally, a semi-colon-separated set of tags to apply to the queue item(s)" expr="&quot;CEP&quot;" />
+      <input type="text" name="Status" narrative="Optionally, the initial status required of the work queue item(s) " expr="&quot;01 - Add to Queue&quot;" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Item IDs" narrative="The IDs of the items which have been added to the queue, in the order of the collection of data passed that was input" stage="" />
+    </outputs>
+    <onsuccess>ca2d00f1-9807-4444-b247-1f6f3218854d</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Add To Queue" />
+  </stage>
+  <stage stageid="14f8db5e-fd48-4126-bce8-535b2684c1c6" name="Work Queue" type="Data">
+    <display x="-150" y="0" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">Correios - Cep</initialvalue>
+    <alwaysinit />
+  </stage>
+  <stage stageid="6f861a97-e504-4cb4-96b9-e5ebbec7c491" name="Populate Queue" type="SubSheet">
+    <display x="15" y="15" />
+    <onsuccess>4fc8e5f7-9cfb-4564-b41a-f31f79a183db</onsuccess>
+    <processid>afbd3b61-f214-4a02-8719-93af8b6c1c9a</processid>
+  </stage>
+  <stage stageid="4fc8e5f7-9cfb-4564-b41a-f31f79a183db" name="Get Next Item" type="Action">
+    <display x="15" y="75" />
+    <inputs>
+      <input type="text" name="Queue Name" narrative="The name of the queue" expr="[Work Queue]" />
+      <input type="text" name="Key Filter" narrative="Optionally, a key value to filter by. Only items with this key value will be considered." expr="" />
+      <input type="text" name="Tag Filter" narrative="Optionally, a tag mask to filter by. This can consist of any number of tag searches - each term can be separated by a semi-colon and they are all applied to the search (ie. they are AND'ed terms not OR'ed terms). For example, &quot;Account: Joint; -Balance: Overdrawn; Card: *Visa*&quot; will include any items which match all the terms, ie. every item must have an 'Account: Joint' tag applied, no item can have a 'Balance: Overdrawn' tag applied, every item must have a tag applied which starts with 'Card: ' and then contains the text 'Visa'." expr="" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Item ID" narrative="The ID of the item retrieved - empty if there are none available." stage="Item ID" />
+      <output type="collection" name="Data" narrative="The data associated with the item - a single collection row." stage="Data" />
+      <output type="text" name="Status" narrative="The status of the item." stage="Status" />
+      <output type="number" name="Attempts" narrative="The number of attempts already made to work this item." stage="Attempts" />
+    </outputs>
+    <onsuccess>5eccabc6-452b-48a3-abbc-93eaef2c9a31</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Get Next Item" />
+  </stage>
+  <stage stageid="bb7991ba-106c-49ee-bccd-8f8e2246e61e" name="Item ID" type="Data">
+    <display x="-150" y="90" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="65ddcd35-65bf-47fc-a084-29c52d2ba09a" name="Data" type="Collection">
+    <display x="-150" y="150" w="120" h="30" />
+    <datatype>collection</datatype>
+    <alwaysinit />
+  </stage>
+  <stage stageid="cd44ad27-4428-4cab-9422-fe7e7f824db6" name="Status" type="Data">
+    <display x="-150" y="60" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="bc4ed8c3-0110-4187-9536-4e6e875d9eb4" name="Attempts" type="Data">
+    <display x="-150" y="120" w="120" h="30" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="dc825e1a-7638-4fee-ab8d-74d01600b803" name="Get Next Item" type="Action">
+    <display x="270" y="75" />
+    <inputs>
+      <input type="text" name="Queue Name" narrative="The name of the queue" expr="[Work Queue]" />
+      <input type="text" name="Key Filter" narrative="Optionally, a key value to filter by. Only items with this key value will be considered." expr="" />
+      <input type="text" name="Tag Filter" narrative="Optionally, a tag mask to filter by. This can consist of any number of tag searches - each term can be separated by a semi-colon and they are all applied to the search (ie. they are AND'ed terms not OR'ed terms). For example, &quot;Account: Joint; -Balance: Overdrawn; Card: *Visa*&quot; will include any items which match all the terms, ie. every item must have an 'Account: Joint' tag applied, no item can have a 'Balance: Overdrawn' tag applied, every item must have a tag applied which starts with 'Card: ' and then contains the text 'Visa'." expr="" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Item ID" narrative="The ID of the item retrieved - empty if there are none available." stage="Item ID" />
+      <output type="collection" name="Data" narrative="The data associated with the item - a single collection row." stage="Data" />
+      <output type="text" name="Status" narrative="The status of the item." stage="Status" />
+      <output type="number" name="Attempts" narrative="The number of attempts already made to work this item." stage="Attempts" />
+    </outputs>
+    <onsuccess>5eccabc6-452b-48a3-abbc-93eaef2c9a31</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Get Next Item" />
+  </stage>
+  <stage stageid="5eccabc6-452b-48a3-abbc-93eaef2c9a31" name="Has Itens?" type="Decision">
+    <display x="135" y="75" />
+    <decision expression="[Item ID]&lt;&gt;&quot;&quot;" />
+    <ontrue>b89f05e1-78d6-4499-b0c2-ad08b875028e</ontrue>
+    <onfalse>ba6f5840-046d-4ddc-bf8e-e82ae187e160</onfalse>
+  </stage>
+  <stage stageid="a556a687-02a0-448f-b98d-a1117f15af4c" name="Search CEP" type="SubSheetInfo">
+    <subsheetid>25010574-8cad-4b42-be06-695b14313f51</subsheetid>
+    <display x="-150" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="572f34ba-6d36-4e0c-b0ed-57a36f208a9b" name="Start" type="Start">
+    <subsheetid>25010574-8cad-4b42-be06-695b14313f51</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>063dfd5f-09b0-4640-bef5-fdb460517632</onsuccess>
+  </stage>
+  <stage stageid="ec74a5dc-bfd8-4e85-a351-a9f7ab4224b5" name="End" type="End">
+    <subsheetid>25010574-8cad-4b42-be06-695b14313f51</subsheetid>
+    <display x="15" y="135" />
+  </stage>
+  <stage stageid="063dfd5f-09b0-4640-bef5-fdb460517632" name="Search CEP" type="Action">
+    <subsheetid>25010574-8cad-4b42-be06-695b14313f51</subsheetid>
+    <display x="15" y="30" />
+    <inputs>
+      <input type="text" name="CEP" narrative="Cep to Search" expr="[Data.CEP]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="All Cep" narrative="All Cep Found" stage="All Cep" />
+    </outputs>
+    <onsuccess>ec74a5dc-bfd8-4e85-a351-a9f7ab4224b5</onsuccess>
+    <resource object="Correios - 22770" action="Search Cep" />
+  </stage>
+  <stage stageid="5c60e446-91ed-42d3-8a37-b18fe78a9ae0" name="All Cep" type="Collection">
+    <subsheetid>25010574-8cad-4b42-be06-695b14313f51</subsheetid>
+    <display x="-150" y="0" w="120" h="30" />
+    <datatype>collection</datatype>
+    <alwaysinit />
+  </stage>
+  <stage stageid="b89f05e1-78d6-4499-b0c2-ad08b875028e" name="Search CEP" type="SubSheet">
+    <display x="135" y="150" />
+    <onsuccess>39f11b24-ca4e-4ecc-aaa0-7b5b01a4ff0d</onsuccess>
+    <processid>25010574-8cad-4b42-be06-695b14313f51</processid>
+  </stage>
+  <stage stageid="41ff6fa8-a707-4010-b56e-e3d6d079e2af" name="Excel" type="SubSheetInfo">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="-165" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="be1c1456-4328-4a35-a646-d1f03feee3de" name="Start" type="Start">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>2548ffe2-608b-4f45-82df-bceb3f683c9d</onsuccess>
+  </stage>
+  <stage stageid="6e9c13bb-b18e-4ca2-b629-dbc5a1a43cc3" name="End" type="End">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="270" />
+  </stage>
+  <stage stageid="2548ffe2-608b-4f45-82df-bceb3f683c9d" name="Create Instance" type="Action">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="flag" name="Enable Events" narrative="Flag to indicate that events should be enabled / disabled on the attached instance - defaulted to True" expr="" />
+    </inputs>
+    <outputs>
+      <output type="number" name="handle" narrative="An integer which can be used to identify the created instance in subsequent actions" stage="handle" />
+    </outputs>
+    <onsuccess>e6167a0f-ca76-46fa-98b8-2071ee915fc4</onsuccess>
+    <resource object="MS Excel VBO Thiago Pinheiro" action="Create Instance" />
+  </stage>
+  <stage stageid="760307d0-bfcf-429f-b4f9-af6a05984727" name="handle" type="Data">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="-165" y="0" w="120" h="30" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="66912bd9-f725-4924-b20a-d97bf5ebcf16" name="Workbook Name" type="Data">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="-165" y="30" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="e6167a0f-ca76-46fa-98b8-2071ee915fc4" name="Show" type="Action">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="15" />
+    <inputs>
+      <input type="number" name="handle" narrative="The integer handle identifying the instance which should have its window displayed. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <onsuccess>efe6fd6f-8b3e-400d-a7be-b18e456acb68</onsuccess>
+    <resource object="MS Excel VBO Thiago Pinheiro" action="Show" />
+  </stage>
+  <stage stageid="efe6fd6f-8b3e-400d-a7be-b18e456acb68" name="Create Workbook" type="Action">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="75" />
+    <inputs>
+      <input type="number" name="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" narrative="The path and name of the file which should be opened." expr="[Directory]&amp;&quot;Ceps.xlsx&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="Workbook Name" />
+    </outputs>
+    <onsuccess>a9bde48e-d25c-496e-b8eb-2d40668cf73a</onsuccess>
+    <resource object="MS Excel VBO Thiago Pinheiro" action="Open Workbook" />
+  </stage>
+  <stage stageid="a9bde48e-d25c-496e-b8eb-2d40668cf73a" name="Write Collection" type="Action">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="135" />
+    <inputs>
+      <input type="number" name="handle" narrative="The integer handle identifying the instance on which the specified collection should be written. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="collection" name="Collection" narrative="The collection containing the data which should be written to the worksheet." expr="[All Cep]" />
+      <input type="text" name="Workbook Name" narrative="The name of the workbook within which the data should be written. The default empty value indicates the current workbook within the specified instance." expr="[Workbook Name]" />
+      <input type="text" name="Worksheet Name" narrative="The name of the worksheet on which the given data should be written. The default empty value indicates the current sheet within the specified workbook." expr="" />
+      <input type="text" name="Cell Reference" narrative="The reference at which the collection should be written." expr="&quot;A1&quot;" />
+      <input type="flag" name="Include Column Names" narrative="True to indicate that the column names from the collection should be written out as the first row; False to ignore the column names and just write out the data." expr="True" />
+    </inputs>
+    <onsuccess>abe76aa2-4d5a-4418-84bb-5485e779c71f</onsuccess>
+    <resource object="MS Excel VBO Thiago Pinheiro" action="Write Collection" />
+  </stage>
+  <stage stageid="b05da76c-41ca-445d-96df-9a8db7c86733" name="Directory" type="Data">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="-165" y="60" w="120" h="30" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">C:\Users\Thiago\Downloads\</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="abe76aa2-4d5a-4418-84bb-5485e779c71f" name="Close Instance" type="Action">
+    <subsheetid>14554b1d-01d4-4414-a418-366260976796</subsheetid>
+    <display x="15" y="195" />
+    <inputs>
+      <input type="number" name="handle" narrative="The integer handle identifying the instance to be closed. Zero indicates the currently active instance." expr="[handle]" />
+      <input type="flag" name="Save Changes" narrative="True to save the changes to the open workbooks on the instance, False to discard any changes. Default is False." expr="True" />
+    </inputs>
+    <onsuccess>6e9c13bb-b18e-4ca2-b629-dbc5a1a43cc3</onsuccess>
+    <resource object="MS Excel VBO Thiago Pinheiro" action="Close Instance" />
+  </stage>
+  <stage stageid="39f11b24-ca4e-4ecc-aaa0-7b5b01a4ff0d" name="Excel" type="SubSheet">
+    <display x="135" y="225" />
+    <onsuccess>a30bfe48-7f5e-4cf1-adb1-3e5661538c28</onsuccess>
+    <processid>14554b1d-01d4-4414-a418-366260976796</processid>
+  </stage>
+  <stage stageid="cab23333-8119-459a-8467-adda1d918a7b" name="Mark Completed" type="SubSheetInfo">
+    <subsheetid>34dec59f-f119-4c94-a846-0c74bd254165</subsheetid>
+    <display x="-150" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="6c686e31-9285-44c7-994b-2f198492989c" name="Start" type="Start">
+    <subsheetid>34dec59f-f119-4c94-a846-0c74bd254165</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>40f3d7ff-f2bc-4245-ac28-5a95dde676bb</onsuccess>
+  </stage>
+  <stage stageid="47e3551e-54a0-4c85-a42c-91c1159c4526" name="End" type="End">
+    <subsheetid>34dec59f-f119-4c94-a846-0c74bd254165</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="40f3d7ff-f2bc-4245-ac28-5a95dde676bb" name="Mark Completd" type="Action">
+    <subsheetid>34dec59f-f119-4c94-a846-0c74bd254165</subsheetid>
+    <display x="15" y="-15" />
+    <inputs>
+      <input type="text" name="Item ID" narrative="The ID of the item to mark" expr="[Item ID]" />
+    </inputs>
+    <onsuccess>47e3551e-54a0-4c85-a42c-91c1159c4526</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Mark Completed" />
+  </stage>
+  <stage stageid="a30bfe48-7f5e-4cf1-adb1-3e5661538c28" name="Mark Completed" type="SubSheet">
+    <display x="270" y="225" />
+    <onsuccess>dc825e1a-7638-4fee-ab8d-74d01600b803</onsuccess>
+    <processid>34dec59f-f119-4c94-a846-0c74bd254165</processid>
+  </stage>
+  <stage stageid="60e3e2fc-441f-44a4-b98a-76d9c98e7a5f" name="Close" type="SubSheetInfo">
+    <subsheetid>5cff7e25-db7e-410b-beda-bf0bffebfd89</subsheetid>
+    <display x="-150" y="-75" w="150" h="90" />
+  </stage>
+  <stage stageid="ab5ee870-3d60-4b19-90c0-f8386f96e4c3" name="Start" type="Start">
+    <subsheetid>5cff7e25-db7e-410b-beda-bf0bffebfd89</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>a7aeda7a-d72d-4a43-8900-21943b09c9e0</onsuccess>
+  </stage>
+  <stage stageid="f8ee26cb-4331-41dd-a265-a5b6a7567970" name="End" type="End">
+    <subsheetid>5cff7e25-db7e-410b-beda-bf0bffebfd89</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="a7aeda7a-d72d-4a43-8900-21943b09c9e0" name="Close Web Site" type="Action">
+    <subsheetid>5cff7e25-db7e-410b-beda-bf0bffebfd89</subsheetid>
+    <display x="15" y="-15" />
+    <onsuccess>f8ee26cb-4331-41dd-a265-a5b6a7567970</onsuccess>
+    <resource object="Correios - 22770" action="Close" />
+  </stage>
+  <stage stageid="ba6f5840-046d-4ddc-bf8e-e82ae187e160" name="Close" type="SubSheet">
+    <display x="135" y="-15" />
+    <onsuccess>7a5ba618-e97c-4d3e-baaf-b8a7736c2f2a</onsuccess>
+    <processid>5cff7e25-db7e-410b-beda-bf0bffebfd89</processid>
+  </stage>
+</process>
