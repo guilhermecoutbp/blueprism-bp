@@ -9,6 +9,18 @@ FALAS = {
     "principal-05-acabamento": "Madeira, pedra, metal e luz. Ripado de madeira, mármore, detalhes em latão e iluminação embutida. Acabamento de alto padrão em cada peça.",
     "principal-06-final": "Seu espaço. Seu estilo. A Vellaro Design cria móveis sob medida com identidade: cozinhas, closets, salas, banheiros e ambientes completos, do projeto à montagem.",
 }
+FALAS_V2 = {
+    "01-entrada": "Vellaro Design.",
+    "02-espaco": "Tudo começa pelo espaço. Primeiro entendemos o ambiente: medidas, circulação, luz e tudo o que você precisa guardar.",
+    "03-desenho": "Depois, o desenho do móvel. Com a planta definida, o móvel é desenhado na parede certa, na medida exata.",
+    "04-pecas": "Cada peça, uma medida. O projeto é detalhado peça por peça: chapas, portas, prateleiras, ferragens e iluminação.",
+    "05-montagem": "Montado com precisão. Fabricação cuidadosa e montagem no local, com acabamento de alto padrão.",
+    "06-dia-a-dia": "Feito para o dia a dia. Portas que abrem suaves, gavetas amplas e luz embutida onde você precisa.",
+    "07-ambiente": "O ambiente completo. Cada móvel é pensado junto com o espaço ao redor, para tudo conversar.",
+    "08-seu-jeito": "Do seu jeito. Experimente os acabamentos e peça um orçamento com a sua escolha.",
+}
+if os.environ.get("TEXTOS") == "v2":
+    FALAS = FALAS_V2
 outdir, ref = sys.argv[1], (sys.argv[2] if sys.argv[2] != "-" else None)
 exag, cfg, temp = float(sys.argv[3]), float(sys.argv[4]), float(sys.argv[5])
 only = sys.argv[6:] or list(FALAS)
@@ -58,5 +70,4 @@ for name in only:
     raw = f"{outdir}/{name}.raw.wav"; ta.save(raw, torch.from_numpy(audio).unsqueeze(0), model.sr)
     out = f"{outdir}/{name}.mp3"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", chain, "-ac", "1", "-ar", "44100", "-b:a", "96k", out], check=True)
-    os.remove(raw)
     print(f"{name}: {len(audio)/model.sr:.1f}s pronto em {time.time()-t0:.0f}s", flush=True)

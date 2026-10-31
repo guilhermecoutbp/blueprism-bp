@@ -27,7 +27,13 @@
     <a class="bar__mark" href="#topo" aria-label="Vellaro Design, voltar ao início">
       <svg class="bar__logo" viewBox="0 0 791 200" aria-hidden="true"><use href="#vellaro-logo"/></svg>
     </a>
-    <a class="bar__link" href="#contato">Contato</a>
+    <div class="bar__actions">
+      <button class="sound" type="button" aria-pressed="false" aria-label="Ativar narração">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor" stroke="none"/><path class="sound__wave" d="M15.5 9.2a4 4 0 0 1 0 5.6M18 6.8a7.5 7.5 0 0 1 0 10.4"/></svg>
+        <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <a class="bar__link" href="#contato">Contato</a>
+    </div>
   </header>
 
   <div class="intro" aria-hidden="true">
@@ -46,6 +52,11 @@
     </div>
     <p class="intro__hint">Role para acompanhar o projeto</p>
   </div>
+
+  <button class="listen" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor" stroke="none"/><path class="sound__wave" d="M15.5 9.2a4 4 0 0 1 0 5.6M18 6.8a7.5 7.5 0 0 1 0 10.4"/></svg>
+    Ouvir a experiência
+  </button>
 
   <main>
     <section class="chapter chapter--intro" id="topo">
