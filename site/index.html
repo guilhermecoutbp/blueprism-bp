@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="module" src="atelier.js"></script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -50,6 +51,27 @@
           </a>
           <a class="btn btn--ghost" href="#sobre">Conhecer a Vellaro</a>
         </div>
+      </div>
+    </section>
+
+    <section class="atelier" aria-label="Do desenho ao móvel pronto">
+      <div class="atelier__stage">
+        <canvas class="atelier__canvas" aria-hidden="true"></canvas>
+        <div class="atelier__captions">
+          <div class="atelier__step is-active">
+            <h2>Tudo começa no papel</h2>
+            <p>Cada móvel nasce de um desenho com as medidas exatas do seu ambiente.</p>
+          </div>
+          <div class="atelier__step">
+            <h2>As linhas ganham volume</h2>
+            <p>Profundidade, encaixes e proporções são definidos antes do primeiro corte.</p>
+          </div>
+          <div class="atelier__step">
+            <h2>E o acabamento dá vida</h2>
+            <p>Madeira, pedra, metal e luz, montados sob medida para a sua casa.</p>
+          </div>
+        </div>
+        <p class="atelier__hint" aria-hidden="true">Role para ver o móvel tomar forma</p>
       </div>
     </section>
 
