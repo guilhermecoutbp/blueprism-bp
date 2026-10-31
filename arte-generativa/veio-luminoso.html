@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<!--
+    THIS IS A TEMPLATE THAT SHOULD BE USED EVERY TIME AND MODIFIED.
+    WHAT TO KEEP:
+    ✓ Overall structure (header, sidebar, main content)
+    ✓ Anthropic branding (colors, fonts, layout)
+    ✓ Seed navigation section (always include this)
+    ✓ Self-contained artifact (everything inline)
+
+    WHAT TO CREATIVELY EDIT:
+    ✗ The p5.js algorithm (implement YOUR vision)
+    ✗ The parameters (define what YOUR art needs)
+    ✗ The UI controls (match YOUR parameters)
+
+    Let your philosophy guide the implementation.
+    The world is your oyster - be creative!
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veio Luminoso</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Anthropic Brand Colors */
+        :root {
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--anthropic-light) 0%, #f5f3ee 100%);
+            min-height: 100vh;
+            color: var(--anthropic-dark);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(20, 20, 19, 0.1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sidebar h1 {
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--anthropic-dark);
+            margin-bottom: 8px;
+        }
+
+        .sidebar .subtitle {
+            color: var(--anthropic-mid-gray);
+            font-size: 14px;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        /* Control Sections */
+        .control-section {
+            margin-bottom: 32px;
+        }
+
+        .control-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--anthropic-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-section h3::before {
+            content: '•';
+            color: var(--anthropic-orange);
+            font-weight: bold;
+        }
+
+        /* Seed Controls */
+        .seed-input {
+            width: 100%;
+            background: var(--anthropic-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-bottom: 12px;
+            border: 1px solid var(--anthropic-light-gray);
+            text-align: center;
+        }
+
+        .seed-input:focus {
+            outline: none;
+            border-color: var(--anthropic-orange);
+            box-shadow: 0 0 0 2px rgba(217, 119, 87, 0.1);
+            background: white;
+        }
+
+        .seed-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .regen-button {
+            margin-bottom: 0;
+        }
+
+        /* Parameter Controls */
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--anthropic-dark);
+            margin-bottom: 8px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            height: 4px;
+            background: var(--anthropic-light-gray);
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--anthropic-orange);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: #c86641;
+        }
+
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: var(--anthropic-orange);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .value-display {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* Color Pickers */
+        .color-group {
+            margin-bottom: 16px;
+        }
+
+        .color-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+            margin-bottom: 4px;
+        }
+
+        .color-picker-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-picker-container input[type="color"] {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: none;
+            padding: 0;
+        }
+
+        .color-value {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+        }
+
+        /* Buttons */
+        .button {
+            background: var(--anthropic-orange);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .button:hover {
+            background: #c86641;
+            transform: translateY(-1px);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button.secondary {
+            background: var(--anthropic-blue);
+        }
+
+        .button.secondary:hover {
+            background: #5a8bb8;
+        }
+
+        .button.tertiary {
+            background: var(--anthropic-green);
+        }
+
+        .button.tertiary:hover {
+            background: #6b7b52;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .button-row .button {
+            flex: 1;
+        }
+
+        /* Canvas Area */
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        #canvas-container {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(20, 20, 19, 0.1);
+            background: white;
+        }
+
+        #canvas-container canvas {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--anthropic-mid-gray);
+        }
+
+        /* Responsive - Stack on mobile */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .canvas-area {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Control Sidebar -->
+        <div class="sidebar">
+            <!-- Headers (CUSTOMIZE THIS FOR YOUR ART) -->
+            <h1>Veio Luminoso</h1>
+            <div class="subtitle">Filamentos seguem as curvas de um campo de madeira: o traço vira veio, e a luz das prateleiras revela a matéria.</div>
+
+            <!-- Seed Section (ALWAYS KEEP THIS) -->
+            <div class="control-section">
+                <h3>Seed</h3>
+                <input type="number" id="seed-input" class="seed-input" value="1800" onchange="updateSeed()">
+                <div class="seed-controls">
+                    <button class="button secondary" onclick="previousSeed()">← Prev</button>
+                    <button class="button secondary" onclick="nextSeed()">Next →</button>
+                </div>
+                <button class="button tertiary regen-button" onclick="randomSeedAndUpdate()">↻ Random</button>
+            </div>
+
+            <!-- Parameters Section (CUSTOMIZE THIS FOR YOUR ART) -->
+            <div class="control-section">
+                <h3>Parameters</h3>
+                <div class="control-group">
+                    <label>Filamentos</label>
+                    <div class="slider-container">
+                        <input type="range" id="filaments" min="200" max="2400" step="100" value="900" oninput="updateParam('filaments', this.value)">
+                        <span class="value-display" id="filaments-value">900</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Anéis por 100 px</label>
+                    <div class="slider-container">
+                        <input type="range" id="ringDensity" min="2" max="16" step="0.5" value="7" oninput="updateParam('ringDensity', this.value)">
+                        <span class="value-display" id="ringDensity-value">7</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Nós na madeira</label>
+                    <div class="slider-container">
+                        <input type="range" id="knotCount" min="0" max="6" step="1" value="3" oninput="updateParam('knotCount', this.value)">
+                        <span class="value-display" id="knotCount-value">3</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Força dos nós</label>
+                    <div class="slider-container">
+                        <input type="range" id="knotStrength" min="0.2" max="2.5" step="0.1" value="1.2" oninput="updateParam('knotStrength', this.value)">
+                        <span class="value-display" id="knotStrength-value">1.2</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Irregularidade</label>
+                    <div class="slider-container">
+                        <input type="range" id="turbulence" min="0" max="1" step="0.05" value="0.35" oninput="updateParam('turbulence', this.value)">
+                        <span class="value-display" id="turbulence-value">0.35</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Densidade da tinta</label>
+                    <div class="slider-container">
+                        <input type="range" id="inkDensity" min="0.02" max="0.16" step="0.01" value="0.07" oninput="updateParam('inkDensity', this.value)">
+                        <span class="value-display" id="inkDensity-value">0.07</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Halo da luz</label>
+                    <div class="slider-container">
+                        <input type="range" id="lightGlow" min="8" max="60" step="1" value="26" oninput="updateParam('lightGlow', this.value)">
+                        <span class="value-display" id="lightGlow-value">26</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colors Section (OPTIONAL - CUSTOMIZE OR REMOVE) -->
+            <div class="control-section">
+                <h3>Colors</h3>
+                <div class="color-group">
+                    <label>Fundo</label>
+                    <div class="color-picker-container">
+                        <input type="color" id="color1" value="#0e0d0c" onchange="updateColor('color1', this.value)">
+                        <span class="color-value" id="color1-value">#0e0d0c</span>
+                    </div>
+                </div>
+                <div class="color-group">
+                    <label>Tinta (veio)</label>
+                    <div class="color-picker-container">
+                        <input type="color" id="color2" value="#c9c6c1" onchange="updateColor('color2', this.value)">
+                        <span class="color-value" id="color2-value">#c9c6c1</span>
+                    </div>
+                </div>
+                <div class="color-group">
+                    <label>Luz (latão)</label>
+                    <div class="color-picker-container">
+                        <input type="color" id="color3" value="#f3c98b" onchange="updateColor('color3', this.value)">
+                        <span class="color-value" id="color3-value">#f3c98b</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Section (ALWAYS KEEP THIS) -->
+            <div class="control-section">
+                <h3>Actions</h3>
+                <div class="button-row" style="margin-bottom: 8px;">
+                    <button class="button" onclick="initializeSystem()">↻ Regenerate</button>
+                    <button class="button" onclick="resetParameters()">Reset</button>
+                </div>
+                <div class="button-row">
+                    <button class="button tertiary" onclick="downloadPNG()">Download PNG</button>
+                    <button class="button secondary" id="record-button" onclick="recordVideo()">Gravar vídeo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Canvas Area -->
+        <div class="canvas-area">
+            <div id="canvas-container">
+                <div class="loading">Initializing generative art...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════════════
+        // GENERATIVE ART PARAMETERS - CUSTOMIZE FOR YOUR ALGORITHM
+        // ═══════════════════════════════════════════════════════════════════════
+
+        let params = {
+            seed: 1800,
+            filaments: 900,       // quantos traços percorrem o campo ao mesmo tempo
+            ringDensity: 7,       // anéis de crescimento a cada 100 px
+            knotCount: 3,         // nós que curvam o veio
+            knotStrength: 1.2,    // quanto cada nó deforma o campo
+            turbulence: 0.35,     // irregularidade de algo que cresceu
+            inkDensity: 0.07,     // opacidade de cada passada da tinta
+            lightGlow: 26,        // largura do halo das linhas de luz
+            colorPalette: ['#0e0d0c', '#c9c6c1', '#f3c98b']
+        };
+
+        let defaultParams = {...params, colorPalette: [...params.colorPalette]};
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // P5.JS GENERATIVE ART ALGORITHM - REPLACE WITH YOUR VISION
+        // ═══════════════════════════════════════════════════════════════════════
+
+        // Proporção 9:11, a mesma de um armário de 1800 x 2200 mm
+        const W = 900, H = 1100;
+        // Linhas de luz na altura das prateleiras (0,95 / 1,40 / 1,85 m de 2,2 m), de baixo para cima
+        const LIGHT_LINES = [1 - 0.95 / 2.2, 1 - 1.40 / 2.2, 1 - 1.85 / 2.2];
+        const BUILD_FRAMES = 720;   // tempo até o equilíbrio (12 s a 60 fps)
+        const GRID = 3;             // resolução da grade do campo, em px
+        const STEP = 1.5;           // passo de cada filamento
+
+        let field, gcols, grows;
+        let filaments = [];
+        let frame = 0;
+        let ringFreq;
+        let inkColor, lightColor, bgColor;
+
+        function setup() {
+            let canvas = createCanvas(W, H);
+            canvas.parent('canvas-container');
+            pixelDensity(1);
+            frameRate(60);
+            initializeSystem();
+            document.querySelector('.loading').style.display = 'none';
+        }
+
+        function initializeSystem() {
+            randomSeed(params.seed);
+            noiseSeed(params.seed);
+            noiseDetail(4, 0.5);
+            frame = 0;
+            ringFreq = TWO_PI * params.ringDensity / 100;
+            bgColor = color(params.colorPalette[0]);
+            inkColor = color(params.colorPalette[1]);
+            lightColor = color(params.colorPalette[2]);
+            buildField();
+            filaments = [];
+            for (let i = 0; i < params.filaments; i++) filaments.push(new Filament());
+            paintGround();
+        }
+
+        // Campo escalar da tábua: rampa (sentido do veio) + catedral + nós + ruído.
+        // Os filamentos andam ao longo das curvas de nível desse campo.
+        function buildField() {
+            gcols = Math.ceil(W / GRID) + 2;
+            grows = Math.ceil(H / GRID) + 2;
+            field = new Float32Array(gcols * grows);
+
+            const tilt = random(-0.12, 0.12);
+            const knots = [];
+            // a catedral: um nó grande abaixo da peça abre os arcos do veio
+            knots.push({ x: W * random(0.35, 0.65), y: H * random(1.08, 1.3), r: W * random(0.42, 0.6), a: random(1.4, 2.0) });
+            for (let k = 0; k < params.knotCount; k++) {
+                knots.push({
+                    x: W * random(0.12, 0.88),
+                    y: H * random(0.08, 0.92),
+                    r: random(18, 54),
+                    a: params.knotStrength * random(1.3, 2.6),
+                });
+            }
+            const turb = params.turbulence * 70;
+            for (let j = 0; j < grows; j++) {
+                for (let i = 0; i < gcols; i++) {
+                    const x = i * GRID, y = j * GRID;
+                    let f = x + tilt * y;
+                    for (const k of knots) {
+                        const dx = x - k.x, dy = (y - k.y) * 0.62; // nós alongados no sentido do veio
+                        f += k.a * k.r * Math.exp(-(dx * dx + dy * dy) / (2 * k.r * k.r));
+                    }
+                    f += turb * (noise(x * 0.0035, y * 0.0011) - 0.5) * 2;
+                    f += turb * 0.18 * (noise(x * 0.02 + 40, y * 0.006) - 0.5) * 2;
+                    field[j * gcols + i] = f;
+                }
+            }
+        }
+
+        function sampleField(x, y) {
+            const gx = x / GRID, gy = y / GRID;
+            const i = Math.floor(gx), j = Math.floor(gy);
+            if (i < 0 || j < 0 || i >= gcols - 1 || j >= grows - 1) return null;
+            const fx = gx - i, fy = gy - j;
+            const a = field[j * gcols + i], b = field[j * gcols + i + 1];
+            const c = field[(j + 1) * gcols + i], d = field[(j + 1) * gcols + i + 1];
+            return {
+                f: a * (1 - fx) * (1 - fy) + b * fx * (1 - fy) + c * (1 - fx) * fy + d * fx * fy,
+                gx: ((b - a) * (1 - fy) + (d - c) * fy) / GRID,
+                gy: ((c - a) * (1 - fx) + (d - b) * fx) / GRID,
+            };
+        }
+
+        // Fundo escuro com uma vinheta mínima, pintado uma vez
+        function paintGround() {
+            background(bgColor);
+            noStroke();
+            const ctx = drawingContext;
+            const g = ctx.createRadialGradient(W / 2, H * 0.46, 0, W / 2, H * 0.46, W * 0.95);
+            g.addColorStop(0, 'rgba(255,255,255,0.03)');
+            g.addColorStop(0.55, 'rgba(0,0,0,0)');
+            g.addColorStop(1, 'rgba(0,0,0,0.42)');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, W, H);
+        }
+
+        // Quanto cada linha de luz já acendeu (0 a 1): uma de cada vez, de baixo para cima
+        function lightLevel(k) {
+            const start = (0.36 + 0.14 * k) * BUILD_FRAMES;
+            const t = constrain((frame - start) / (0.1 * BUILD_FRAMES), 0, 1);
+            return t * t * (3 - 2 * t);
+        }
+
+        function draw() {
+            if (frame >= BUILD_FRAMES) return; // equilíbrio: a peça está pronta
+            const levels = LIGHT_LINES.map((_, k) => lightLevel(k));
+            const fade = 1 - Math.pow(frame / BUILD_FRAMES, 3) * 0.6; // os traços assentam no fim
+            for (const fil of filaments) fil.advance(levels, fade);
+            drawLights(levels);
+            frame++;
+        }
+
+        // A própria fita de LED. Ela só acumula luz enquanto está acendendo,
+        // para terminar âmbar em vez de saturar até o branco.
+        function drawLights(levels) {
+            blendMode(ADD);
+            const c = lightColor;
+            for (let k = 0; k < LIGHT_LINES.length; k++) {
+                const start = (0.36 + 0.14 * k) * BUILD_FRAMES;
+                const igniting = frame >= start && frame < start + 0.1 * BUILD_FRAMES;
+                if (!igniting) continue;
+                const y = LIGHT_LINES[k] * H;
+                stroke(red(c), green(c), blue(c), 0.7);   // halo macio
+                strokeWeight(7);
+                line(W * 0.09, y + 1, W * 0.91, y + 1);
+                stroke(red(c), green(c), blue(c), 1.3);   // núcleo da fita
+                strokeWeight(1.1);
+                line(W * 0.08, y, W * 0.92, y);
+            }
+            blendMode(BLEND);
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // PARTICLE SYSTEM - CUSTOMIZE FOR YOUR ALGORITHM
+        // ═══════════════════════════════════════════════════════════════════════
+
+        class Filament {
+            constructor() {
+                this.respawn();
+            }
+
+            respawn() {
+                this.x = random(W);
+                this.y = random(H);
+                this.dir = random() < 0.5 ? -1 : 1;
+                this.life = Math.floor(random(60, 260));
+                this.weight = random(0.45, 1.05);
+            }
+
+            advance(levels, fade) {
+                for (let s = 0; s < 2; s++) {
+                    const here = sampleField(this.x, this.y);
+                    if (!here || this.life-- <= 0) { this.respawn(); return; }
+                    const len = Math.hypot(here.gx, here.gy) || 1;
+                    // perpendicular ao gradiente: anda ao longo da curva de nível
+                    const nx = this.x + this.dir * (-here.gy / len) * STEP;
+                    const ny = this.y + this.dir * (here.gx / len) * STEP;
+
+                    // lenho tardio (anéis escuros e densos) recebe mais tinta
+                    const ring = 0.5 + 0.5 * Math.sin(here.f * ringFreq);
+                    const alpha = params.inkDensity * 255 * (0.22 + 0.78 * Math.pow(ring, 2.4)) * fade;
+                    stroke(red(inkColor), green(inkColor), blue(inkColor), alpha);
+                    strokeWeight(this.weight);
+                    line(this.x, this.y, nx, ny);
+
+                    // a luz das prateleiras transforma o traço que passa por ela em latão
+                    let glow = 0;
+                    for (let k = 0; k < LIGHT_LINES.length; k++) {
+                        if (levels[k] <= 0) continue;
+                        const dy = this.y - LIGHT_LINES[k] * H;
+                        // a luz cai mais para baixo da prateleira do que para cima
+                        const w = dy > 0 ? params.lightGlow * 2.2 : params.lightGlow * 0.6;
+                        glow = Math.max(glow, levels[k] * Math.exp(-(dy * dy) / (2 * w * w)));
+                    }
+                    if (glow > 0.02) {
+                        blendMode(ADD);
+                        stroke(red(lightColor), green(lightColor), blue(lightColor), alpha * glow * 3);
+                        line(this.x, this.y, nx, ny);
+                        blendMode(BLEND);
+                    }
+                    this.x = nx;
+                    this.y = ny;
+                }
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // UI CONTROL HANDLERS - CUSTOMIZE FOR YOUR PARAMETERS
+        // ═══════════════════════════════════════════════════════════════════════
+
+        function updateParam(paramName, value) {
+            params[paramName] = parseFloat(value);
+            document.getElementById(paramName + '-value').textContent = value;
+            initializeSystem();
+        }
+
+        function updateColor(colorId, value) {
+            const index = { color1: 0, color2: 1, color3: 2 }[colorId];
+            params.colorPalette[index] = value;
+            document.getElementById(colorId + '-value').textContent = value;
+            initializeSystem();
+        }
+
+        function downloadPNG() {
+            saveCanvas('veio-luminoso-' + params.seed, 'png');
+        }
+
+        // Grava a peça do início ao equilíbrio como vídeo WebM
+        function recordVideo() {
+            const button = document.getElementById('record-button');
+            const stream = document.querySelector('#canvas-container canvas').captureStream(60);
+            const type = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+            const recorder = new MediaRecorder(stream, { mimeType: type, videoBitsPerSecond: 12_000_000 });
+            const chunks = [];
+            recorder.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+            recorder.onstop = () => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob(chunks, { type: 'video/webm' }));
+                a.download = 'veio-luminoso-' + params.seed + '.webm';
+                a.click();
+                button.textContent = 'Gravar vídeo';
+                button.disabled = false;
+            };
+            initializeSystem();
+            recorder.start();
+            button.textContent = 'Gravando...';
+            button.disabled = true;
+            setTimeout(() => recorder.stop(), (BUILD_FRAMES / 60) * 1000 + 1500);
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // SEED CONTROL FUNCTIONS - ALWAYS KEEP THESE
+        // ═══════════════════════════════════════════════════════════════════════
+
+        function updateSeedDisplay() {
+            document.getElementById('seed-input').value = params.seed;
+        }
+
+        function updateSeed() {
+            let input = document.getElementById('seed-input');
+            let newSeed = parseInt(input.value);
+            if (newSeed && newSeed > 0) {
+                params.seed = newSeed;
+                initializeSystem();
+            } else {
+                // Reset to current seed if invalid
+                updateSeedDisplay();
+            }
+        }
+
+        function previousSeed() {
+            params.seed = Math.max(1, params.seed - 1);
+            updateSeedDisplay();
+            initializeSystem();
+        }
+
+        function nextSeed() {
+            params.seed = params.seed + 1;
+            updateSeedDisplay();
+            initializeSystem();
+        }
+
+        function randomSeedAndUpdate() {
+            params.seed = Math.floor(Math.random() * 999999) + 1;
+            updateSeedDisplay();
+            initializeSystem();
+        }
+
+        function resetParameters() {
+            params = {...defaultParams, colorPalette: [...defaultParams.colorPalette]};
+
+            // Update UI elements
+            for (const id of ['filaments', 'ringDensity', 'knotCount', 'knotStrength', 'turbulence', 'inkDensity', 'lightGlow']) {
+                document.getElementById(id).value = params[id];
+                document.getElementById(id + '-value').textContent = params[id];
+            }
+
+            // Reset colors
+            ['color1', 'color2', 'color3'].forEach((id, i) => {
+                document.getElementById(id).value = params.colorPalette[i];
+                document.getElementById(id + '-value').textContent = params.colorPalette[i];
+            });
+
+            updateSeedDisplay();
+            initializeSystem();
+        }
+
+        // Initialize UI on load
+        window.addEventListener('load', function() {
+            updateSeedDisplay();
+        });
+    </script>
+</body>
+</html>
