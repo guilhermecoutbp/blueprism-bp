@@ -30,8 +30,11 @@
     <div data-hf-id="hf-hhyo" id="textos-f2" class="frase clip" data-start="7.8" data-duration="5.3" data-layout-allow-caption-zone>
       <span data-hf-id="hf-qtpy">Cada</span> <span data-hf-id="hf-lqyl">medida,</span> <span data-hf-id="hf-vjcr">pensada</span><br data-hf-id="hf-rsrt" /><span data-hf-id="hf-twjr">para</span> <span data-hf-id="hf-txoq">o</span> <span data-hf-id="hf-f3n8">seu</span> <span data-hf-id="hf-voi2">espaço.</span>
     </div>
-    <div data-hf-id="hf-8ot4" id="textos-f3" class="frase clip" data-start="13.1" data-duration="5.8" data-layout-allow-caption-zone>
+    <div data-hf-id="hf-39mu" id="textos-f3" class="frase clip" data-start="13.6" data-duration="3.3" data-layout-allow-caption-zone>
       <span data-hf-id="hf-6edr">Até</span> <span data-hf-id="hf-rzwu">o</span> <span data-hf-id="hf-evkd">desenho</span> <span data-hf-id="hf-hr0p">se</span> <span data-hf-id="hf-6pgb">tornar</span><br data-hf-id="hf-szow" /><span data-hf-id="hf-se7v">o</span> <span data-hf-id="hf-c66k">seu</span> <span data-hf-id="hf-3ih2">lugar.</span>
+    </div>
+    <div data-hf-id="hf-19cj" id="textos-f4" class="frase clip" data-start="17.6" data-duration="4.6" data-layout-allow-caption-zone>
+      <span data-hf-id="hf-ngiy">Madeira,</span> <span data-hf-id="hf-sbys">luz</span> <span data-hf-id="hf-xwr0">e</span> <span data-hf-id="hf-3r8u">latão.</span><br data-hf-id="hf-sldv" /><span data-hf-id="hf-u3ej">Sob</span> <span data-hf-id="hf-xy35">medida,</span> <span data-hf-id="hf-gbeb">em</span> <span data-hf-id="hf-s7iu">cada</span> <span data-hf-id="hf-wwpi">detalhe.</span>
     </div>
   </div>
   <script>
@@ -40,9 +43,10 @@
       // cada palavra entra quando é dita: a fala é dividida pelo número de letras
       // [frase, trechos de fala [início, fim, nº de palavras], saída]
       const FRASES = [
-        ["#textos-f1", [[0.5, 2.35, 6]], 5.9],
-        ["#textos-f2", [[8.5, 9.32, 2], [9.43, 11.1, 5]], 12.4],
-        ["#textos-f3", [[13.5, 15.54, 8]], 18.2],
+        ["#textos-f1", [[0.43, 2.51, 6]], 5.9],
+        ["#textos-f2", [[8.43, 9.36, 2], [9.45, 10.92, 5]], 12.4],
+        ["#textos-f3", [[13.93, 16.12, 8]], 16.55],
+        ["#textos-f4", [[17.93, 18.51, 1], [18.62, 19.02, 2], [19.1, 19.77, 1], [19.91, 21.77, 5]], 21.85],
       ];
       for (const [sel, trechos, saida] of FRASES) {
         const palavras = gsap.utils.toArray(sel + " span");
@@ -61,7 +65,7 @@
         }
         tl.to(palavras, { opacity: 0, filter: "blur(8px)", duration: 0.25, ease: "power3.in" }, saida);
       }
-      tl.set({}, {}, 19);
+      tl.set({}, {}, 23);
       window.__timelines["textos"] = tl;
     })();
   </script>

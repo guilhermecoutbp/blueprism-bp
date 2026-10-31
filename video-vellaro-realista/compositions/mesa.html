@@ -149,7 +149,6 @@
         traçoDe(ripas, { w: 0.9, op: 0.6, camada: "moveis" }),
         led(216, 812, 216, 1048),
         // estar: tapete, sofá voltado para o painel e mesa de centro
-        retangulo(250, 770, 520, 1088, { camada: "moveis", w: 1, op: 0.45 }),
         retangulo(400, 806, 500, 1054, { camada: "moveis" }),
         traçoDe([[476, 806, 476, 1054], [400, 830, 476, 830], [400, 1030, 476, 1030]], { w: 1, op: 0.7, camada: "moveis" }),
         arco(318, 930, 44, -Math.PI / 2, Math.PI * 1.5, { w: 1.4, camada: "moveis" }),
@@ -163,8 +162,7 @@
       const ABRE = 25.4, ABRE_DUR = 0.7;
 
       /* ---------- agenda ---------- */
-      function agendar(lista, inicio, fim, vel) {
-        const viagem = 0.24;
+      function agendar(lista, inicio, fim, vel, viagem = 0.24) {
         const base = lista.map((s) => Math.max(0.16, s.len / vel));
         const soma = base.reduce((a, b) => a + b, 0);
         const k = Math.max(0.35, (fim - inicio - viagem * (lista.length - 1)) / soma);
@@ -173,7 +171,7 @@
       }
       agendar(g1, -0.55, 7.5, 1500);
       agendar(g2, 8.1, 12.2, 1200);
-      agendar(g3, 13.0, 16.2, 900);
+      agendar(g3, 12.9, 16.3, 900, 0.14);
       agendar(g4, 23.0, 24.0, 500);
       const todos = [...g1, ...g2, ...g3, ...g4];
       window.__mesaAgenda = todos.map((s) => ({ ini: s.ini, dur: s.dur, len: s.len, regua: s.regua }));
@@ -259,8 +257,8 @@
         { t: 0.6, s: 1.1, fx: 540, fy: 815, inc: 17, az: 0, ty: 0 },
         { t: 7.2, s: 0.94, fx: 560, fy: 745, inc: 13, az: 0, ty: 0 },
         { t: 16.3, s: 0.94, fx: 560, fy: 745, inc: 13, az: 0, ty: 0 },
-        { t: 18.0, s: 0.9, fx: 545, fy: 640, inc: 47, az: -16, ty: 60 },
-        { t: 21.5, s: 0.9, fx: 545, fy: 640, inc: 50, az: 16, ty: 60 },
+        { t: 18.0, s: 0.9, fx: 545, fy: 700, inc: 47, az: -16, ty: 60 },
+        { t: 21.5, s: 0.9, fx: 545, fy: 700, inc: 50, az: 16, ty: 60 },
         { t: 23.7, s: 1, fx: 540, fy: YL - 60, inc: 3, az: 0, ty: 0 },
         { t: 99, s: 1, fx: 540, fy: YL - 60, inc: 3, az: 0, ty: 0 },
       ];
@@ -777,7 +775,7 @@
 
         // a maquete sobe do papel e depois volta para ele
         for (const p of pecas) {
-          const sobe = out3(clamp01((t - p.ini) / 0.75));
+          const sobe = out3(clamp01((t - p.ini - 0.3) / 0.75)); // começa logo que o lápis sai
           const desce = 1 - inOut(clamp01((t - 21.35 - p.atraso) / 0.85));
           const k = sobe * desce;
           p.m.visible = k > 0.003;
