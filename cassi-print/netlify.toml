@@ -1,0 +1,9 @@
+# Site da Cassi Print (sem etapa de build).
+# No Netlify, defina Base directory = cassi-print.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
