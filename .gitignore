@@ -1,0 +1,6 @@
+# Arquivos intermediários do vídeo (quadros, áudio bruto, provas)
+brag-output/work/frames/
+brag-output/work/stills/
+brag-output/work/audio/*.wav
+brag-output/work/*.png
+brag-output/work/audio/*.png
