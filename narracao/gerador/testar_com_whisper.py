@@ -23,7 +23,7 @@ def wer(r, h):
     return d[len(h)] / max(1, len(r))
 for voice in sys.argv[1:]:
     errs = []
-    for f in sorted(glob.glob(f"out/{voice}/*.mp3")):
+    for f in sorted(glob.glob(f"{voice}/*.mp3")):
         if "01-entrada" in f: continue
         name = f.split("/")[-1][:-4]
         pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", f, "-ac", "1", "-ar", "16000", "-f", "f32le", "-"], capture_output=True).stdout

@@ -2,12 +2,12 @@
 import sys, glob, subprocess, os, numpy as np, soundfile as sf, sherpa_onnx
 
 FALAS = {
-    "principal-01-entrada": (0.80, [["Vellaro Design."]]),
-    "principal-02-papel": (0.86, [["Tudo começa no papel."], ["Antes da madeira, vem o traço.", "Cada móvel é desenhado para o seu espaço, linha por linha."]]),
-    "principal-03-medida": (0.86, [["Cada medida importa."], ["Medimos o ambiente com precisão, para que o móvel encaixe, ao milímetro."]]),
-    "principal-04-volume": (0.86, [["O desenho ganha volume."], ["Profundidade, nichos, portas e encaixes, são definidos antes do primeiro corte."]]),
-    "principal-05-acabamento": (0.86, [["Madeira, pedra, metal, e luz."], ["Ripado de madeira, mármore, detalhes em latão, e iluminação embutida.", "Acabamento de alto padrão, em cada peça."]]),
-    "principal-06-final": (0.86, [["Seu espaço.", "Seu estilo."], ["A Vellaro Design cria móveis sob medida com identidade:", "cozinhas, clósets, salas, banheiros, e ambientes completos,", "do projeto à montagem."]]),
+    "principal-01-entrada": (0.95, [["Vellaro Design."]]),
+    "principal-02-papel": (1.0, [["Tudo começa no papel. Antes da madeira, vem o traço. Cada móvel é desenhado para o seu espaço, linha por linha."]]),
+    "principal-03-medida": (1.0, [["Cada medida importa. Medimos o ambiente com precisão, para que o móvel encaixe ao milímetro."]]),
+    "principal-04-volume": (1.0, [["O desenho ganha volume. Profundidade, nichos, portas e encaixes são definidos antes do primeiro corte."]]),
+    "principal-05-acabamento": (1.0, [["Madeira, pedra, metal e luz. Ripado de madeira, mármore, detalhes em latão e iluminação embutida. Acabamento de alto padrão em cada peça."]]),
+    "principal-06-final": (1.0, [["Seu espaço. Seu estilo. A Vellaro Design cria móveis sob medida com identidade: cozinhas, clósets, salas, banheiros e ambientes completos, do projeto à montagem."]]),
 }
 SHORT, LONG = 0.32, 0.75  # pausa entre frases e pausa longa (//)
 
@@ -57,12 +57,10 @@ for name in only:
     chain = ",".join([
         "aresample=44100:resampler=soxr",
         "highpass=f=70",
-        "equalizer=f=170:t=q:w=0.9:g=2.2",
-        "equalizer=f=3300:t=q:w=1.2:g=-2.5",
-        "equalizer=f=9500:t=q:w=0.8:g=1.2",
-        "deesser=i=0.35",
-        "acompressor=threshold=-21dB:ratio=2.4:attack=12:release=140:makeup=2",
-        "aecho=0.85:0.75:22|41:0.11|0.07",
+        "equalizer=f=180:t=q:w=0.9:g=1.5",
+        "equalizer=f=3300:t=q:w=1.2:g=-1.5",
+        "deesser=i=0.25",
+        "acompressor=threshold=-22dB:ratio=2:attack=15:release=160:makeup=1.5",
         "loudnorm=I=-18:TP=-1.5:LRA=7",
         "afade=t=in:d=0.04",
         f"areverse,afade=t=in:d=0.3,areverse",
