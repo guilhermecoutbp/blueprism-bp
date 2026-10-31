@@ -9,6 +9,7 @@ import { LineSegments2 } from "./vendor/three/LineSegments2.js";
 import { LineSegmentsGeometry } from "./vendor/three/LineSegmentsGeometry.js";
 import { LineMaterial } from "./vendor/three/LineMaterial.js";
 import Lenis from "./vendor/lenis/lenis.mjs";
+import { createNarrator } from "./narracao.js";
 
 const root = document.documentElement;
 const canvas = document.querySelector(".stage");
@@ -805,12 +806,40 @@ function measure() {
 const span = (s, a, b) => smooth(clamp01((s - a) / (b - a)));
 const at = (i, f) => lerp(keys[i], keys[i + 1], f);
 
-// Um texto por vez: entra, fica, sai por completo e só então o próximo entra
+/* ---------- narração ---------- */
+
+const soundButton = document.querySelector(".sound");
+const listenButton = document.querySelector(".listen");
+
+const narrator = createNarrator({
+  files: ["01-entrada", "02-espaco", "03-desenho", "04-pecas", "05-montagem", "06-dia-a-dia", "07-ambiente", "08-seu-jeito"],
+  onChange({ enabled, speaking }) {
+    soundButton?.setAttribute("aria-pressed", String(enabled));
+    soundButton?.setAttribute("aria-label", enabled ? "Desativar narração" : "Ativar narração");
+    soundButton?.classList.toggle("is-speaking", enabled && speaking);
+  },
+});
+
+soundButton?.addEventListener("click", () => {
+  listenButton?.classList.add("is-used");
+  narrator.toggle();
+});
+listenButton?.addEventListener("click", () => {
+  listenButton.classList.add("is-used");
+  narrator.enable();
+});
+
+// Um texto por vez: entra, fica, sai por completo e só então o próximo entra.
+// A narração acompanha o texto que está visível.
 function updateUI(s) {
-  root.style.setProperty("--intro", (1 - span(s, 0, vh * 0.55)).toFixed(4));
+  const intro = 1 - span(s, 0, vh * 0.55);
+  root.style.setProperty("--intro", intro.toFixed(4));
   root.style.setProperty("--bar", span(s, vh * 0.4, vh * 0.85).toFixed(4));
+  if (listenButton) listenButton.style.visibility = intro < 0.05 ? "hidden" : "";
   const hold = vh * 0.16;
   const edge = vh * 0.46;
+  let speaking = s < vh * 0.3 ? 0 : -1;
+  let strongest = 0.55;
   texts.forEach((t, i) => {
     const d = s - keys[i + 1];
     const lastText = i === texts.length - 1;
@@ -826,7 +855,12 @@ function updateUI(s) {
     t.style.setProperty("--o", o.toFixed(4));
     t.style.setProperty("--y", `${y.toFixed(2)}px`);
     t.style.visibility = o < 0.005 ? "hidden" : "visible";
+    if (o > strongest) {
+      strongest = o;
+      speaking = i + 1;
+    }
   });
+  narrator.update(speaking);
 }
 
 /* ---------- configurador (interface) ---------- */

@@ -497,3 +497,136 @@ main {
     animation: none;
   }
 }
+
+/* Narração */
+
+.bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.sound {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--silver);
+  cursor: pointer;
+  transition: border-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+
+.sound:hover {
+  color: var(--ink);
+  border-color: rgba(243, 201, 139, 0.5);
+}
+
+.sound svg,
+.listen svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.sound__bars {
+  display: none;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.sound__bars i {
+  width: 2px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--led);
+  transition: height 0.3s var(--ease);
+}
+
+.sound[aria-pressed="true"] {
+  border-color: rgba(243, 201, 139, 0.55);
+}
+
+.sound[aria-pressed="true"] svg {
+  display: none;
+}
+
+.sound[aria-pressed="true"] .sound__bars {
+  display: flex;
+}
+
+.sound.is-speaking .sound__bars i {
+  animation: voice 0.9s ease-in-out infinite;
+}
+
+.sound.is-speaking .sound__bars i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.sound.is-speaking .sound__bars i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes voice {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 14px;
+  }
+}
+
+/* Convite para ouvir, logo abaixo da marca na entrada */
+.listen {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(112px, 18vh, 170px);
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(14, 13, 12, 0.35);
+  color: var(--silver);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: translateX(-50%);
+  opacity: 0;
+  filter: opacity(var(--intro, 1));
+  animation: fade-in 1.6s ease 3.9s forwards;
+  transition: border-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+
+.listen:hover {
+  color: var(--ink);
+  border-color: rgba(243, 201, 139, 0.55);
+}
+
+.listen.is-used {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listen {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+
+  .sound.is-speaking .sound__bars i {
+    animation: none;
+    height: 10px;
+  }
+}
