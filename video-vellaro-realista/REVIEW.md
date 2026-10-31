@@ -10,7 +10,7 @@ Render: `renders/vellaro-o-traco-realista.mp4`, 1080 x 1920, 30 fps, 31,0 s (930
 | 8,43 s | "Cada medida, pensada para o seu espaço." | as cotas contam |
 | 13,93 s | "Até o desenho se tornar o seu lugar." | a marcenaria é desenhada; a maquete sobe logo depois |
 | 17,93 s | "Madeira, luz e latão. Sob medida, em cada detalhe." | maquete em 3D, LEDs acendem, câmera gira |
-| 26,78 s | "Vellaro Design." (a transcrição escreve "Vela do design") | o logo se forma e DESIGN surge |
+| 26,78 s | "Vellaro Design." (a mesma gravação aprovada nos vídeos anteriores; a transcrição automática não conhece o nome) | o logo se forma e DESIGN surge |
 
 ## Quadros revistos
 
