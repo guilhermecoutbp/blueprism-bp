@@ -31,3 +31,16 @@ O tratamento (equalização, compressão, sala e volume em -18 LUFS) fica na var
 
 `testar_com_whisper.py` transcreve as falas com o Whisper e mede o erro em relação ao roteiro.
 Precisa do modelo `sherpa-onnx-whisper-small` (release `asr-models` do sherpa-onnx).
+
+## Chatterbox Multilingual (mais expressivo)
+
+```bash
+python3 -m venv cb
+./cb/bin/pip install chatterbox-tts "sherpa-onnx==1.12.40"
+# referência de voz: um WAV curto em português (aqui usamos uma fala do Kokoro)
+./cb/bin/python gerar_chatterbox.py saida/chatterbox-dora ref-dora.wav 0.45 0.4 0.65
+```
+
+Argumentos: pasta de saída, áudio de referência (ou `-` para a voz padrão), `exaggeration`, `cfg_weight` e `temperature`.
+Cada frase é gerada separadamente e conferida pelo Whisper; se sair errada ou longa demais, é gerada de novo (até 5 vezes).
+Precisa de acesso ao Hugging Face para baixar o modelo na primeira vez.
