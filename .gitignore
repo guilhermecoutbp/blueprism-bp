@@ -4,3 +4,5 @@ brag-output/work/stills/
 brag-output/work/audio/*.wav
 brag-output/work/*.png
 brag-output/work/audio/*.png
+brag-output/work/seq/
+brag-output/work/check*
