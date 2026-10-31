@@ -6,3 +6,8 @@ brag-output/work/*.png
 brag-output/work/audio/*.png
 brag-output/work/seq/
 brag-output/work/check*
+
+# Vídeo Vellaro: provas e cache do HyperFrames
+video-vellaro/.hyperframes/
+video-vellaro/.media/
+video-vellaro/node_modules/

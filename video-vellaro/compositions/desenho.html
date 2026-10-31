@@ -1,0 +1,484 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #desenho-mundo {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      transform-origin: 0 0;
+    }
+    #desenho-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: visible;
+    }
+    .grafite {
+      fill: none;
+      stroke: var(--grafite);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .latao {
+      fill: none;
+      stroke: var(--latao);
+      stroke-linecap: round;
+    }
+    .cota-num {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: 0.02em;
+      fill: var(--grafite);
+    }
+  </style>
+  <div id="root" data-composition-id="desenho" data-width="1080" data-height="1920">
+    <div id="desenho-mundo" data-layout-allow-overflow data-layout-ignore>
+      <svg id="desenho-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="desenho-hachura" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#cfcbc4" stroke-width="1" />
+          </pattern>
+          <linearGradient id="desenho-aco" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d9dadd" />
+            <stop offset="0.18" stop-color="#b9bbbf" />
+            <stop offset="0.55" stop-color="#9c9ea3" />
+            <stop offset="1" stop-color="#7f8186" />
+          </linearGradient>
+          <linearGradient id="desenho-corpo" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#18181a" />
+            <stop offset="0.35" stop-color="#3b3b3f" />
+            <stop offset="0.5" stop-color="#5a5a5f" />
+            <stop offset="0.7" stop-color="#2a2a2d" />
+            <stop offset="1" stop-color="#131315" />
+          </linearGradient>
+          <linearGradient id="desenho-ouro" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7d6136" />
+            <stop offset="0.45" stop-color="#e2c38f" />
+            <stop offset="0.6" stop-color="#c9a36a" />
+            <stop offset="1" stop-color="#6e5530" />
+          </linearGradient>
+          <filter id="desenho-sombra-blur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="9" />
+          </filter>
+          <filter id="desenho-halo" x="-20%" y="-200%" width="140%" height="500%">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+        </defs>
+        <!-- a grade técnica do papel: anda com a câmera -->
+        <pattern id="desenho-grade" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M24 0 L0 0 L0 24" fill="none" stroke="#cfcbc4" stroke-width="1" />
+        </pattern>
+        <rect x="-700" y="-700" width="2500" height="3400" fill="url(#desenho-grade)" opacity="0.035" />
+        <!-- a planta: paredes, aberturas, hachuras, cotas e marcenaria (preenchidos pelo script) -->
+        <g id="desenho-planta">
+          <g id="desenho-hachuras"></g>
+          <g id="desenho-tracos"></g>
+          <g id="desenho-cotas"></g>
+          <g id="desenho-moveis"></g>
+        </g>
+        <!-- a última linha, em latão: vira a base do logo na cena seguinte -->
+        <g id="desenho-final"></g>
+        <!-- a régua de aço -->
+        <g id="desenho-regua-sombra" opacity="0.45" filter="url(#desenho-sombra-blur)">
+          <rect x="-40" y="0" width="940" height="60" rx="2" fill="#000" />
+        </g>
+        <g id="desenho-regua">
+          <rect x="-40" y="0" width="940" height="60" rx="2" fill="url(#desenho-aco)" />
+          <rect x="-40" y="0" width="940" height="1.5" fill="#f2f2f3" opacity="0.9" />
+          <g id="desenho-regua-marcas"></g>
+        </g>
+        <!-- a lapiseira: a ponta fica em (0,0), o corpo sobe à direita -->
+        <g id="desenho-lapis-sombra" opacity="0.45" filter="url(#desenho-sombra-blur)">
+          <g transform="rotate(32)">
+            <path d="M0 0 L-13 -40 L-13 -500 L13 -500 L13 -40 Z" fill="#000" />
+          </g>
+        </g>
+        <g id="desenho-lapis">
+          <g transform="rotate(32)">
+            <rect x="-13" y="-150" width="26" height="330" fill="url(#desenho-corpo)" transform="translate(0,-320)" />
+            <rect x="-13" y="-152" width="26" height="114" fill="url(#desenho-corpo)" />
+            <g id="desenho-serrilha" opacity="0.55"></g>
+            <rect x="-13" y="-160" width="26" height="9" fill="url(#desenho-ouro)" />
+            <rect x="-11" y="-486" width="22" height="16" rx="3" fill="url(#desenho-ouro)" />
+            <rect x="-9" y="-500" width="18" height="16" rx="7" fill="#1d1d20" />
+            <path d="M-13 -38 L-3 -6 L3 -6 L13 -38 Z" fill="url(#desenho-ouro)" />
+            <path d="M-3 -6 L0 0 L3 -6 Z" fill="#9a9893" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.getElementById("desenho-svg");
+      const mundo = document.getElementById("desenho-mundo");
+      const gTracos = document.getElementById("desenho-tracos");
+      const gHach = document.getElementById("desenho-hachuras");
+      const gCotas = document.getElementById("desenho-cotas");
+      const gMoveis = document.getElementById("desenho-moveis");
+      const gPlanta = document.getElementById("desenho-planta");
+      const gFinal = document.getElementById("desenho-final");
+      const regua = document.getElementById("desenho-regua");
+      const reguaSombra = document.getElementById("desenho-regua-sombra");
+      const lapis = document.getElementById("desenho-lapis");
+      const lapisSombra = document.getElementById("desenho-lapis-sombra");
+
+      const DUR = 28;
+      const clamp01 = (v) => Math.min(1, Math.max(0, v));
+      const lerp = (a, b, k) => a + (b - a) * k;
+      const inOut = (k) => (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+      const out3 = (k) => 1 - Math.pow(1 - k, 3);
+      // traço a velocidade constante, com aceleração curta nas pontas
+      const traco = (k) => {
+        const a = 0.12;
+        if (k <= 0) return 0;
+        if (k >= 1) return 1;
+        if (k < a) return (k * k) / (2 * a * (1 - a));
+        if (k > 1 - a) return 1 - Math.pow(1 - k, 2) / (2 * a * (1 - a));
+        return (k - a / 2) / (1 - a);
+      };
+
+      function el(tag, attrs, parent) {
+        const e = document.createElementNS(NS, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        parent.appendChild(e);
+        return e;
+      }
+
+      // marcas da régua (mm, meio cm, cm) e números
+      const marcas = document.getElementById("desenho-regua-marcas");
+      for (let i = 0; i <= 300; i++) {
+        const x = i * 2.8;
+        const h = i % 10 === 0 ? 18 : i % 5 === 0 ? 12 : 7;
+        el("line", { x1: x, y1: 2, x2: x, y2: 2 + h, stroke: "#2b2b2b", "stroke-width": i % 10 === 0 ? 1.3 : 0.8 }, marcas);
+        if (i % 10 === 0 && i > 0) {
+          const t = el("text", { x: x, y: 38, "text-anchor": "middle", "font-family": "Montserrat, sans-serif", "font-size": 13, fill: "#2b2b2b" }, marcas);
+          t.textContent = String(i / 10);
+        }
+      }
+      // serrilha da empunhadura da lapiseira
+      const serr = document.getElementById("desenho-serrilha");
+      for (let y = -148; y < -42; y += 4) el("line", { x1: -13, y1: y, x2: 13, y2: y, stroke: "#000", "stroke-width": 1 }, serr);
+
+      /* ---------- a planta (coordenadas em px; 122 px = 1 m) ---------- */
+      const traços = [];
+      function linha(x1, y1, x2, y2, opts = {}) {
+        const sobra = opts.sobra ?? 10; // o traço passa um pouco da ponta, como à mão
+        const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy);
+        const ux = dx / len, uy = dy / len;
+        const a = [x1 - ux * sobra, y1 - uy * sobra];
+        const b = [x2 + ux * sobra, y2 + uy * sobra];
+        const p = el("path", { d: `M${a[0]} ${a[1]} L${b[0]} ${b[1]}`, class: opts.classe || "grafite", "stroke-width": opts.w ?? 2.2, opacity: opts.op ?? 1 }, opts.pai || gTracos);
+        return { el: p, pts: [a, b], regua: !!opts.regua, len: len + 2 * sobra, grupo: opts.grupo, depois: opts.depois };
+      }
+      function caminho(d, pts, opts = {}) {
+        const p = el("path", { d, class: opts.classe || "grafite", "stroke-width": opts.w ?? 1.4, opacity: opts.op ?? 1 }, opts.pai || gTracos);
+        let len = 0;
+        for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+        return { el: p, pts, regua: false, len, grupo: opts.grupo, depois: opts.depois };
+      }
+      function arco(cx, cy, r, a0, a1, opts = {}) {
+        const pts = [];
+        for (let i = 0; i <= 24; i++) {
+          const a = a0 + ((a1 - a0) * i) / 24;
+          pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+        }
+        const d = "M" + pts.map((p) => p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" L");
+        return caminho(d, pts, opts);
+      }
+      function hachura(x, y, w, h) {
+        return el("rect", { x, y, width: w, height: h, fill: "url(#desenho-hachura)", opacity: 0 }, gHach);
+      }
+      function retangulo(x1, y1, x2, y2, opts = {}) {
+        const pts = [[x1, y1], [x2, y1], [x2, y2], [x1, y2], [x1, y1]];
+        return caminho(`M${x1} ${y1} L${x2} ${y1} L${x2} ${y2} L${x1} ${y2} Z`, pts, { w: 1.8, ...opts });
+      }
+
+      const L = 150, R = 930, T = 300, B = 1120, E = 18;
+      const H = {
+        topo: hachura(L, T, R - L, E),
+        direita: hachura(R - E, T, E, B - T),
+        baixoEsq: hachura(L, B - E, 640 - L, E),
+        baixoDir: hachura(740, B - E, R - 740, E),
+        esqBaixo: hachura(L, 764, E, B - 764),
+        esqCima: hachura(L, T, E, 520 - T),
+        divisoria: hachura(560, T + E, E, 560 - T - E),
+      };
+
+      // grupo 1: paredes (com régua) e aberturas (à mão)
+      const g1 = [
+        linha(L, T, R, T, { regua: true }),
+        linha(L + E, T + E, R - E, T + E, { regua: true, depois: [H.topo] }),
+        linha(R, T, R, B, { regua: true }),
+        linha(R - E, T + E, R - E, B - E, { regua: true, depois: [H.direita] }),
+        linha(R, B, 740, B, { regua: true }),
+        linha(640, B, L, B, { regua: true }),
+        linha(R - E, B - E, 740, B - E, { regua: true, depois: [H.baixoDir] }),
+        linha(640, B - E, L + E, B - E, { regua: true, depois: [H.baixoEsq] }),
+        linha(L, B, L, 764, { regua: true }),
+        linha(L, 520, L, T, { regua: true }),
+        linha(L + E, B - E, L + E, 764, { regua: true, depois: [H.esqBaixo] }),
+        linha(L + E, 520, L + E, T + E, { regua: true, depois: [H.esqCima] }),
+        linha(560, T + E, 560, 560, { regua: true }),
+        linha(578, T + E, 578, 560, { regua: true, depois: [H.divisoria] }),
+        linha(560, 560, 578, 560, { sobra: 3, w: 2 }),
+        linha(640, B - E, 640, B, { sobra: 3, w: 2 }),
+        linha(740, B - E, 740, B, { sobra: 3, w: 2 }),
+        linha(L, 520, L + E, 520, { sobra: 3, w: 2 }),
+        linha(L, 764, L + E, 764, { sobra: 3, w: 2 }),
+        linha(L + 6, 520, L + 6, 764, { sobra: 0, w: 1, op: 0.75 }),
+        linha(L + 12, 520, L + 12, 764, { sobra: 0, w: 1, op: 0.75 }),
+        linha(740, B - E, 740, B - E - 100, { sobra: 0, w: 1.6 }),
+        arco(740, B - E, 100, -Math.PI / 2, -Math.PI, { w: 1.1, op: 0.7 }),
+      ];
+
+      // grupo 2: cotas (com régua), números contando
+      const cotas = [];
+      function cota(x1, y1, x2, y2, valor, tx, ty, rot, ext) {
+        const linhas = [];
+        const traco1 = linha(x1, y1, x2, y2, { regua: true, sobra: 0, w: 1.2, op: 0.75, pai: gCotas });
+        linhas.push(traco1);
+        const extras = [];
+        for (const [ax, ay, bx, by] of ext) extras.push(el("path", { d: `M${ax} ${ay} L${bx} ${by}`, class: "grafite", "stroke-width": 1, opacity: 0 }, gCotas));
+        // marcas a 45° nas pontas
+        for (const [px, py] of [[x1, y1], [x2, y2]]) extras.push(el("path", { d: `M${px - 9} ${py + 9} L${px + 9} ${py - 9}`, class: "grafite", "stroke-width": 1.6, opacity: 0 }, gCotas));
+        const t = el("text", { x: tx, y: ty, "text-anchor": "middle", class: "cota-num", opacity: 0, transform: rot ? `rotate(${rot} ${tx} ${ty})` : "" }, gCotas);
+        t.textContent = "0,00";
+        traco1.cota = { extras, texto: t, valor };
+        cotas.push(traco1);
+        return traco1;
+      }
+      const g2 = [
+        cota(L, 250, R, 250, 6.4, 540, 232, 0, [[L, 286, L, 236], [R, 286, R, 236]]),
+        cota(980, T, 980, B, 6.7, 1006, 710, -90, [[944, T, 994, T], [944, B, 994, B]]),
+        cota(104, 520, 104, 764, 2.0, 86, 642, -90, [[140, 520, 92, 520], [140, 764, 92, 764]]),
+        cota(640, 1066, 740, 1066, 0.82, 690, 1052, 0, [[640, 1096, 640, 1056], [740, 1096, 740, 1056]]),
+      ];
+
+      // grupo 3: a marcenaria (à mão) e suas fitas de luz
+      const moveisFill = [];
+      function fundoMovel(x, y, w, h) {
+        moveisFill.push(el("rect", { x, y, width: w, height: h, fill: "#cfcbc4", opacity: 0 }, gMoveis));
+      }
+      fundoMovel(578, 318, 334, 60);
+      fundoMovel(628, 470, 244, 90);
+      fundoMovel(168, 800, 38, 260);
+      function led(x1, y1, x2, y2) {
+        el("path", { d: `M${x1} ${y1} L${x2} ${y2}`, class: "latao", "stroke-width": 9, opacity: 0, filter: "url(#desenho-halo)" }, gMoveis).dataset.halo = "1";
+        return linha(x1, y1, x2, y2, { sobra: 0, classe: "latao", w: 3, pai: gMoveis });
+      }
+      const ripas = [];
+      for (let y = 812; y < 1052; y += 16) ripas.push([168, y, 206, y]);
+      const g3 = [
+        linha(578, 378, 912, 378, { sobra: 6, w: 1.8, pai: gMoveis }),
+        linha(578, 371, 912, 371, { sobra: 0, w: 1, op: 0.6, pai: gMoveis }),
+        caminho("M634 318 L634 378 M690 318 L690 378 M746 318 L746 378 M802 318 L802 378 M858 318 L858 378", [[634, 318], [634, 378], [690, 318], [690, 378], [746, 318], [746, 378], [802, 318], [802, 378], [858, 318], [858, 378]], { w: 1, op: 0.7, pai: gMoveis }),
+        led(592, 388, 898, 388),
+        retangulo(628, 470, 872, 560, { pai: gMoveis }),
+        linha(640, 482, 860, 482, { sobra: 0, w: 1, op: 0.55, pai: gMoveis }),
+        led(642, 570, 858, 570),
+        retangulo(168, 800, 206, 1060, { pai: gMoveis }),
+        caminho(ripas.map((r) => `M${r[0]} ${r[1]} L${r[2]} ${r[3]}`).join(" "), ripas.flatMap((r) => [[r[0], r[1]], [r[2], r[3]]]), { w: 0.9, op: 0.6, pai: gMoveis }),
+        led(216, 812, 216, 1048),
+      ];
+
+      // grupo 4: a última linha, em latão, onde o logo vai nascer (y = 960 no papel)
+      const finalHalo = el("path", { d: "M300 960 L780 960", class: "latao", "stroke-width": 9, opacity: 0, filter: "url(#desenho-halo)" }, gFinal);
+      const g4 = [linha(300, 960, 780, 960, { sobra: 0, classe: "latao", w: 3, pai: gFinal })];
+      // e então a linha se abre até a largura do logo (200 a 880)
+      const ABRE = 23.0, ABRE_DUR = 0.7;
+      const extensoes = [[300, 200], [780, 880]].map(([a, b]) => {
+        const halo = el("path", { d: `M${a} 960 L${b} 960`, class: "latao", "stroke-width": 9, opacity: 0, filter: "url(#desenho-halo)" }, gFinal);
+        const p = el("path", { d: `M${a} 960 L${b} 960`, class: "latao", "stroke-width": 3, opacity: 0 }, gFinal);
+        p.style.strokeDasharray = "102 102";
+        return { p, halo };
+      });
+
+      /* ---------- agenda: cada grupo cabe na sua janela de tempo ---------- */
+      function agendar(lista, inicio, fim, vel) {
+        const viagem = 0.24;
+        const base = lista.map((s) => Math.max(0.16, s.len / vel));
+        const soma = base.reduce((a, b) => a + b, 0);
+        const k = Math.max(0.35, (fim - inicio - viagem * (lista.length - 1)) / soma);
+        let t = inicio;
+        lista.forEach((s, i) => {
+          s.ini = t;
+          s.dur = base[i] * k;
+          t += s.dur + viagem;
+        });
+      }
+      agendar(g1, -0.55, 7.5, 1500);
+      agendar(g2, 8.1, 12.2, 1200);
+      agendar(g3, 13.2, 18.4, 900);
+      agendar(g4, 19.3, 20.5, 500);
+      const todos = [...g1, ...g2, ...g3, ...g4];
+      todos.forEach((s) => {
+        s.el.style.strokeDasharray = `${s.len + 2} ${s.len + 2}`;
+        s.el.dataset.op = s.el.getAttribute("opacity") || "1";
+      });
+
+      // posições da régua: encosta na linha, com o corpo para o lado de dentro do traço
+      function poseRegua(s) {
+        const [a, b] = s.pts;
+        const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+        // o meio da régua (430 px do zero) fica no meio do traço
+        const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+        return { x: mx - Math.cos(ang) * 430, y: my - Math.sin(ang) * 430, ang };
+      }
+      const REGUA_FORA = { x: 1500, y: 1500, ang: Math.PI / 2 };
+
+      function pontoNo(s, k) {
+        const pts = s.pts;
+        if (pts.length === 2) return [lerp(pts[0][0], pts[1][0], k), lerp(pts[0][1], pts[1][1], k)];
+        let alvo = s.len * k;
+        for (let i = 1; i < pts.length; i++) {
+          const seg = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+          if (alvo <= seg || i === pts.length - 1) {
+            const q = seg ? Math.min(1, alvo / seg) : 1;
+            return [lerp(pts[i - 1][0], pts[i][0], q), lerp(pts[i - 1][1], pts[i][1], q)];
+          }
+          alvo -= seg;
+        }
+        return pts[pts.length - 1];
+      }
+
+      // câmera: papel → tela. foco (fx, fy) vai para (540, 760).
+      // enquadrada para que nada da planta, nem a régua, desça abaixo de y = 1180 (as frases ficam embaixo)
+      const CAM = [
+        { t: -1, s: 1.1, fx: 540, fy: 815 },
+        { t: 0.6, s: 1.1, fx: 540, fy: 815 },
+        { t: 7.2, s: 0.94, fx: 560, fy: 745 },
+        { t: 18.9, s: 0.94, fx: 560, fy: 745 },
+        { t: 20.6, s: 1, fx: 540, fy: 900 },
+        { t: 99, s: 1, fx: 540, fy: 900 },
+      ];
+      function camera(t) {
+        for (let i = 0; i < CAM.length - 1; i++) {
+          const a = CAM[i], b = CAM[i + 1];
+          if (t <= b.t) {
+            const k = inOut(clamp01((t - a.t) / (b.t - a.t)));
+            return { s: lerp(a.s, b.s, k), fx: lerp(a.fx, b.fx, k), fy: lerp(a.fy, b.fy, k) };
+          }
+        }
+        return CAM[CAM.length - 1];
+      }
+
+      // onde está a ponta do lápis no instante t (função pura: a câmera também a usa)
+      function pontaEm(t) {
+        let tip = todos[0].pts[0], lift = 0, ativo = null, prox = todos[0], ant = null;
+        for (let i = 0; i < todos.length; i++) {
+          const s = todos[i];
+          if (t >= s.ini && t <= s.ini + s.dur) { ativo = s; break; }
+          if (t < s.ini) { prox = s; ant = todos[i - 1] || null; break; }
+          ant = s; prox = null;
+        }
+        if (ativo) {
+          tip = pontoNo(ativo, traco(clamp01((t - ativo.ini) / ativo.dur)));
+        } else if (ant && prox) {
+          const a = ant.pts[ant.pts.length - 1], b = prox.pts[0];
+          const janela = prox.ini - (ant.ini + ant.dur);
+          const u = clamp01((t - (ant.ini + ant.dur)) / janela);
+          const k = inOut(u);
+          tip = [lerp(a[0], b[0], k), lerp(a[1], b[1], k)];
+          const longe = Math.hypot(b[0] - a[0], b[1] - a[1]) > 30 || janela > 0.4;
+          lift = longe ? Math.sin(Math.PI * u) : 0;
+        } else if (ant && !prox) {
+          // depois da última linha: o lápis sai pela direita
+          const a = ant.pts[ant.pts.length - 1];
+          const u = inOut(clamp01((t - (ant.ini + ant.dur) - 0.2) / 0.9));
+          tip = [lerp(a[0], 1500, u), lerp(a[1], 1250, u)];
+          lift = clamp01(u * 3);
+        }
+        return { tip, lift };
+      }
+
+      function render(t) {
+        // traços
+        for (const s of todos) {
+          const k = traco(clamp01((t - s.ini) / s.dur));
+          s.k = k;
+          s.el.style.strokeDashoffset = String((s.len + 2) * (1 - k));
+          s.el.setAttribute("opacity", k > 0 ? s.el.dataset.op : 0);
+          if (s.depois) for (const h of s.depois) h.setAttribute("opacity", 0.35 * clamp01((t - s.ini - s.dur) / 0.4));
+          if (s.cota) {
+            const c = clamp01((t - s.ini) / (s.dur + 0.35));
+            for (const e of s.cota.extras) e.setAttribute("opacity", 0.75 * clamp01((t - s.ini + 0.1) / 0.2));
+            s.cota.texto.setAttribute("opacity", clamp01((t - s.ini) / 0.15));
+            s.cota.texto.textContent = (s.cota.valor * out3(c)).toFixed(2).replace(".", ",");
+          }
+        }
+        // halos das fitas de luz acompanham o traço de latão
+        gMoveis.querySelectorAll("[data-halo]").forEach((h, i) => {
+          const fita = g3.filter((s) => s.el.getAttribute("class") === "latao")[i];
+          h.setAttribute("opacity", fita ? 0.35 * clamp01((t - fita.ini - fita.dur) / 0.5) : 0);
+        });
+        moveisFill.forEach((f, i) => {
+          const contorno = [g3[0], g3[4], g3[7]][i];
+          f.setAttribute("opacity", 0.07 * clamp01((t - contorno.ini - contorno.dur) / 0.5));
+        });
+        finalHalo.setAttribute("opacity", 0.35 * clamp01((t - g4[0].ini - g4[0].dur) / 0.5));
+        // a planta recua quando a última linha começa
+        const recuo = 0.84 * inOut(clamp01((t - 18.9) / 1.3)) + 0.16 * inOut(clamp01((t - 20.4) / 1.3));
+        gPlanta.setAttribute("opacity", 1 - recuo);
+        const ab = 1 - Math.pow(1 - clamp01((t - ABRE) / ABRE_DUR), 4);
+        for (const e of extensoes) {
+          e.p.setAttribute("opacity", ab > 0 ? 1 : 0);
+          e.p.style.strokeDashoffset = String(102 * (1 - ab));
+          e.halo.setAttribute("opacity", 0.35 * clamp01((t - ABRE - ABRE_DUR * 0.6) / 0.5));
+        }
+
+        // lápis: em cima do traço ativo, ou viajando (levantado) até o próximo
+        const { tip, lift } = pontaEm(t);
+        const off = lerp(18, 34, lift), offY = lerp(24, 44, lift), sc = 1 + 0.035 * lift;
+        lapis.setAttribute("transform", `translate(${tip[0]} ${tip[1]}) scale(${sc})`);
+        lapisSombra.setAttribute("transform", `translate(${tip[0] + off} ${tip[1] + offY})`);
+        lapisSombra.setAttribute("opacity", lerp(0.45, 0.3, lift));
+
+        // régua: na linha da vez; viaja entre uma e outra; sai depois das cotas
+        const comRegua = todos.filter((s) => s.regua);
+        let pose = poseRegua(comRegua[0]);
+        for (let i = 0; i < comRegua.length; i++) {
+          const s = comRegua[i];
+          const chegada = s.ini - 0.04;
+          const saida = i > 0 ? comRegua[i - 1].ini + comRegua[i - 1].dur : -9;
+          if (t < saida) break;
+          if (t >= chegada) { pose = poseRegua(s); continue; }
+          const a = i > 0 ? poseRegua(comRegua[i - 1]) : poseRegua(s);
+          const b = poseRegua(s);
+          let da = b.ang - a.ang;
+          while (da > Math.PI) da -= 2 * Math.PI;
+          while (da < -Math.PI) da += 2 * Math.PI;
+          const k = inOut(clamp01((t - saida) / Math.max(0.05, chegada - saida)));
+          pose = { x: lerp(a.x, b.x, k), y: lerp(a.y, b.y, k), ang: a.ang + da * k };
+          break;
+        }
+        const ultima = comRegua[comRegua.length - 1];
+        const sai = inOut(clamp01((t - (ultima.ini + ultima.dur) - 0.3) / 0.8));
+        if (sai > 0) pose = { x: lerp(pose.x, REGUA_FORA.x, sai), y: lerp(pose.y, REGUA_FORA.y, sai), ang: pose.ang };
+        const deg = (pose.ang * 180) / Math.PI;
+        regua.setAttribute("transform", `translate(${pose.x} ${pose.y}) rotate(${deg}) translate(0 2)`);
+        reguaSombra.setAttribute("transform", `translate(${pose.x + 10} ${pose.y + 14}) rotate(${deg}) translate(0 2)`);
+
+        // câmera
+        const c = camera(t);
+        mundo.style.transform = `translate(${540 - c.fx * c.s}px, ${760 - c.fy * c.s}px) scale(${c.s})`;
+      }
+
+      const relogio = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(relogio, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(relogio.t) }, 0);
+      render(0);
+      window.__timelines["desenho"] = tl;
+    })();
+  </script>
+</template>
