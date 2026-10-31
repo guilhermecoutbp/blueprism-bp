@@ -13,17 +13,17 @@
       height: 1920px;
     }
   </style>
-  <div id="root" data-composition-id="mesa" data-width="1080" data-height="1920">
-    <canvas id="mesa-gl" width="1080" height="1920"></canvas>
+  <div data-hf-id="hf-0389" id="root" data-composition-id="mesa" data-width="1080" data-height="1920">
+    <canvas data-hf-id="hf-k59i" id="mesa-gl" width="1080" height="1920"></canvas>
     <!-- carrega a Montserrat para o desenho no canvas (cotas, régua, @) -->
-    <div id="mesa-fonte" style="position: absolute; left: 0; top: 0; opacity: 0; font-family: 'Montserrat'; font-weight: 400; font-size: 26px" aria-hidden="true">0,123456789 @vellaro_design</div>
+    <div data-hf-id="hf-uu67" id="mesa-fonte" style="position: absolute; left: 0; top: 0; opacity: 0; font-family: 'Montserrat'; font-weight: 400; font-size: 26px" aria-hidden="true">0,123456789 @vellaro_design</div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script>
     (() => {
       const THREE = window.THREE;
       const LOGO = {"name":[[211.0,286.0,"M 28.1 43 C 18 43.6, 16.2 45.1, 19.8 49.9 C 21.9 52.8, 28.7 65.9, 34.5 78.5 C 36.1 81.8, 41.2 91.5, 46 100 C 50.7 108.5, 58.4 123.2, 63 132.5 C 67.6 141.8, 74.2 154.4, 77.5 160.5 C 80.8 166.6, 85.3 175.1, 87.4 179.5 C 89.5 183.9, 94 192.4, 97.3 198.5 C 100.6 204.6, 105.2 213.1, 107.5 217.5 C 109.8 221.9, 113.5 228.9, 115.7 233 C 127.8 255.7, 131 261.8, 137.8 275.5 C 141.9 283.8, 147.3 294.1, 149.8 298.5 C 154.1 306, 166.3 328.3, 173.4 341.5 C 175.2 344.8, 178.9 351.6, 181.6 356.5 C 184.3 361.4, 187.4 367.3, 188.6 369.5 C 189.8 371.7, 194.1 380.2, 198.2 388.5 C 202.3 396.8, 206.4 404.1, 207.4 404.9 C 209.8 406.9, 240.6 406.8, 242.5 404.8 C 244.7 402.6, 255.1 382.9, 268.5 355.5 C 275.6 341.2, 282.3 327.9, 283.5 326 C 284.7 324.1, 292.1 310.4, 300 295.5 C 307.8 280.6, 315.8 265.6, 317.8 262 C 319.7 258.4, 325.3 247.6, 330.3 238 C 344.3 210.5, 360 181, 363.7 175.2 C 365.6 172.2, 369 165.9, 371.4 161.2 C 373.7 156.4, 379.3 145.8, 383.7 137.5 C 395 116.4, 400.5 105.9, 414.1 78.9 C 420.6 66, 427.4 53.2, 429.2 50.5 C 434 43.2, 432.7 42.6, 412.7 43.4 C 404 43.7, 396.5 44.2, 396.1 44.5 C 395.6 44.7, 390 55.7, 383.5 68.7 C 377 81.8, 368.5 98.3, 364.5 105.5 C 360.5 112.7, 350.1 132.9, 341.2 150.5 C 332.4 168.1, 322.7 187.2, 319.6 193 C 316.5 198.8, 310.6 210, 306.6 218 C 296.2 238.5, 290.4 249.4, 285.5 257.5 C 280.9 265.1, 268 288.8, 268 289.6 C 268 289.9, 263.6 298.1, 258.2 307.8 C 252.8 317.6, 246.2 329.8, 243.6 335 C 237.4 347.2, 236.6 348.1, 234.1 345.5 C 233 344.4, 225.5 330.2, 217.4 314 C 209.3 297.8, 201.9 283.4, 201 282 C 200 280.6, 194.1 269.4, 187.8 257 C 167.7 217.6, 141.5 167.1, 137.2 159.5 C 136.6 158.4, 134.7 154.2, 133 150.2 C 131.3 146.2, 128.6 140.7, 127 138.1 C 125.5 135.5, 121.4 127.9, 118 121.4 C 109.1 104.5, 108.8 103.8, 102.2 90.5 C 92.6 71.2, 78.9 44.6, 77.7 43.2 C 76.7 41.9, 47.8 41.8, 28.1 43"],[341.0,286.0,"M 17.1 43.4 C 15.3 45.5, 16 402.4, 17.8 404.2 C 18.9 405.3, 49 405.6, 176.4 405.8 C 320.8 406.1, 333.9 406, 335.4 404.5 C 338 401.9, 337.7 386.5, 335.1 385 C 333.8 384.3, 291.6 384, 205.6 384 C 79.3 384, 78 384, 76 382 C 74 380, 74 378.7, 74 303.7 C 74 231, 74.1 227.2, 75.8 225.7 C 77.5 224.1, 86.8 224, 188.8 224 C 291.1 224, 300 223.9, 301.5 222.3 C 304.1 219.8, 303.3 204.4, 300.5 202.4 C 298.8 201.1, 283.2 200.9, 187.7 201 C 102.9 201.1, 76.6 200.9, 75.4 200 C 73.2 198.1, 73.3 67.9, 75.6 65.6 C 77 64.2, 90 64, 204.4 64 C 321.5 64, 331.9 63.9, 333.1 62.4 C 334.9 60.2, 334.5 47.4, 332.4 44.3 L 331 42 174.6 42 C 43.9 42, 18.1 42.2, 17.1 43.4"],[449.0,286.0,"M 21 42.8 C 19.6 43, 18.1 43.5, 17.7 44 C 17.2 44.4, 16.9 125.3, 17 223.6 C 17.1 386.6, 17.2 402.6, 18.7 404.2 C 20.2 405.9, 27.4 406, 164 406 C 277.4 406, 308 405.7, 309.2 404.8 C 311.4 403, 312.1 388.1, 310.1 385.7 C 308.9 384.1, 299.7 384, 194.9 384 C 127.5 384, 80.1 383.6, 78.7 383.1 C 77.4 382.6, 76 381, 75.6 379.7 C 75.3 378.3, 75 302.9, 75 212.2 C 74.9 55.6, 74.8 47, 73.1 44.9 C 71.4 42.8, 70.8 42.7, 47.4 42.6 C 34.3 42.6, 22.4 42.7, 21 42.8"],[549.0,286.0,"M 41.1 42.7 C 25.9 42.9, 17.2 43.4, 16.3 44.1 C 15.2 45.1, 15 76.4, 15 223.4 C 15 321.3, 15.4 402, 15.8 402.6 C 18.1 406.1, 18.3 406.1, 163.4 405.9 C 263.8 405.8, 306.7 405.4, 309.1 404.6 L 312.5 403.5 312.8 395 C 313 387.9, 312.8 386.3, 311.4 385.3 C 310 384.3, 285.7 384, 193.3 384 C 81 384, 76.9 383.9, 75.1 382.1 C 72.2 379.2, 71.8 346.7, 72.5 187.3 L 73.1 46.1 71 44 C 69.9 42.9, 68 42.1, 66.8 42.2 C 65.5 42.4, 54 42.6, 41.1 42.7"],[641.0,286.0,"M 207.1 40.9 C 206 42, 202.5 48.2, 199.3 54.7 C 189.7 73.8, 186 81, 181 89.5 C 178.5 93.9, 174 102.2, 171.1 108 C 168.2 113.8, 165.2 119.6, 164.4 121 C 158.1 132.9, 143.3 161.3, 134.5 178.5 C 128.6 190.1, 123.4 200, 122.9 200.6 C 122.4 201.3, 116.7 212.1, 110.4 224.6 C 99.3 246.6, 83.5 275.7, 80 281 C 79 282.4, 72.3 295.2, 65 309.5 C 57.7 323.8, 51.4 335.9, 51 336.5 C 50.3 337.4, 46.7 344.3, 35.3 366 C 32.5 371.2, 28.6 379.3, 26.5 384 C 24.4 388.7, 21.7 393.9, 20.4 395.7 C 17.6 399.3, 17.3 403.5, 19.6 404.4 C 22.2 405.4, 49 405.1, 51 404 C 52 403.5, 55 398.8, 57.6 393.8 C 85.7 338.2, 102.1 306.7, 103.5 305.2 C 104.4 304.1, 124.9 303.9, 211.1 304 C 330.7 304, 321.1 303.4, 323.5 311.5 C 324.6 315.2, 345.9 358.6, 350 365.5 C 351 367.1, 352.1 369.6, 352.5 371 C 352.9 372.4, 354 374.6, 355 376 C 355.9 377.4, 359.1 384, 362 390.8 C 364.9 397.5, 367.8 403.4, 368.5 404 C 369.1 404.5, 381.8 405.1, 398.6 405.2 L 427.5 405.5 427.8 402.8 C 428.1 400.2, 423.5 389.3, 420 384 C 417.5 380.4, 408.8 363.7, 400.9 347.5 C 397.1 339.8, 393.1 331.7, 391.9 329.5 C 390.7 327.3, 379.8 305.7, 367.5 281.5 C 347.9 242.7, 335.3 218.3, 328.9 207 C 327.9 205.1, 324.3 198.2, 321 191.8 C 317.7 185.3, 312.7 175.9, 309.9 170.8 C 307 165.7, 300 152.3, 294.3 141 C 288.6 129.8, 283.4 120, 282.9 119.3 C 282.3 118.7, 276.5 107.4, 269.9 94.3 C 263.4 81.2, 255.6 66, 252.7 60.5 C 249.8 55, 246.5 48.4, 245.4 45.8 C 244.3 43.1, 242.5 40.7, 241.2 40.1 C 239.9 39.5, 232.3 39, 224 39 C 210.5 39, 208.8 39.2, 207.1 40.9 M 211.7 97.3 C 210.4 98.4, 205.3 107.8, 189.4 138.8 C 187 143.4, 184.7 147.7, 184.2 148.3 C 183.7 149, 178.4 158.9, 172.4 170.5 C 166.5 182.1, 159.4 195.8, 156.7 201 C 153.9 206.2, 148.5 216.8, 144.5 224.5 C 140.6 232.2, 132.8 247.3, 127.2 258.1 C 117.1 277.5, 115.5 282.2, 118.6 283.4 C 120.8 284.2, 299.9 284, 303 283.1 C 306.7 282.1, 306.7 278.2, 303.1 272.2 C 301.4 269.5, 300 266.9, 300 266.4 C 300 265, 285.3 234, 279.9 224 C 270.6 206.7, 246.6 159.9, 222.9 112.8 C 218.6 104.2, 214.7 96.9, 214.2 96.6 C 213.7 96.3, 212.6 96.6, 211.7 97.3"],[770.0,286.0,"M 17.2 42.6 L 15 44.1 15 223.3 C 15 321.9, 15.4 403.1, 15.9 403.8 C 17 405.5, 68.6 406.7, 71 405.1 C 72.3 404.2, 72.6 393.8, 73.5 328.3 L 74.5 252.6 77 251.2 C 80.7 249.3, 186.1 250.2, 193.6 252.2 C 200.5 254.1, 214.6 263.7, 220.2 270.2 C 227.1 278.3, 235.6 291.2, 241.2 301.9 C 244 307.2, 246.8 312.2, 247.5 313 C 248.2 313.8, 253.3 323.3, 258.7 334.1 C 264.2 344.8, 270.7 357, 273.2 361.1 C 277.1 367.5, 281.7 376.3, 292.6 398.3 C 294 400.9, 296 403.4, 297.3 403.9 C 298.5 404.4, 312 404.9, 327.4 405.1 C 353.3 405.5, 355.3 405.4, 356.4 403.7 C 357.3 402.3, 357 401.2, 355.2 398.2 C 354 396.2, 350.7 390.2, 347.9 385 C 345.2 379.8, 341.7 373.4, 340.2 370.9 C 338.7 368.3, 334.6 361.1, 331.1 354.9 C 327.6 348.6, 323.9 342.1, 322.9 340.5 C 321.9 338.9, 317.4 330.8, 312.9 322.5 C 290.8 282.2, 273.7 262.3, 251.5 251 C 247.5 249, 246.5 248, 246.5 246 C 246.5 243.8, 247.2 243.4, 253 241.8 C 256.6 240.9, 262.7 239, 266.5 237.5 C 270.4 236.1, 276 234, 279 233 C 306.1 224.1, 327.5 204.2, 337.8 178.5 C 339 175.7, 340.6 168.4, 341.4 162.2 C 346.2 127.9, 338.2 103.8, 314.1 80 C 297 63.1, 274.1 52.9, 242 47.9 C 205.8 42.2, 202.1 42, 108.2 42 C 60.2 42, 20.5 41.8, 20.1 41.6 C 19.7 41.3, 18.4 41.8, 17.2 42.6 M 75 65.5 C 74 66.7, 73.7 84.5, 73.7 146.2 C 73.7 222.9, 73.7 225.3, 75.6 226.7 C 77.2 227.9, 87.8 228, 141 227.7 C 201.7 227.4, 204.9 227.3, 213.5 225.2 C 243.8 218, 259.6 208.5, 272.3 189.8 C 280.7 177.3, 283.5 166.5, 283.5 147 C 283.5 132.8, 283.2 130.7, 280.7 122.7 C 276 107.8, 270.9 100, 258.4 87.9 C 246.5 76.6, 230 69.1, 213 67.5 C 208.9 67.1, 202.6 66.2, 199 65.4 C 188.9 63.3, 76.8 63.4, 75 65.5"],[877.0,286.0,"M 214.5 36.5 C 213.9 36.7, 205.8 37.6, 196.5 38.4 C 181.3 39.8, 167.2 42.2, 157 45.1 C 155.1 45.7, 150.5 47, 146.9 48 C 134 51.7, 106.7 64.3, 96 71.4 C 93 73.4, 88 76.6, 85 78.6 C 82 80.6, 74.1 87.7, 67.4 94.4 C 49 112.8, 36 134.1, 27.6 159.5 C 23.1 172.8, 21.9 178.9, 17.7 208 C 16.2 218.5, 16.3 235.7, 17.9 244.7 C 18.5 248.5, 19.7 255.1, 20.4 259.5 C 23.4 277.1, 31.7 301.5, 39.2 314.9 C 41 318, 43.1 321.9, 43.9 323.5 C 46.4 328.2, 51.8 335.5, 60.7 346 C 83.3 372.8, 125.5 396.9, 164 404.9 C 207.8 414.1, 253 413.9, 293.5 404.4 C 327.9 396.2, 349.2 386.2, 376 365.5 C 406.8 341.7, 430.9 295.7, 435.1 253 C 437.1 232.4, 437.3 221.5, 436.1 203.2 C 434.2 174.5, 428.9 156, 415.4 130.5 C 397 95.7, 358.9 63.5, 322 51.7 C 306.2 46.6, 297.3 44.1, 293 43.5 C 290.5 43.1, 284.9 41.9, 280.5 40.9 C 267.5 37.8, 219.5 34.6, 214.5 36.5 M 210 59.1 C 170.7 64.3, 141.9 77.8, 120 101.4 C 99.8 123.3, 84.2 162.2, 81 199.2 C 75.7 260.9, 89.7 310.6, 123.9 351 C 127.4 355.1, 130.9 358.9, 131.7 359.3 C 132.5 359.8, 136.1 362.4, 139.8 365.2 C 154.1 376, 181 386.2, 200.2 388.1 C 251.9 393.1, 287.6 385.6, 316.5 363.8 C 339.5 346.4, 354.6 324.5, 363.7 295.5 C 372.6 267.3, 374.4 255.4, 374.4 225.5 C 374.4 188.3, 370.9 167.7, 359.8 139 C 347.3 106.7, 321 80.6, 289.4 69.1 C 262.9 59.5, 234.6 55.9, 210 59.1"]],"sub":[[430.0,431.0,"M 18 38.8 L 15.5 40.8 15.4 112.3 C 15.2 182.2, 15.3 183.9, 17.2 186 C 19.1 188, 19.8 188.1, 51.8 188 C 103.6 187.8, 120.8 183.9, 136.8 168.6 C 151.7 154.4, 158 138.9, 158.8 114.2 C 160.1 72.9, 141.3 47.1, 104.5 39.5 C 98.2 38.2, 88.3 37.7, 58.5 37.3 C 21.3 36.7, 20.4 36.8, 18 38.8 M 39.6 52.2 C 37.3 55.5, 37.2 171.1, 39.5 173 C 41 174.2, 83.5 174.6, 88.9 173.4 C 106.8 169.5, 121.3 159.3, 127.9 146.1 C 133.5 135, 135.3 124.4, 134.7 107.5 C 133.7 82.5, 129.6 72.6, 115 60.8 C 104.5 52.3, 93.4 50, 62.9 50 C 41.5 50, 41.1 50, 39.6 52.2"],[499.0,431.0,"M 17.1 38.4 C 14.7 41.3, 14.3 183.6, 16.7 186.2 C 18.2 187.9, 21.4 188, 74.5 188 C 136.6 188, 133.1 188.4, 133.3 181.6 C 133.5 174.7, 135.7 175, 85.5 175 C 45 175, 40.1 174.8, 38.9 173.4 C 37.8 172.1, 37.6 166.5, 37.9 146.3 C 38.2 121.6, 38.8 116.1, 41.4 115.9 C 42 115.9, 59.7 115.9, 80.7 116 C 106.5 116.1, 119.6 115.8, 121 115 C 123.4 113.7, 123.9 105, 121.6 103.1 C 120.6 102.3, 109.1 102, 80.5 102 C 46.1 102.1, 40.5 101.9, 39.2 100.6 C 37 98.4, 37.4 55.7, 39.6 52.2 L 41 50 84.3 50 C 131.9 50, 131.3 50.1, 131.3 44.1 C 131.3 37.7, 133.8 38, 73.4 37.3 C 22.1 36.7, 18.4 36.8, 17.1 38.4"],[559.0,431.0,"M 63 35.1 C 48.4 37.7, 38.3 42.7, 30.5 51.3 C 11.8 72, 23.2 99.9, 55.1 111.2 C 62.5 113.8, 91.4 120, 96.2 120 C 100.2 120, 115.4 125.1, 120.1 128.1 C 128.3 133.3, 132.2 145, 129.3 155.9 C 127.3 163.9, 124 167.4, 114 172.3 L 107.5 175.5 89 175.5 C 71.3 175.5, 70.2 175.3, 63.7 172.8 C 50 167.3, 42.9 159.8, 40.5 148.3 C 38.5 138.7, 37 137.9, 25.4 140.1 C 15.8 142, 15.2 143.4, 19.8 154.7 C 27.1 172.6, 41.7 183.8, 62.6 187.7 C 75.5 190, 103.9 190, 115 187.6 C 129.4 184.6, 143.9 175, 148.8 165.4 C 153.8 155.5, 154.6 137.7, 150.4 129.3 C 141.8 112.5, 132.1 108.1, 79.4 97.6 C 68.8 95.5, 60.4 93.2, 57.4 91.7 C 38 81.8, 39.1 61.5, 59.6 51.4 C 66.8 47.8, 67.5 47.7, 79.8 47.2 C 107.5 46.2, 122 52.9, 126.6 68.7 C 128.7 75.9, 130.3 76.6, 139.4 74.5 C 149 72.2, 149.5 71.8, 149.4 67.8 C 149.2 59.4, 138.8 47.2, 127.6 42.1 C 115.4 36.6, 105.4 34.7, 86 34.4 C 76.4 34.2, 66 34.5, 63 35.1"],[627.0,431.0,"M 21.3 38 C 20.1 38.5, 19 40.1, 18.6 41.7 C 18.3 43.2, 18.2 75.9, 18.4 114.3 C 18.6 177, 18.8 184.2, 20.2 185.7 C 21.3 186.8, 24.3 187.4, 29.5 187.8 C 42.2 188.6, 40.9 196.6, 41 112.9 C 41 29.4, 42.1 37, 30.2 37.1 C 26.5 37.1, 22.5 37.5, 21.3 38"],[666.0,431.0,"M 84 35.1 C 71.5 36.5, 53.8 43.1, 44.8 49.8 C 36.9 55.6, 28.7 66.6, 24 77.5 C 15.2 98, 15.6 130.5, 24.8 148.4 C 38.3 174.4, 62.3 188.7, 94 189.5 C 118.2 190.2, 134.7 186.6, 145.7 178.4 C 150.1 175.1, 153.9 175.3, 157.2 179 C 161.9 184.3, 169 182.3, 169.1 175.6 C 169.1 173.3, 169.3 168.8, 169.4 165.5 C 169.6 162.2, 169.9 149.3, 170.1 136.8 C 170.4 117, 170.2 113.8, 168.8 112.4 C 166.8 110.4, 102.8 109.8, 100.8 111.8 C 100.1 112.5, 99.6 115.1, 99.6 117.7 C 99.5 124.7, 100.4 125, 125.3 125 L 146.1 125 147 127.6 C 148.4 131.1, 148.1 153.8, 146.7 158 C 145.1 162.6, 137.5 168.2, 127.9 172 C 119.3 175.3, 98.8 177.7, 89 176.5 C 73.3 174.5, 57.7 163.3, 50.2 148.5 C 44.8 137.7, 43.5 130.7, 43.5 110.5 C 43.5 89.8, 43.9 87.6, 49.5 75.4 C 59.8 53.2, 85 43, 114.3 49.1 C 127.2 51.8, 140.6 62.4, 145.9 74 C 150.1 83, 151.2 83.6, 160.9 82 C 172.4 80.2, 173 79, 167.8 68.2 C 162.4 57.4, 153.5 48.7, 141 42.3 C 128.5 35.8, 104.5 32.8, 84 35.1"],[737.0,431.0,"M 20.6 39.2 C 18.5 42.7, 17.5 182.9, 19.7 185.9 C 20.9 187.7, 22.2 188, 27.9 188 C 32.5 188, 35.1 187.5, 35.9 186.6 C 36.7 185.6, 37.1 172.7, 37.1 140.4 C 37.2 115.7, 37.5 89.7, 37.9 82.5 C 38.7 64.7, 38.8 64.7, 52.3 82.2 C 55.2 85.8, 63.1 95.8, 70 104.4 C 76.9 113, 86.5 125.2, 91.5 131.5 C 96.5 137.8, 103.9 147.1, 108 152.2 C 118.5 165, 126.4 176, 128.9 180.8 C 132 186.8, 134.2 188, 142.7 188 C 149.5 188, 150.1 187.8, 150.9 185.6 C 152.5 181.5, 152.3 41.8, 150.7 39.7 C 149.1 37.4, 137.1 36.9, 134.5 39 C 133 40.2, 132.9 45.7, 133 94.4 C 133.1 124.2, 133.1 149.1, 133.1 149.8 C 133 150.4, 132.1 151, 131 151 C 129.7 151, 127.6 148.7, 124.4 143.8 C 121.8 139.8, 115.6 131.3, 110.5 125 C 100.8 113, 98 109.4, 83.9 90.8 C 79.2 84.6, 71.6 74.8, 66.9 68.9 C 62.3 63.1, 55.8 54.8, 52.5 50.5 C 41.9 36.5, 42.6 37, 31.6 37 C 22.8 37, 21.9 37.2, 20.6 39.2"]]};
-      const DUR = 28;
+      const DUR = 31;
 
       /* ---------- utilidades ---------- */
       const clamp01 = (v) => Math.min(1, Math.max(0, v));
@@ -148,6 +148,11 @@
         retangulo(168, 800, 206, 1060, { camada: "moveis" }),
         traçoDe(ripas, { w: 0.9, op: 0.6, camada: "moveis" }),
         led(216, 812, 216, 1048),
+        // estar: tapete, sofá voltado para o painel e mesa de centro
+        retangulo(250, 770, 520, 1088, { camada: "moveis", w: 1, op: 0.45 }),
+        retangulo(400, 806, 500, 1054, { camada: "moveis" }),
+        traçoDe([[476, 806, 476, 1054], [400, 830, 476, 830], [400, 1030, 476, 1030]], { w: 1, op: 0.7, camada: "moveis" }),
+        arco(318, 930, 44, -Math.PI / 2, Math.PI * 1.5, { w: 1.4, camada: "moveis" }),
       ];
       const contornos = [g3[0], g3[4], g3[7]];
 
@@ -155,7 +160,7 @@
       const YL = 2100; // altura da linha do logo no papel
       const g4 = [linha(300, YL, 780, YL, { sobra: 0, cor: LATAO, w: 3, camada: "final" })];
       g4[0].led = true;
-      const ABRE = 23.0, ABRE_DUR = 0.7;
+      const ABRE = 25.4, ABRE_DUR = 0.7;
 
       /* ---------- agenda ---------- */
       function agendar(lista, inicio, fim, vel) {
@@ -168,9 +173,10 @@
       }
       agendar(g1, -0.55, 7.5, 1500);
       agendar(g2, 8.1, 12.2, 1200);
-      agendar(g3, 13.2, 18.4, 900);
-      agendar(g4, 19.9, 20.9, 500);
+      agendar(g3, 13.0, 16.2, 900);
+      agendar(g4, 23.0, 24.0, 500);
       const todos = [...g1, ...g2, ...g3, ...g4];
+      window.__mesaAgenda = todos.map((s) => ({ ini: s.ini, dur: s.dur, len: s.len, regua: s.regua }));
       const primeiro = (s) => [s.segs[0][0], s.segs[0][1]];
       const ultimo = (s) => { const g = s.segs[s.segs.length - 1]; return [g[2], g[3]]; };
 
@@ -192,7 +198,14 @@
           ant = s; prox = null;
         }
         if (ativo) tip = pontoNo(ativo, traco(clamp01((t - ativo.ini) / ativo.dur)));
-        else if (ant && prox) {
+        else if (ant && prox && ant === g3[g3.length - 1]) {
+          // a planta vira maquete: o lápis sai de cena e só volta para a última linha
+          const a = ultimo(ant), b = primeiro(prox);
+          const sai = inOut(clamp01((t - (ant.ini + ant.dur) - 0.1) / 0.9));
+          const volta = inOut(clamp01((t - (prox.ini - 1.0)) / 0.95));
+          if (volta <= 0) { tip = [lerp(a[0], 1750, sai), lerp(a[1], 650, sai)]; lift = 2.2 * clamp01(sai * 3); }
+          else { tip = [lerp(1650, b[0], volta), lerp(YL - 160, b[1], volta)]; lift = 2.2 * (1 - clamp01((volta - 0.7) / 0.3)); }
+        } else if (ant && prox) {
           const a = ultimo(ant), b = primeiro(prox);
           const janela = prox.ini - (ant.ini + ant.dur);
           const u = clamp01((t - (ant.ini + ant.dur)) / janela);
@@ -242,19 +255,23 @@
 
       // câmera: foco (fx, fy) do papel vai para (540, 760) da tela; inclinação em graus
       const CAM = [
-        { t: -1, s: 1.1, fx: 540, fy: 815, inc: 17 },
-        { t: 0.6, s: 1.1, fx: 540, fy: 815, inc: 17 },
-        { t: 7.2, s: 0.94, fx: 560, fy: 745, inc: 13 },
-        { t: 18.5, s: 0.94, fx: 560, fy: 745, inc: 13 },
-        { t: 20.6, s: 1, fx: 540, fy: YL - 60, inc: 3 },
-        { t: 99, s: 1, fx: 540, fy: YL - 60, inc: 3 },
+        { t: -1, s: 1.1, fx: 540, fy: 815, inc: 17, az: 0, ty: 0 },
+        { t: 0.6, s: 1.1, fx: 540, fy: 815, inc: 17, az: 0, ty: 0 },
+        { t: 7.2, s: 0.94, fx: 560, fy: 745, inc: 13, az: 0, ty: 0 },
+        { t: 16.3, s: 0.94, fx: 560, fy: 745, inc: 13, az: 0, ty: 0 },
+        { t: 18.0, s: 0.9, fx: 545, fy: 640, inc: 47, az: -16, ty: 60 },
+        { t: 21.5, s: 0.9, fx: 545, fy: 640, inc: 50, az: 16, ty: 60 },
+        { t: 23.7, s: 1, fx: 540, fy: YL - 60, inc: 3, az: 0, ty: 0 },
+        { t: 99, s: 1, fx: 540, fy: YL - 60, inc: 3, az: 0, ty: 0 },
       ];
       function camera(t) {
         for (let i = 0; i < CAM.length - 1; i++) {
           const a = CAM[i], b = CAM[i + 1];
           if (t <= b.t) {
             const k = inOut(clamp01((t - a.t) / (b.t - a.t)));
-            return { s: lerp(a.s, b.s, k), fx: lerp(a.fx, b.fx, k), fy: lerp(a.fy, b.fy, k), inc: lerp(a.inc, b.inc, k) };
+            const r = {};
+            for (const key of ["s", "fx", "fy", "inc", "az", "ty"]) r[key] = lerp(a[key], b[key], k);
+            return r;
           }
         }
         return CAM[CAM.length - 1];
@@ -283,6 +300,54 @@
       // nome: viewBox 205 284 791 116 → papel x 200..880, topo na linha - 136; sub: 425 428 360 60
       const KN = 680 / 791, NX = 200, NY = YL - 136;
       const KS = 309.5 / 360, SX = 385.25, SY = YL + 38;
+
+      // grão do grafite: o traço não é uma linha de computador
+      const grao = (() => {
+        const c = document.createElement("canvas"); c.width = c.height = 96;
+        const x = c.getContext("2d"), r = mulberry32(99);
+        const img = x.createImageData(96, 96);
+        for (let i = 0; i < img.data.length; i += 4) {
+          const v = r(), a = v < 0.12 ? 0.35 : 0.72 + r() * 0.28;
+          img.data[i] = 212; img.data[i + 1] = 208; img.data[i + 2] = 200; img.data[i + 3] = Math.round(255 * a);
+        }
+        x.putImageData(img, 0, 0);
+        const pat = fc.createPattern(c, "repeat");
+        pat.setTransform(new DOMMatrix().scale(0.42));
+        return pat;
+      })();
+      function folhaImpressa(t) {
+        // carimbo no topo da folha
+        fc.save();
+        fc.globalAlpha = 0.5; fc.strokeStyle = GRAFITE; fc.lineWidth = 0.8;
+        fc.strokeRect(150, 150, 780, 44);
+        fc.beginPath(); fc.moveTo(400, 150); fc.lineTo(400, 194); fc.moveTo(760, 150); fc.lineTo(760, 194); fc.stroke();
+        fc.fillStyle = GRAFITE; fc.font = '400 15px "Montserrat"'; fc.letterSpacing = "3px"; fc.textAlign = "left";
+        fc.globalAlpha = 0.75; fc.fillText("VELLARO DESIGN", 166, 178);
+        fc.globalAlpha = 0.55; fc.font = '400 12px "Montserrat"'; fc.letterSpacing = "2px";
+        fc.fillText("PROJETO DE MARCENARIA · PLANTA BAIXA", 416, 177);
+        fc.fillText("ESC. 1:50 · FL 01", 776, 177);
+        // norte e escala gráfica (2 m)
+        fc.globalAlpha = 0.6; fc.lineWidth = 1;
+        fc.beginPath(); fc.arc(190, 1186, 17, 0, Math.PI * 2); fc.stroke();
+        fc.beginPath(); fc.moveTo(190, 1166); fc.lineTo(198, 1194); fc.lineTo(190, 1188); fc.lineTo(182, 1194); fc.closePath(); fc.fill();
+        fc.font = '400 11px "Montserrat"'; fc.letterSpacing = "0px"; fc.textAlign = "center"; fc.fillText("N", 190, 1160);
+        for (let i = 0; i < 4; i++) {
+          const x0 = 250 + i * 61;
+          i % 2 ? fc.strokeRect(x0, 1180, 61, 7) : fc.fillRect(x0, 1180, 61, 7);
+        }
+        fc.fillText("0", 250, 1206); fc.fillText("1", 372, 1206); fc.fillText("2 m", 494, 1206);
+        fc.restore();
+        // nome do ambiente, escrito a lápis depois das cotas
+        const esc = clamp01((t - 12.35) / 0.9);
+        if (esc > 0) {
+          fc.save();
+          fc.beginPath(); fc.rect(560, 790, 330 * esc, 120); fc.clip();
+          fc.globalAlpha = 0.8; fc.fillStyle = grao; fc.textAlign = "center";
+          fc.font = '400 22px "Montserrat"'; fc.letterSpacing = "5px"; fc.fillText("ESTAR · COZINHA", 725, 850);
+          fc.globalAlpha = 0.6; fc.font = '400 17px "Montserrat"'; fc.letterSpacing = "2px"; fc.fillText("A = 42,88 m²", 725, 880);
+          fc.restore();
+        }
+      }
 
       function base(ctx, esc) { ctx.setTransform(S * esc, 0, 0, S * esc, -X0 * S * esc, -Y0 * S * esc); }
       function trecho(ctx, s, k) {
@@ -314,6 +379,7 @@
         for (let x = -48; x <= 1140; x += 24) { fc.moveTo(x, 1240); fc.lineTo(x, 140); }
         for (let y = 144; y <= 1240; y += 24) { fc.moveTo(-60, y); fc.lineTo(1140, y); }
         fc.stroke();
+        folhaImpressa(t);
 
         // traços e seus estados
         for (const s of todos) s.k = traco(clamp01((t - s.ini) / s.dur));
@@ -339,7 +405,7 @@
         // linhas
         for (const s of todos) {
           if (s.k <= 0) continue;
-          fc.globalAlpha = s.op; fc.strokeStyle = s.cor; fc.lineWidth = s.w;
+          fc.globalAlpha = s.op; fc.strokeStyle = s.cor === GRAFITE ? grao : s.cor; fc.lineWidth = s.w;
           trecho(fc, s, s.k);
           if (s.led) {
             lc.globalAlpha = 1; lc.strokeStyle = LATAO; lc.lineWidth = s.w; trecho(lc, s, s.k);
@@ -375,6 +441,14 @@
             if (ha > 0) { lc.save(); lc.globalAlpha = ha; lc.filter = "blur(5px)"; lc.lineWidth = 12; lc.beginPath(); lc.moveTo(a, YL); lc.lineTo(b, YL); lc.stroke(); lc.restore(); }
           }
         }
+        // um brilho percorre a linha de latão quando o logo se completa
+        const br = clamp01((t - 28.3) / 1.3);
+        if (br > 0 && br < 1) {
+          const bx = lerp(150, 930, inOut(br));
+          lc.save(); lc.beginPath(); lc.rect(200, YL - 20, 680, 40); lc.clip();
+          lc.globalAlpha = Math.sin(Math.PI * br); lc.filter = "blur(4px)"; lc.strokeStyle = "#ffe3b8"; lc.lineWidth = 6;
+          lc.beginPath(); lc.moveTo(bx - 45, YL); lc.lineTo(bx + 45, YL); lc.stroke(); lc.restore();
+        }
         // o logo: cada letra traçada em latão e depois preenchida em marfim
         letras.forEach((l, i) => {
           const t0 = ABRE + 0.25 + i * 0.13;
@@ -393,7 +467,7 @@
           fc.restore();
         });
         // DESIGN surge por desfoque; depois o @
-        const dz = expoOut(clamp01((t - 25.15) / 0.7));
+        const dz = expoOut(clamp01((t - 27.45) / 0.7));
         if (dz > 0) {
           fc.save(); fc.globalAlpha = dz; fc.filter = `blur(${(10 * (1 - dz) * S).toFixed(2)}px)`;
           fc.translate(SX, SY); fc.scale(KS, KS); fc.translate(-425, -428);
@@ -401,7 +475,7 @@
           for (const s of subs) { fc.save(); fc.translate(s.tx, s.ty); fc.scale(0.25, 0.25); fc.fill(s.p2); fc.restore(); }
           fc.restore();
         }
-        const ar = expoOut(clamp01((t - 25.65) / 0.8));
+        const ar = expoOut(clamp01((t - 27.95) / 0.8));
         if (ar > 0) {
           fc.save(); fc.globalAlpha = 0.8 * ar; fc.filter = `blur(${(8 * (1 - ar) * S).toFixed(2)}px)`;
           fc.fillStyle = GRAFITE; fc.font = '400 28px "Montserrat"'; fc.textAlign = "center"; fc.letterSpacing = "2.2px";
@@ -560,6 +634,103 @@
         clipe.position.set(0, 300, 12.7); clipe.castShadow = true; corpoLapis.add(clipe);
       }
       cena.add(lapis);
+
+      /* ---------- a maquete: paredes, marcenaria e luz ---------- */
+      function veioMadeira() {
+        const c = document.createElement("canvas"); c.width = 1024; c.height = 256;
+        const x = c.getContext("2d"), r = mulberry32(23);
+        const g = x.createLinearGradient(0, 0, 0, 256);
+        g.addColorStop(0, "#a8774a"); g.addColorStop(0.5, "#b88655"); g.addColorStop(1, "#9d6d42");
+        x.fillStyle = g; x.fillRect(0, 0, 1024, 256);
+        for (let i = 0; i < 170; i++) {
+          const y0 = r() * 256, amp = 2 + r() * 7, fr = 0.004 + r() * 0.01, ph = r() * 6.28;
+          x.strokeStyle = r() < 0.65 ? `rgba(70,40,18,${0.08 + r() * 0.22})` : `rgba(230,190,140,${0.05 + r() * 0.12})`;
+          x.lineWidth = 0.6 + r() * 2.2;
+          x.beginPath();
+          for (let px = 0; px <= 1024; px += 8) { const py = y0 + Math.sin(px * fr + ph) * amp + Math.sin(px * fr * 3.1 + ph * 2) * amp * 0.3; px ? x.lineTo(px, py) : x.moveTo(px, py); }
+          x.stroke();
+        }
+        return c;
+      }
+      function pedra() {
+        const c = document.createElement("canvas"); c.width = c.height = 512;
+        const x = c.getContext("2d"), r = mulberry32(41);
+        x.fillStyle = "#e4dfd6"; x.fillRect(0, 0, 512, 512);
+        x.filter = "blur(1.2px)";
+        for (let i = 0; i < 26; i++) {
+          x.strokeStyle = `rgba(110,104,96,${0.12 + r() * 0.3})`; x.lineWidth = 0.5 + r() * 2;
+          x.beginPath(); let px = r() * 512, py = r() * 512; x.moveTo(px, py);
+          for (let k = 0; k < 6; k++) { const nx = px + (r() - 0.3) * 160, ny = py + (r() - 0.5) * 90; x.quadraticCurveTo((px + nx) / 2 + (r() - 0.5) * 40, (py + ny) / 2 + (r() - 0.5) * 40, nx, ny); px = nx; py = ny; }
+          x.stroke();
+        }
+        return c;
+      }
+      const texMadeira = new THREE.CanvasTexture(veioMadeira());
+      texMadeira.colorSpace = THREE.SRGBColorSpace; texMadeira.wrapS = texMadeira.wrapT = THREE.RepeatWrapping;
+      texMadeira.anisotropy = 8;
+      const texPedra = new THREE.CanvasTexture(pedra());
+      texPedra.colorSpace = THREE.SRGBColorSpace;
+      const matParede = new THREE.MeshStandardMaterial({ color: 0xd6d0c5, roughness: 0.9, envMapIntensity: 0.4 });
+      const matMadeira = new THREE.MeshStandardMaterial({ map: texMadeira, roughness: 0.55, envMapIntensity: 0.6 });
+      const matMadeiraEsc = new THREE.MeshStandardMaterial({ map: texMadeira, color: 0x6b5a4c, roughness: 0.5 });
+      const matPedra = new THREE.MeshPhysicalMaterial({ map: texPedra, roughness: 0.22, clearcoat: 0.5, clearcoatRoughness: 0.15 });
+      const matVidro = new THREE.MeshPhysicalMaterial({ color: 0xcfe3ea, roughness: 0.05, metalness: 0, transparent: true, opacity: 0.22 });
+      const maquete = new THREE.Group();
+      cena.add(maquete);
+      const pecas = [];
+      function bloco(x, y, w, d, h, mat, ini, y0 = 0, atraso = 0) {
+        const g = new THREE.BoxGeometry(w, h, d);
+        g.translate(x + w / 2, y0 + h / 2, y + d / 2);
+        const m = new THREE.Mesh(g, mat);
+        m.castShadow = true; m.receiveShadow = true; m.visible = false;
+        maquete.add(m); pecas.push({ m, ini, atraso });
+        return m;
+      }
+      const ALT = 190; // maquete em corte, a 1,55 m: dá para ver dentro
+      // paredes (as mesmas faixas hachuradas da planta)
+      Object.values(H).forEach((r, i) => bloco(r[0], r[1], r[2], r[3], ALT, matParede, 16.45 + i * 0.07, 0, 0.12));
+      bloco(L, 520, E, 244, 100, matParede, 16.85, 0, 0.12); // peitoril da janela
+      bloco(L + 7, 520, 4, 244, ALT - 100, matVidro, 16.9, 100, 0.12);
+      bloco(737, 1002, 6, 100, ALT - 4, matMadeiraEsc, 17.0, 0, 0.1); // folha da porta, aberta
+      // cozinha: armários baixos, tampo de pedra e armários altos
+      bloco(578, 318, 334, 60, 102, matMadeira, 17.0, 0, 0.06);
+      bloco(574, 314, 342, 68, 6, matPedra, 17.1, 102, 0.06);
+      bloco(578, 318, 334, 8, 66, matPedra, 17.2, 108, 0.06); // frontão de pedra
+      // ilha
+      bloco(628, 470, 244, 90, 98, matMadeira, 17.15, 0, 0.04);
+      bloco(618, 462, 264, 106, 7, matPedra, 17.25, 98, 0.04);
+      // painel ripado do chão ao teto
+      for (let y = 806, j = 0; y < 1054; y += 16, j++) bloco(170, y, 30, 11, ALT - 4, matMadeira, 17.3 + j * 0.03, 0, 0.02);
+      // estar: tapete, sofá de tecido e mesa de centro
+      const matTecido = new THREE.MeshStandardMaterial({ color: 0xb8afa3, roughness: 1, bumpMap: texFibra, bumpScale: 3 });
+      const matTapete = new THREE.MeshStandardMaterial({ color: 0x4a443d, roughness: 1, bumpMap: texFibra, bumpScale: 4 });
+      bloco(250, 770, 270, 318, 2.5, matTapete, 17.35, 0, 0.03);
+      bloco(400, 806, 100, 248, 40, matTecido, 17.45, 0, 0.02); // assento
+      bloco(476, 806, 24, 248, 78, matTecido, 17.5, 0, 0.02); // encosto
+      bloco(400, 806, 76, 22, 58, matTecido, 17.55, 0, 0.02); // braços
+      bloco(400, 1032, 76, 22, 58, matTecido, 17.55, 0, 0.02);
+      {
+        const g = new THREE.CylinderGeometry(44, 44, 5, 64); g.translate(318, 40, 930);
+        const tampo = new THREE.Mesh(g, matPedra); tampo.castShadow = tampo.receiveShadow = true; tampo.visible = false;
+        maquete.add(tampo); pecas.push({ m: tampo, ini: 17.6, atraso: 0.02 });
+        const p = new THREE.CylinderGeometry(14, 20, 38, 32); p.translate(318, 19, 930);
+        const pe = new THREE.Mesh(p, matMadeiraEsc); pe.castShadow = true; pe.visible = false;
+        maquete.add(pe); pecas.push({ m: pe, ini: 17.6, atraso: 0.02 });
+      }
+      // fitas de LED que acendem uma a uma, com luz de verdade
+      const luzesLed = [];
+      function fita(x, y, w, d, y0, ini, lx, ly, lz, forca) {
+        const mat = new THREE.MeshStandardMaterial({ color: 0x3a3022, emissive: new THREE.Color(LATAO), emissiveIntensity: 0, roughness: 0.4 });
+        const m = bloco(x, y, w, d, 2.5, mat, 17.4, y0, 0);
+        m.castShadow = false;
+        const luz = new THREE.PointLight(0xffc98c, 0, 0, 2);
+        luz.position.set(lx, ly, lz); cena.add(luz);
+        luzesLed.push({ mat, luz, ini, forca });
+      }
+      fita(592, 384, 306, 4, 4, 18.0, 745, 14, 405, 9000); // rodapé da cozinha
+      fita(584, 326, 322, 3, 112, 18.35, 745, 128, 340, 6000); // nicho de luz sobre o tampo
+      fita(642, 566, 216, 4, 4, 18.7, 750, 14, 590, 8000); // rodapé da ilha
+      fita(203, 812, 3, 236, 3, 19.05, 225, 12, 930, 8000); // rodapé do ripado
       const ELEV = (52 * Math.PI) / 180;
       const dirLapis = new THREE.Vector3(0.53 * Math.cos(ELEV), Math.sin(ELEV), -0.85 * Math.cos(ELEV)).normalize();
       lapis.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dirLapis);
@@ -596,11 +767,31 @@
         regua.position.z += Math.cos(p.ang) * 2;
 
         const c = camera(t);
-        const alvo = new THREE.Vector3(c.fx, 0, c.fy + 200 / c.s);
+        const alvo = new THREE.Vector3(c.fx, c.ty, c.fy + 200 / c.s);
         const dist = 1920 / c.s / 2 / TAN;
-        const inc = (c.inc * Math.PI) / 180;
-        cam.position.set(alvo.x, dist * Math.cos(inc), alvo.z + dist * Math.sin(inc));
+        const inc = (c.inc * Math.PI) / 180, az = (c.az * Math.PI) / 180;
+        const hz = dist * Math.sin(inc);
+        cam.position.set(alvo.x + Math.sin(az) * hz, alvo.y + dist * Math.cos(inc), alvo.z + Math.cos(az) * hz);
+        cam.up.set(-Math.sin(az), 0, -Math.cos(az));
         cam.lookAt(alvo);
+
+        // a maquete sobe do papel e depois volta para ele
+        for (const p of pecas) {
+          const sobe = out3(clamp01((t - p.ini) / 0.75));
+          const desce = 1 - inOut(clamp01((t - 21.35 - p.atraso) / 0.85));
+          const k = sobe * desce;
+          p.m.visible = k > 0.003;
+          p.m.scale.y = Math.max(0.003, k);
+        }
+        for (const l of luzesLed) {
+          const on = clamp01((t - l.ini) / 0.35) * (1 - clamp01((t - 21.2) / 0.5));
+          l.mat.emissiveIntensity = 3.2 * on;
+          l.mat.color.setScalar(0.25 + 0.75 * on);
+          l.luz.intensity = l.forca * on;
+        }
+        // a luz da janela gira devagar: as sombras andam
+        const giro = lerp(-0.12, 0.12, t / DUR);
+        dirSol.set(-0.5 * Math.cos(giro) + 0.45 * Math.sin(giro), 0.74, -0.45 * Math.cos(giro) - 0.5 * Math.sin(giro)).normalize();
         cam.updateMatrixWorld();
 
         sol.target.position.copy(alvo);

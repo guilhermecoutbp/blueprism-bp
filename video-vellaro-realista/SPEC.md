@@ -2,7 +2,7 @@
 
 GOAL:    quem assiste sente o cuidado de um projeto sob medida, do primeiro traço à assinatura, e guarda o nome Vellaro Design.
 OUTPUT:  HyperFrames, 1080 x 1920 (9:16, Reels), 30 fps.
-TIME:    28 s x 30 fps = 840 quadros. Sem música no arquivo (a trilha entra pela biblioteca do Instagram); a narração é o relógio.
+TIME:    31 s x 30 fps = 930 quadros. Sem música no arquivo (a trilha entra pela biblioteca do Instagram); a narração é o relógio.
 
 ## MOTOR
 
@@ -13,6 +13,13 @@ Three.js r158 dentro do HyperFrames (`compositions/mesa.html`), quadro a quadro 
 - **Lapiseira**: corpo de metal com verniz, empunhadura serrilhada em relevo, cone e anéis em latão, camisa cromada e grafite exposto; inclinada a 52° do papel, levanta quando viaja.
 - **Luz**: um foco largo e macio de janela, do alto à esquerda (sombras PCF suaves, queda natural nas bordas), e um estúdio escuro com três faixas para os reflexos nos metais. Tone mapping ACES.
 - **Câmera**: perspectiva de 30°, inclinada 17° no começo e quase de cima (3°) no logo.
+- **A planta vira lugar** (16,4–22,4 s): as paredes sobem do papel como maquete em corte (1,55 m), a marcenaria aparece em madeira (veio procedural) e pedra, o estar ganha tapete, sofá de tecido e mesa de centro; as fitas de LED acendem uma a uma com luz real (luzes pontuais quentes); a câmera inclina a 50° e gira de -16° a +16°; depois tudo volta para dentro do papel.
+- **Folha de projeto**: carimbo impresso (VELLARO DESIGN · PROJETO DE MARCENARIA · PLANTA BAIXA · ESC. 1:50 · FL 01), norte, escala gráfica de 2 m e o nome do ambiente escrito a lápis (ESTAR · COZINHA, A = 42,88 m²).
+- **Grafite**: o traço tem grão (padrão de ruído fixo), não é uma linha perfeita.
+- **Luz que anda**: a janela gira 14° ao longo do filme e as sombras se movem.
+- **Brilho no latão**: quando o logo se completa, um brilho percorre a linha (28,3–29,6 s).
+- **Som**: o atrito do grafite é sintetizado a partir da agenda real dos traços (ruído de 1,8–7,5 kHz modulado pela velocidade do lápis e pela aspereza do papel), com o toque do grafite e o baque da régua; cliques nas cotas e sopro na última linha.
+- **Voz**: Chatterbox mais pausado (cerca de 2,5 palavras/s), vários candidatos por fala escolhidos por transcrição, ritmo e fluidez; tratamento suave sem eco nem mudança de tom; mixagem final sem perdas, AAC 256 kbps.
 - **Final**: em vez de a planta sumir, o lápis deixa a planta, viaja com a câmera até o papel em branco e traça ali a linha de latão onde o logo nasce.
 
 ## LOOK
