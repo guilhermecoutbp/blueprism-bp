@@ -11,3 +11,6 @@ brag-output/work/check*
 video-vellaro/.hyperframes/
 video-vellaro/.media/
 video-vellaro/node_modules/
+video-vellaro-realista/.hyperframes/
+video-vellaro-realista/.media/
+video-vellaro-realista/renders/*.part*
