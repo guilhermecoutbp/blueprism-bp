@@ -433,32 +433,44 @@ function buildScene(renderer) {
 let vh = window.innerHeight;
 let maxScroll = 1;
 let keys = [0, 1, 2, 3, 4, 5];
-let anchor = 0.5;
 
+// Cada capítulo tem um ponto da rolagem em que fica centralizado na tela.
+// O móvel e os textos usam esses pontos como marcos.
 function measure() {
   vh = window.innerHeight;
   maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
-  anchor = window.innerWidth >= 900 ? 0.5 : 0.72;
   const y = scrollY();
   keys = [0];
   texts.forEach((t) => {
-    const r = t.getBoundingClientRect();
-    keys.push(Math.min(maxScroll, Math.max(0, y + r.top + r.height / 2 - vh * anchor)));
+    const r = t.closest(".chapter").getBoundingClientRect();
+    keys.push(Math.min(maxScroll, Math.max(0, y + r.top + r.height / 2 - vh / 2)));
   });
 }
 
 const span = (s, a, b) => smooth(clamp01((s - a) / (b - a)));
 const at = (i, f) => lerp(keys[i], keys[i + 1], f);
 
+// Um texto por vez: entra, fica, sai por completo e só então o próximo entra
 function updateUI(s) {
   root.style.setProperty("--intro", (1 - span(s, 0, vh * 0.55)).toFixed(4));
   root.style.setProperty("--bar", span(s, vh * 0.4, vh * 0.85).toFixed(4));
+  const hold = vh * 0.16;
+  const edge = vh * 0.46;
   texts.forEach((t, i) => {
-    const r = t.getBoundingClientRect();
-    const d = Math.abs(r.top + r.height / 2 - vh * anchor);
-    let o = 1 - span(d, vh * 0.16, vh * 0.44);
-    if (i === texts.length - 1) o = Math.max(o, span(s, maxScroll - vh * 0.5, maxScroll - 2));
+    const d = s - keys[i + 1];
+    const lastText = i === texts.length - 1;
+    let o;
+    let y;
+    if (d < 0) {
+      o = 1 - span(-d, hold, edge);
+      y = (1 - o) * 26;
+    } else {
+      o = lastText ? 1 : 1 - span(d, hold, edge);
+      y = (1 - o) * -26;
+    }
     t.style.setProperty("--o", o.toFixed(4));
+    t.style.setProperty("--y", `${y.toFixed(2)}px`);
+    t.style.visibility = o < 0.005 ? "hidden" : "visible";
   });
 }
 
@@ -466,6 +478,8 @@ function updateUI(s) {
 
 async function start() {
   measure();
+  root.classList.add("is-live");
+  updateUI(scrollY());
   let current = scrollY();
   let last = -1;
 
