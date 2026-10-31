@@ -2,16 +2,25 @@
   "mcpServers": {
     "shadcn": {
       "command": "npx",
-      "args": ["-y", "shadcn@latest", "mcp"]
+      "args": [
+        "-y",
+        "shadcn@latest",
+        "mcp"
+      ]
     },
-    "magic": {
+    "21st": {
       "type": "http",
       "url": "https://21st.dev/api/mcp",
-      "headers": { "x-api-key": "${TWENTYFIRST_API_KEY}" }
+      "headers": {
+        "x-api-key": "${API_KEY_21ST}"
+      }
     },
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
     }
   }
 }
