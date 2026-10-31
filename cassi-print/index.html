@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cassi Print — Decoração e utensílios em impressão 3D</title>
+  <meta name="description" content="Cassi Print: peças sob medida em impressão 3D. Decoração, utensílios, presentes, pets em miniatura e o que mais você imaginar. Enviamos para todo o Brasil.">
+  <meta name="theme-color" content="#13203a">
+  <meta property="og:title" content="Cassi Print — Se você imagina, a gente imprime">
+  <meta property="og:description" content="Peças sob medida em impressão 3D. Enviamos para todo o Brasil.">
+  <meta property="og:image" content="img/logo.webp">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/logo-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></symbol>
+  </svg>
+
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="top">
+    <a class="top__brand" href="#inicio" aria-label="Cassi Print, voltar ao início">
+      <img src="img/logo.webp" alt="" width="44" height="44">
+      <span>Cassi Print</span>
+    </a>
+    <nav class="top__nav" aria-label="Principal">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#ideias">Ideias</a>
+      <a href="#como-funciona">Como funciona</a>
+    </nav>
+    <a class="btn btn--small" href="#orcamento">Orçamento</a>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero__sticky">
+        <div class="hero__text">
+          <h1 class="brand3d">
+            <span class="brand3d__word" data-text="CASSI PRINT">CASSI PRINT</span>
+            <span class="brand3d__sub">Decoração e utensílios 3D</span>
+          </h1>
+          <p class="hero__lead">Se você imagina, a gente imprime.</p>
+          <p class="hero__desc">Peças sob medida em impressão 3D: decoração, utensílios, presentes, seu pet em miniatura e o que mais você inventar. Enviamos para todo o Brasil.</p>
+          <div class="hero__actions">
+            <a class="btn" data-wa="Olá, Cassi Print! Vim pelo site e quero fazer um orçamento." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-wa"/></svg>
+              Pedir orçamento
+            </a>
+            <a class="btn btn--ghost" href="#trabalhos">Ver trabalhos</a>
+          </div>
+        </div>
+        <div class="hero__stage">
+          <canvas class="hero__canvas" aria-hidden="true"></canvas>
+          <img class="hero__fallback" src="img/logo.webp" alt="Logo da Cassi Print: um gatinho operando uma impressora 3D" width="512" height="512">
+          <div class="print-status" aria-hidden="true">
+            <span class="print-status__label">Role para imprimir</span>
+            <span class="print-status__bar"><span></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trabalhos">
+      <div class="wrap">
+        <h2 class="section__title">Feitos na Cassi Print</h2>
+        <p class="section__intro">Algumas peças que já saíram das nossas impressoras.</p>
+        <div class="works">
+          <article class="work">
+            <img src="img/pet-horus-rosto.webp" alt="Escultura de um gato preto e branco com olhos verdes, vista de perto" width="610" height="760" loading="lazy">
+            <div class="work__body">
+              <h3>Pet em miniatura</h3>
+              <p>O Horus virou escultura, com o nome dele na base.</p>
+              <a class="link" data-wa="Olá, Cassi Print! Vi o pet em miniatura no site e quero um do meu pet." href="https://wa.me/5511964635923" target="_blank" rel="noopener">Quero um do meu pet</a>
+            </div>
+          </article>
+          <article class="work">
+            <img src="img/porta-sache.webp" alt="Porta-sachê branco com tampa rosada e uma cabecinha de gato em cima" width="685" height="965" loading="lazy">
+            <div class="work__body">
+              <h3>Porta-sachê</h3>
+              <p>Organização com charme para a cozinha.</p>
+              <a class="link" data-wa="Olá, Cassi Print! Vi o porta-sachê no site e quero um parecido." href="https://wa.me/5511964635923" target="_blank" rel="noopener">Quero um parecido</a>
+            </div>
+          </article>
+          <article class="work">
+            <img src="img/suporte-alexa.webp" alt="Suporte para Alexa em formato de patinha, creme com almofadas coral, sobre base dourada" width="670" height="900" loading="lazy">
+            <div class="work__body">
+              <h3>Suporte para Alexa</h3>
+              <p>Uma patinha que segura o seu assistente.</p>
+              <a class="link" data-wa="Olá, Cassi Print! Vi o suporte para Alexa no site e quero um parecido." href="https://wa.me/5511964635923" target="_blank" rel="noopener">Quero um parecido</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--pet">
+      <div class="wrap pet">
+        <div class="pet__photo">
+          <img src="img/pet-horus.webp" alt="" width="690" height="1170" loading="lazy">
+        </div>
+        <div class="pet__text">
+          <h2 class="section__title">Seu pet eternizado</h2>
+          <p>Mande fotos do seu pet de frente e de lado. A gente modela, imprime e finaliza a escultura com o nome dele na base.</p>
+          <p>Um presente que emociona, para você ou para quem ama bichos.</p>
+          <a class="btn" data-wa="Olá, Cassi Print! Quero uma escultura do meu pet. Posso mandar as fotos?" href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>
+            Enviar fotos do meu pet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ideias">
+      <div class="wrap">
+        <h2 class="section__title">Dá para imprimir quase tudo</h2>
+        <p class="section__intro">Ideias para o seu pedido. Toque em uma para conversar com a gente.</p>
+        <div class="ideas">
+          <a class="idea" data-wa="Olá, Cassi Print! Tenho interesse em peças de decoração, como vasos." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <img src="img/ideia-vaso.webp" alt="" width="600" height="600" loading="lazy">
+            <h3>Decoração</h3>
+            <p>Vasos, esculturas e enfeites com a sua cara.</p>
+          </a>
+          <a class="idea" data-wa="Olá, Cassi Print! Tenho interesse em luminárias impressas em 3D." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <img src="img/ideia-luminaria.webp" alt="" width="600" height="600" loading="lazy">
+            <h3>Luminárias</h3>
+            <p>Cúpulas e abajures que acendem o ambiente.</p>
+          </a>
+          <a class="idea" data-wa="Olá, Cassi Print! Tenho interesse em organizadores e utensílios." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <img src="img/ideia-organizador.webp" alt="" width="600" height="600" loading="lazy">
+            <h3>Organização</h3>
+            <p>Porta-canetas, porta-trecos e utensílios para casa.</p>
+          </a>
+          <a class="idea" data-wa="Olá, Cassi Print! Tenho interesse em chaveiros e brindes personalizados." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <img src="img/ideia-chaveiro.webp" alt="" width="600" height="600" loading="lazy">
+            <h3>Chaveiros e brindes</h3>
+            <p>Lembrancinhas, festas e brindes para empresas.</p>
+          </a>
+          <a class="idea" data-wa="Olá, Cassi Print! Preciso de uma peça sob medida ou de reposição." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <img src="img/ideia-engrenagem.webp" alt="" width="600" height="600" loading="lazy">
+            <h3>Peças sob medida</h3>
+            <p>Reposição, encaixes e protótipos na medida certa.</p>
+          </a>
+          <a class="idea idea--yours" data-wa="Olá, Cassi Print! Tenho uma ideia e queria saber se dá para imprimir." href="https://wa.me/5511964635923" target="_blank" rel="noopener">
+            <span class="idea__plus" aria-hidden="true">+</span>
+            <h3>A sua ideia</h3>
+            <p>Não achou aqui? Conta pra gente o que você imaginou.</p>
+          </a>
+        </div>
+        <p class="note">Imagens ilustrativas de ideias para impressão.</p>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <h2 class="section__title">Como funciona</h2>
+        <ol class="steps">
+          <li class="step">
+            <h3>Você manda a ideia</h3>
+            <p>Uma foto, um desenho, um link ou só a descrição pelo WhatsApp.</p>
+          </li>
+          <li class="step">
+            <h3>A gente modela</h3>
+            <p>Criamos o modelo 3D e combinamos tamanho, cores e detalhes.</p>
+          </li>
+          <li class="step">
+            <h3>Camada por camada</h3>
+            <p>A peça é impressa com cuidado, uma camada de cada vez.</p>
+          </li>
+          <li class="step">
+            <h3>Chega até você</h3>
+            <p>Acabamento, embalagem e envio para qualquer lugar do Brasil.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="depoimentos" hidden>
+      <div class="wrap">
+        <h2 class="section__title">Quem já encomendou</h2>
+        <div class="quotes"></div>
+      </div>
+    </section>
+
+    <section class="section section--form" id="orcamento">
+      <div class="wrap order">
+        <div class="order__text">
+          <h2 class="section__title">Monte seu pedido</h2>
+          <p>Preencha o que souber. A gente recebe tudo no WhatsApp e responde com o orçamento. Fotos e referências você manda na conversa.</p>
+        </div>
+        <form class="form" id="pedido">
+          <fieldset class="form__group">
+            <legend>O que você quer criar?</legend>
+            <div class="choices">
+              <label><input type="radio" name="tipo" value="Decoração" checked><span>Decoração</span></label>
+              <label><input type="radio" name="tipo" value="Utensílio ou organização"><span>Utensílio</span></label>
+              <label><input type="radio" name="tipo" value="Pet em miniatura"><span>Pet em miniatura</span></label>
+              <label><input type="radio" name="tipo" value="Presente personalizado"><span>Presente</span></label>
+              <label><input type="radio" name="tipo" value="Brindes para empresa ou evento"><span>Brindes</span></label>
+              <label><input type="radio" name="tipo" value="Peça sob medida"><span>Peça sob medida</span></label>
+              <label><input type="radio" name="tipo" value="Outra ideia"><span>Outra ideia</span></label>
+            </div>
+          </fieldset>
+          <label class="form__field">
+            <span>Conte sua ideia</span>
+            <textarea name="ideia" rows="4" placeholder="Ex.: um vaso de gatinho rosa, com uns 15 cm de altura"></textarea>
+          </label>
+          <div class="form__row">
+            <label class="form__field">
+              <span>Quantidade</span>
+              <input type="number" name="quantidade" min="1" value="1" inputmode="numeric">
+            </label>
+            <label class="form__field">
+              <span>Seu nome</span>
+              <input type="text" name="nome" autocomplete="given-name" placeholder="Como podemos te chamar?">
+            </label>
+          </div>
+          <button class="btn btn--wide" type="submit">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>
+            Enviar pedido no WhatsApp
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <a class="top__brand" href="#inicio" aria-label="Cassi Print, voltar ao início">
+        <img src="img/logo.webp" alt="" width="56" height="56" loading="lazy">
+        <span>Cassi Print</span>
+      </a>
+      <p>Decoração e utensílios em impressão 3D. Enviamos para todo o Brasil.</p>
+      <div class="footer__links">
+        <a href="https://wa.me/5511964635923" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a href="https://www.instagram.com/cassiprint/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+      </div>
+      <small>© Cassi Print</small>
+    </div>
+  </footer>
+
+  <a class="wa-float" data-wa="Olá, Cassi Print! Vim pelo site e quero fazer um orçamento." href="https://wa.me/5511964635923" target="_blank" rel="noopener" aria-label="Conversar com a Cassi Print no WhatsApp">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+
+  <div class="toast" role="status" aria-live="polite" hidden>
+    <a class="toast__body" href="#orcamento">
+      <span class="toast__icon" aria-hidden="true"></span>
+      <span class="toast__text"></span>
+    </a>
+    <button class="toast__close" type="button" aria-label="Fechar aviso">×</button>
+  </div>
+</body>
+</html>
