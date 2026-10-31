@@ -16,14 +16,17 @@ const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
 function scrollAt(t, K, vh) {
   const ledHold = K[4] + 0.14 * vh;
+  // Para em cada etapa por pelo menos 1 s, para o título ficar legível
   const pts = [
     [0, 0],
     [3.2, 0],
-    [5.6, K[1]],
-    [6.4, K[1]],
-    [8.0, K[2]],
+    [5.0, K[1]],
+    [6.2, K[1]],
+    [7.4, K[2]],
+    [8.4, K[2]],
     [10.4, K[3]],
-    [12.8, ledHold],
+    [11.6, K[3]],
+    [13.2, ledHold],
     [15.2, ledHold],
     [16.8, K[5]],
     [20.0, K[5]],
