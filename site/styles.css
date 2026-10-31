@@ -7,6 +7,7 @@
   --muted: #8d8984;
   --line: rgba(185, 183, 179, 0.22);
   --led: #f3c98b;
+  --logo: #aeaca8;
 
   --serif: "Cormorant Garamond", "Times New Roman", serif;
   --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
@@ -78,14 +79,6 @@ a {
 
 /* Marca */
 
-.mark__name,
-.intro__name {
-  font-family: var(--sans);
-  font-weight: 300;
-  color: var(--silver);
-  line-height: 1;
-}
-
 .bar {
   position: fixed;
   inset: 0 0 auto;
@@ -97,26 +90,17 @@ a {
 }
 
 .bar__mark {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  font-size: 1.05rem;
+  display: block;
+  line-height: 0;
   opacity: var(--bar, 0);
   transition: opacity 0.2s linear;
 }
 
-.mark__name {
-  letter-spacing: 0.24em;
-  margin-right: -0.24em;
-}
-
-.mark__sub {
-  font-size: 0.32em;
-  letter-spacing: 0.62em;
-  margin-right: -0.62em;
-  margin-top: 0.6em;
-  color: var(--muted);
+.bar__logo {
+  width: 96px;
+  height: auto;
+  fill: var(--logo);
+  fill-rule: evenodd;
 }
 
 .bar__link {
@@ -154,33 +138,45 @@ a {
 }
 
 .intro__name {
-  display: flex;
-  font-size: clamp(2.8rem, 11vw, 7.2rem);
-  margin-right: -0.24em;
+  display: block;
+  width: min(78vw, 640px);
+  height: auto;
+  overflow: visible;
 }
 
-.intro__name span {
-  display: inline-block;
-  letter-spacing: 0.24em;
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateY(0.12em);
-  animation: letter-in 1.8s var(--ease) forwards;
+/* Cada letra é traçada como um desenho e depois preenchida */
+.intro__letter {
+  fill: var(--logo);
+  fill-opacity: 0;
+  fill-rule: evenodd;
+  stroke: var(--logo);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    letter-draw 1.7s var(--ease) forwards,
+    letter-fill 1.4s ease forwards;
 }
 
-.intro__name span:nth-child(1) { animation-delay: 0.25s; }
-.intro__name span:nth-child(2) { animation-delay: 0.37s; }
-.intro__name span:nth-child(3) { animation-delay: 0.49s; }
-.intro__name span:nth-child(4) { animation-delay: 0.61s; }
-.intro__name span:nth-child(5) { animation-delay: 0.73s; }
-.intro__name span:nth-child(6) { animation-delay: 0.85s; }
-.intro__name span:nth-child(7) { animation-delay: 0.97s; }
+.intro__name g:nth-child(1) .intro__letter { animation-delay: 0.2s, 1.25s; }
+.intro__name g:nth-child(2) .intro__letter { animation-delay: 0.32s, 1.37s; }
+.intro__name g:nth-child(3) .intro__letter { animation-delay: 0.44s, 1.49s; }
+.intro__name g:nth-child(4) .intro__letter { animation-delay: 0.56s, 1.61s; }
+.intro__name g:nth-child(5) .intro__letter { animation-delay: 0.68s, 1.73s; }
+.intro__name g:nth-child(6) .intro__letter { animation-delay: 0.8s, 1.85s; }
+.intro__name g:nth-child(7) .intro__letter { animation-delay: 0.92s, 1.97s; }
 
-@keyframes letter-in {
+@keyframes letter-draw {
   to {
-    opacity: 1;
-    filter: blur(0);
-    transform: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes letter-fill {
+  to {
+    fill-opacity: 1;
+    stroke-opacity: 0;
   }
 }
 
@@ -188,12 +184,12 @@ a {
   display: block;
   width: min(70vw, 460px);
   height: 1px;
-  margin: clamp(26px, 5vw, 40px) 0 clamp(18px, 3vw, 24px);
+  margin: clamp(22px, 4vw, 34px) 0 clamp(16px, 3vw, 22px);
   background: linear-gradient(90deg, transparent, var(--led) 20%, #fff3df 50%, var(--led) 80%, transparent);
   box-shadow: 0 0 12px 1px rgba(243, 201, 139, 0.55), 0 8px 40px 4px rgba(243, 201, 139, 0.12);
   transform: scaleX(0);
   opacity: 0;
-  animation: led-in 2.2s var(--ease) 1.5s forwards;
+  animation: led-in 2.2s var(--ease) 2.3s forwards;
 }
 
 @keyframes led-in {
@@ -204,12 +200,13 @@ a {
 }
 
 .intro__sub {
-  font-size: clamp(0.8rem, 2.4vw, 1.3rem);
-  letter-spacing: 0.9em;
-  margin-right: -0.9em;
-  color: var(--muted);
+  display: block;
+  width: min(36vw, 292px);
+  height: auto;
+  fill: var(--logo);
+  fill-rule: evenodd;
   opacity: 0;
-  animation: fade-in 2s ease 2.3s forwards;
+  animation: fade-in 2s ease 2.9s forwards;
 }
 
 .intro__hint {
@@ -222,7 +219,7 @@ a {
   font-size: 0.88rem;
   color: var(--muted);
   opacity: 0;
-  animation: fade-in 1.6s ease 3.2s forwards;
+  animation: fade-in 1.6s ease 3.8s forwards;
 }
 
 .intro__hint::after {
@@ -233,7 +230,7 @@ a {
   margin: 14px auto 0;
   background: linear-gradient(var(--silver), transparent);
   transform-origin: top;
-  animation: hint 2.4s var(--ease) 3.6s infinite;
+  animation: hint 2.4s var(--ease) 4.2s infinite;
   transform: scaleY(0);
 }
 
@@ -376,7 +373,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro__name span,
+  .intro__letter,
   .intro__led,
   .intro__sub,
   .intro__hint {
