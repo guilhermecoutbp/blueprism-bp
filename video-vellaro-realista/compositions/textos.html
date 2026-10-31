@@ -1,0 +1,68 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .frase {
+      position: absolute;
+      left: 0;
+      top: 1196px;
+      width: 1080px;
+      text-align: center;
+      font-family: "EB Garamond", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 1.15;
+      color: #ece7de;
+      text-shadow: 0 0 18px #121110, 0 0 6px #121110;
+    }
+    .frase span {
+      display: inline-block;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="textos" data-width="1080" data-height="1920">
+    <div id="textos-f1" class="frase clip" data-start="0" data-duration="6.6" data-layout-allow-caption-zone>
+      <span>Todo</span> <span>projeto</span> <span>começa</span><br /><span>com</span> <span>um</span> <span>traço.</span>
+    </div>
+    <div id="textos-f2" class="frase clip" data-start="7.8" data-duration="5.3" data-layout-allow-caption-zone>
+      <span>Cada</span> <span>medida,</span> <span>pensada</span><br /><span>para</span> <span>o</span> <span>seu</span> <span>espaço.</span>
+    </div>
+    <div id="textos-f3" class="frase clip" data-start="13.1" data-duration="5.8" data-layout-allow-caption-zone>
+      <span>Até</span> <span>o</span> <span>desenho</span> <span>se</span> <span>tornar</span><br /><span>o</span> <span>seu</span> <span>lugar.</span>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // cada palavra entra quando é dita: a fala é dividida pelo número de letras
+      // [frase, trechos de fala [início, fim, nº de palavras], saída]
+      const FRASES = [
+        ["#textos-f1", [[0.5, 2.35, 6]], 5.9],
+        ["#textos-f2", [[8.5, 9.32, 2], [9.43, 11.1, 5]], 12.4],
+        ["#textos-f3", [[13.5, 15.54, 8]], 18.2],
+      ];
+      for (const [sel, trechos, saida] of FRASES) {
+        const palavras = gsap.utils.toArray(sel + " span");
+        let n = 0;
+        for (const [ini, fim, qtd] of trechos) {
+          const grupo = palavras.slice(n, n + qtd);
+          n += qtd;
+          const pesos = grupo.map((p) => p.textContent.replace(/[^\p{L}]/gu, "").length + 1);
+          const total = pesos.reduce((a, b) => a + b, 0);
+          let acc = 0;
+          grupo.forEach((p, i) => {
+            const t = ini + ((fim - ini) * acc) / total - 0.06;
+            acc += pesos[i];
+            tl.fromTo(p, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, t);
+          });
+        }
+        tl.to(palavras, { opacity: 0, filter: "blur(8px)", duration: 0.25, ease: "power3.in" }, saida);
+      }
+      tl.set({}, {}, 19);
+      window.__timelines["textos"] = tl;
+    })();
+  </script>
+</template>

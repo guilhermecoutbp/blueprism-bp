@@ -1,0 +1,18 @@
+# Arquivos intermediários do vídeo (quadros, áudio bruto, provas)
+brag-output/work/frames/
+brag-output/work/stills/
+brag-output/work/audio/*.wav
+brag-output/work/*.png
+brag-output/work/audio/*.png
+brag-output/work/seq/
+brag-output/work/check*
+
+# Vídeo Vellaro: provas e cache do HyperFrames
+video-vellaro/.hyperframes/
+video-vellaro/.media/
+video-vellaro/node_modules/
+video-vellaro-realista/.hyperframes/
+video-vellaro-realista/.media/
+video-vellaro-realista/renders/*.part*
+video-vellaro*/renders/work-*/
+video-vellaro*/renders/.*hf-transaction*/

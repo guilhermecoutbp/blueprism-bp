@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --papel: #121110;
+        --grafite: #cfcbc4;
+        --latao: #c9a36a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--papel);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+      #papel {
+        position: absolute;
+        inset: 0;
+        background: var(--papel);
+      }
+      #papel-fibra {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        opacity: 0.035;
+      }
+      #papel-vinheta {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse 78% 62% at 50% 46%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.18) 100%);
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28" data-width="1080" data-height="1920">
+      <!-- o papel de algodão preto: fundo fixo com fibra -->
+      <div id="papel">
+        <svg id="papel-fibra" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+          <filter id="papel-ruido" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85 0.35" numOctaves="3" seed="11" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="1080" height="1920" filter="url(#papel-ruido)" />
+        </svg>
+      </div>
+
+      <div
+        id="desenho"
+        class="clip"
+        data-composition-id="desenho"
+        data-composition-src="compositions/desenho.html"
+        data-start="0"
+        data-duration="28"
+        data-track-index="0"
+        data-track-kind="graphics"
+        style="z-index: 1"
+      ></div>
+      <div
+        id="assinatura"
+        class="clip"
+        data-composition-id="assinatura"
+        data-composition-src="compositions/assinatura.html"
+        data-start="22"
+        data-duration="6"
+        data-track-index="1"
+        data-track-kind="graphics"
+        style="z-index: 2"
+      ></div>
+      <div
+        id="textos"
+        class="clip"
+        data-composition-id="textos"
+        data-composition-src="compositions/textos.html"
+        data-start="0"
+        data-duration="19"
+        data-track-index="2"
+        data-track-kind="captions"
+        style="z-index: 3"
+      ></div>
+
+      <div id="papel-vinheta"></div>
+
+      <!-- narração (voz aveludada) -->
+      <audio id="voz-traco" class="clip" src="assets/audio/v1-traco.mp3" data-start="0.4" data-duration="2.56" data-track-index="3" data-volume="1"></audio>
+      <audio id="voz-medida" class="clip" src="assets/audio/v2-medida.mp3" data-start="8.4" data-duration="3.32" data-track-index="3" data-volume="1"></audio>
+      <audio id="voz-lugar" class="clip" src="assets/audio/v3-lugar.mp3" data-start="13.4" data-duration="2.74" data-track-index="3" data-volume="1"></audio>
+      <audio id="voz-marca" class="clip" src="assets/audio/v4-marca.mp3" data-start="24.5" data-duration="1.75" data-track-index="3" data-volume="1"></audio>
+
+      <!-- som das ações: um clique suave no fim de cada cota, um sopro na última linha -->
+      <audio id="sfx-cota1" class="clip" src="assets/audio/click-soft.mp3" data-start="9.38" data-duration="0.37" data-track-index="4" data-volume="0.22"></audio>
+      <audio id="sfx-cota2" class="clip" src="assets/audio/click-soft.mp3" data-start="10.98" data-duration="0.37" data-track-index="4" data-volume="0.18"></audio>
+      <audio id="sfx-cota3" class="clip" src="assets/audio/click-soft.mp3" data-start="11.62" data-duration="0.37" data-track-index="4" data-volume="0.2"></audio>
+      <audio id="sfx-cota4" class="clip" src="assets/audio/click-soft.mp3" data-start="12.18" data-duration="0.37" data-track-index="4" data-volume="0.16"></audio>
+      <audio id="sfx-linha" class="clip" src="assets/audio/whoosh-short.mp3" data-start="19.25" data-duration="0.57" data-track-index="5" data-volume="0.28"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set({}, {}, 28);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
