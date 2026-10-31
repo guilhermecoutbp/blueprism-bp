@@ -14,3 +14,5 @@ video-vellaro/node_modules/
 video-vellaro-realista/.hyperframes/
 video-vellaro-realista/.media/
 video-vellaro-realista/renders/*.part*
+video-vellaro*/renders/work-*/
+video-vellaro*/renders/.*hf-transaction*/
