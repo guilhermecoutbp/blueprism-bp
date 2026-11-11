@@ -1,0 +1,195 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      font-family: var(--font-display, "Nunito"), sans-serif;
+    }
+    #final-chao {
+      position: absolute;
+      inset: 0;
+      background: var(--color-ground, #1a2530);
+    }
+    #final-brilho {
+      position: absolute;
+      left: 90px;
+      top: 220px;
+      width: 900px;
+      height: 1000px;
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(69, 131, 154, 0.42) 0%, rgba(69, 131, 154, 0) 70%);
+    }
+    #final-figura {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+    #final-figura-mov {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+    #final-sombra {
+      position: absolute;
+      left: 250px;
+      top: 1270px;
+      width: 420px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    #final-figura-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      object-fit: cover;
+    }
+    #final-frase {
+      position: absolute;
+      left: 0;
+      top: 1140px;
+      width: 1080px;
+      text-align: center;
+      color: var(--color-ink, #f7f3ec);
+      font-weight: 900;
+      font-size: 96px;
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+    }
+    #final-frase span {
+      display: inline-block;
+    }
+    #final-frase .acento {
+      color: var(--color-accent, #e78d33);
+    }
+    #final-papel {
+      position: absolute;
+      inset: 0;
+      background: var(--color-ink, #f7f3ec);
+    }
+    .bico {
+      position: absolute;
+      height: 8px;
+      background: var(--color-accent, #e78d33);
+      box-shadow: 0 0 22px 6px rgba(231, 141, 51, 0.7);
+      border-radius: 4px;
+    }
+    #final-bico-papel {
+      left: 0;
+      top: 0;
+      width: 1080px;
+    }
+    #final-bico-logo {
+      left: 140px;
+      top: 0;
+      width: 800px;
+    }
+    #final-logo {
+      position: absolute;
+      left: 160px;
+      top: 300px;
+      width: 760px;
+      height: 784px;
+    }
+    #final-logo-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 760px;
+      height: 784px;
+      object-fit: contain;
+    }
+    #final-cta {
+      position: absolute;
+      left: 0;
+      top: 1140px;
+      width: 1080px;
+      text-align: center;
+    }
+    #final-cta .pilula {
+      display: inline-block;
+      padding: 22px 52px 28px;
+      border-radius: 999px;
+      background: var(--color-ground, #1a2530);
+      color: var(--color-ink, #f7f3ec);
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1;
+    }
+    #final-cta .apoio {
+      margin-top: 26px;
+      color: var(--color-ground, #1a2530);
+      font-weight: 800;
+      font-size: 40px;
+      letter-spacing: 0.02em;
+    }
+  </style>
+  <div data-hf-id="hf-1j0d" id="root" data-composition-id="final" data-width="1080" data-height="1920" data-composition-variables="[
+      {&quot;id&quot;:&quot;cta&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Chamada&quot;,&quot;default&quot;:&quot;Encomende já a sua&quot;},
+      {&quot;id&quot;:&quot;cta-apoio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Linha de apoio&quot;,&quot;default&quot;:&quot;chame a gente no direct&quot;}
+    ]">
+    <!-- o fundo vira marinho e só a peça fica -->
+    <div data-hf-id="hf-2z5u" id="final-chao" class="clip" data-start="0" data-duration="3.7"></div>
+    <div data-hf-id="hf-grf3" id="final-brilho" class="clip" data-start="0" data-duration="3.7"></div>
+    <div data-hf-id="hf-nggf" id="final-figura" class="clip" data-start="0" data-duration="3.7">
+      <div data-hf-id="hf-mfmx" id="final-figura-mov">
+        <div data-hf-id="hf-kwlw" id="final-sombra"></div>
+        <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.01,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.06,&quot;shadows&quot;:0.04,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.06,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-lnpw" id="final-figura-img" src="assets/peca-recorte.png" alt="">
+      </div>
+    </div>
+    <div data-hf-id="hf-9h3a" id="final-frase" class="clip" data-start="0.6" data-duration="3.1">
+      <span data-hf-id="hf-dxgm">Feito</span> <span data-hf-id="hf-gbeb">em</span> <span data-hf-id="hf-d94y" class="acento">3D.</span><br data-hf-id="hf-x5px"><span data-hf-id="hf-xumb">Montado</span> <span data-hf-id="hf-g6hf">à</span> <span data-hf-id="hf-ug40">mão.</span>
+    </div>
+
+    <!-- o bico imprime o card final e depois o logo, camada por camada -->
+    <div data-hf-id="hf-yqjm" id="final-papel" class="clip" data-start="3" data-duration="4.2"></div>
+    <div data-hf-id="hf-w4gt" id="final-bico-papel" class="bico clip" data-start="3" data-duration="0.7" data-layout-allow-overflow=""></div>
+    <div data-hf-id="hf-k232" id="final-logo" class="clip" data-start="3.5" data-duration="3.7">
+      <img data-hf-id="hf-j314" id="final-logo-img" src="assets/logo.png" alt="Cassi Print — Decoração e utensílios 3D">
+    </div>
+    <div data-hf-id="hf-tztk" id="final-bico-logo" class="bico clip" data-start="3.5" data-duration="1.05" data-layout-allow-overflow=""></div>
+    <div data-hf-id="hf-c61g" id="final-cta" class="clip" data-start="4.35" data-duration="2.85">
+      <div data-hf-id="hf-bqut" class="pilula" data-var-text="cta">Encomende já a sua</div>
+      <div data-hf-id="hf-ppb4" class="apoio" data-var-text="cta-apoio">chame a gente no direct</div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+
+      // inundação de cor: a peça fica, o mundo em volta vira marinho (o recorte casa com o quadro do vídeo)
+      tl.fromTo("#final-chao", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+      tl.fromTo("#final-brilho", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, 0.1);
+      tl.fromTo("#final-sombra", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+
+      // a peça sobe para o centro e abre espaço para a frase
+      tl.fromTo("#final-figura-mov", { x: 0, y: 0 }, { x: 113, y: -235, duration: 0.75, ease: "expo.out" }, 0.42);
+
+      const palavras = gsap.utils.toArray("#final-frase span");
+      tl.fromTo(palavras, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, ease: "power2.out", stagger: 0.07 }, 0.7);
+
+      // o papel creme é impresso de baixo para cima por cima de tudo
+      tl.fromTo("#final-papel", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.inOut" }, 3.0);
+      tl.fromTo("#final-bico-papel", { y: 1912 }, { y: -8, duration: 0.6, ease: "power2.inOut" }, 3.0);
+      tl.to("#final-bico-papel", { opacity: 0, duration: 0.08, ease: "none" }, 3.58);
+
+      // o logo cresce em camadas (14 passos, ~2 quadros cada) com o bico correndo na borda
+      tl.fromTo("#final-logo-img", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "steps(14)" }, 3.55);
+      tl.fromTo("#final-bico-logo", { y: 1084 }, { y: 296, duration: 0.9, ease: "steps(14)" }, 3.55);
+      tl.to("#final-bico-logo", { opacity: 0, duration: 0.1, ease: "none" }, 4.45);
+
+      // chamada
+      tl.fromTo("#final-cta .pilula", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 4.4);
+      tl.fromTo("#final-cta .apoio", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 4.6);
+
+      tl.set({}, {}, 7.2);
+      window.__timelines["final"] = tl;
+    })();
+  </script>
+</template>

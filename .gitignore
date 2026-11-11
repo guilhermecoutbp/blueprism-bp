@@ -16,3 +16,9 @@ video-vellaro-realista/.media/
 video-vellaro-realista/renders/*.part*
 video-vellaro*/renders/work-*/
 video-vellaro*/renders/.*hf-transaction*/
+
+# Vídeo Cassi Print: provas e cache do HyperFrames
+video-cassi-print/.hyperframes/
+video-cassi-print/.media/
+video-cassi-print/renders/*.part*
+video-cassi-print/renders/work-*/

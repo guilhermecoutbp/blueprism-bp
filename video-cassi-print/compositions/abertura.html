@@ -1,0 +1,81 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      font-family: var(--font-display, "Nunito"), sans-serif;
+    }
+    #abertura-kicker {
+      position: absolute;
+      left: 0;
+      top: 176px;
+      width: 1080px;
+      text-align: center;
+    }
+    #abertura-kicker .pilula {
+      display: inline-block;
+      padding: 14px 30px 16px;
+      border-radius: 999px;
+      background: var(--color-ground, #1a2530);
+      color: var(--color-ink, #f7f3ec);
+      font-weight: 800;
+      font-size: 38px;
+      letter-spacing: 0.04em;
+    }
+    #abertura-kicker .pilula span {
+      display: inline-block;
+    }
+    #abertura-titulo {
+      position: absolute;
+      left: 0;
+      top: 252px;
+      width: 1080px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 118px;
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      color: var(--color-ground, #1a2530);
+      text-transform: uppercase;
+      text-shadow: 0 0 28px rgba(247, 243, 236, 0.95), 0 0 10px rgba(247, 243, 236, 0.85);
+    }
+    #abertura-titulo span {
+      display: inline-block;
+    }
+    #abertura-titulo .acento {
+      color: var(--color-accent, #e78d33);
+      background: var(--color-ground, #1a2530);
+      border-radius: 18px;
+      padding: 0 22px 4px;
+      margin-left: 6px;
+      text-shadow: none;
+    }
+  </style>
+  <div id="root" data-composition-id="abertura" data-width="1080" data-height="1920" data-composition-variables='[{"id":"kicker","type":"string","label":"Selo da abertura","default":"do filamento à estante"}]'>
+    <div id="abertura-kicker" class="clip" data-start="0" data-duration="2.4">
+      <div class="pilula"><span data-var-text="kicker">do filamento à estante</span></div>
+    </div>
+    <div id="abertura-titulo" class="clip" data-start="0" data-duration="2.4">
+      <span>Impresso</span><br /><span>em</span> <span class="acento">3D</span>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // quadro 0 já é a capa: título e peça pronta na tela. O selo entra na primeira batida.
+      tl.fromTo(
+        "#abertura-kicker .pilula",
+        { opacity: 0, scale: 0.9, filter: "blur(6px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "back.out(1.6)" },
+        0.38
+      );
+      // saída palavra a palavra, antes do bico imprimir a próxima cena
+      const palavras = gsap.utils.toArray("#abertura-titulo span");
+      tl.to(palavras, { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power3.in", stagger: 0.06 }, 2.08);
+      tl.to("#abertura-kicker .pilula", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 2.04);
+      tl.set({}, {}, 2.4);
+      window.__timelines["abertura"] = tl;
+    })();
+  </script>
+</template>
