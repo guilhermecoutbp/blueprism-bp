@@ -1,101 +1,108 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "brag-slim": {
       "source": "latent-spaces/brag",
       "sourceType": "github",
       "skillPath": "skills/brag-slim/SKILL.md",
-      "computedHash": "2bd6f704826635236b91d7d19a6d8d75f1dd8fc6de234a1e2eb645282b021298"
+      "computedHash": ""
     },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
       "skillPath": "skills/find-skills/SKILL.md",
-      "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+      "computedHash": ""
     },
     "gsap-core": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-core/SKILL.md",
-      "computedHash": "c4a01101d9e1aafbf4b49f75d74f9349790d8741981ba0237c990093863035a6"
+      "computedHash": ""
     },
     "gsap-performance": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-performance/SKILL.md",
-      "computedHash": "863842ac2d7aee53fd4f0025c960173d7ad3e658a5715b89b2211fa280213c1f"
+      "computedHash": ""
     },
     "gsap-scrolltrigger": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
-      "computedHash": "1cdc5647693783cb7a662d84a5de434c88a051ed56b4d33597c9b5782b5973e6"
+      "computedHash": ""
     },
     "gsap-timeline": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
       "skillPath": "skills/gsap-timeline/SKILL.md",
-      "computedHash": "54981c2feec5a9c0d57988aeb32315af32bdeadd261550d5e9db7a7b1f08b487"
+      "computedHash": ""
     },
     "hyperframes": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
       "skillPath": "skills/hyperframes/SKILL.md",
-      "computedHash": "126f3b0588ba564c4d5767d12357eebda38c006a375015eb4a563c23337ce6f9"
+      "computedHash": ""
     },
     "hyperframes-cli": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
       "skillPath": "skills/hyperframes-cli/SKILL.md",
-      "computedHash": "790c35708f9c7891e79a68d5fb3f05ab4d42743ac2348daf81a76300d3607818"
+      "computedHash": ""
     },
     "media-use": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
       "skillPath": "skills/media-use/SKILL.md",
-      "computedHash": "8215b055a60b33fd2bb122ae176b2d41ccfa33c07f9fd445ea211656ff5e3426"
+      "computedHash": ""
+    },
+    "motion-design": {
+      "source": "lottiefiles/motion-design-skill",
+      "sourceType": "github",
+      "skillPath": "skills/motion-design/SKILL.md",
+      "computedHash": "bf661a366f1a51e6ccee48f1b3addbc2e5b1bf69321d99157619fd4a52c1e0d7",
+      "installMode": "copy"
     },
     "motion-doctrine": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
       "skillPath": ".agents/skills/motion-doctrine/SKILL.md",
-      "computedHash": "28d51d95e6bd0c808961cd6ced29e11a09f10f7711133ff86e9eb10f45c30ee2"
+      "computedHash": ""
     },
     "threejs-animation": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-animation/SKILL.md",
-      "computedHash": "52acf24ba76b47b094e5734622947fcc85deebf2469bb5c8ef77a1f1dcfc3e5c"
+      "computedHash": ""
     },
     "threejs-fundamentals": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-fundamentals/SKILL.md",
-      "computedHash": "c0293a5eaf5168cdbeb1e9bfc5d5b7aa24396f604a8695b26a72d833c2352108"
+      "computedHash": ""
     },
     "threejs-lighting": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-lighting/SKILL.md",
-      "computedHash": "231a7aec3b2d6aa061026397b5453b22518ac9391eb0f31164bfd06dd4bcacd6"
+      "computedHash": ""
     },
     "threejs-materials": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-materials/SKILL.md",
-      "computedHash": "8dbeb3cc26e0825e0bb6857bcdab04d997a31d8a2d685d850cdfce98df4c875d"
+      "computedHash": ""
     },
     "threejs-postprocessing": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-postprocessing/SKILL.md",
-      "computedHash": "21ba7ee7155d7ad8643bafc0a832d29bf87a37b24acd5e4201a0b7c01470ab09"
+      "computedHash": ""
     },
     "threejs-textures": {
       "source": "cloudai-x/threejs-skills",
       "sourceType": "github",
       "skillPath": "skills/threejs-textures/SKILL.md",
-      "computedHash": "73544dc3606b38270ddd909d57fd8a5df8291c3bae432417cf3f797ab1ca1fd3"
+      "computedHash": ""
     }
   }
 }
