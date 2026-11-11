@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }
+    #logo-papel { position: absolute; left: -200px; top: -200px; width: 1480px; height: 2320px; background: var(--color-ink, #f7f3ec); }
+    #logo-camadas { position: absolute; left: 0; top: 1360px; width: 1080px; height: 560px;
+      background: repeating-linear-gradient(to bottom, rgba(231, 141, 51, 0.16) 0px, rgba(231, 141, 51, 0.16) 4px, rgba(231, 141, 51, 0) 4px, rgba(231, 141, 51, 0) 18px); }
+    #logo-marca { position: absolute; left: 160px; top: 300px; width: 760px; height: 784px; }
+    #logo-img { position: absolute; left: 0; top: 0; width: 760px; height: 784px; object-fit: contain; }
+    #logo-cta { position: absolute; left: 0; top: 1140px; width: 1080px; text-align: center; }
+    #logo-cta .pilula { display: inline-block; padding: 22px 52px 28px; border-radius: 999px; background: var(--color-ground, #1a2530);
+      color: var(--color-ink, #f7f3ec); font-weight: 900; font-size: 64px; line-height: 1; }
+    #logo-cta .apoio { margin-top: 26px; color: var(--color-ground, #1a2530); font-weight: 800; font-size: 40px; letter-spacing: 0.02em; }
+  </style>
+  <div id="root" data-composition-id="logo" data-width="1080" data-height="1920"
+    data-composition-variables='[{"id":"cta","type":"string","label":"Chamada","default":"Encomende já a sua"},{"id":"cta-apoio","type":"string","label":"Linha de apoio","default":"chame a gente no direct"}]'>
+    <div id="logo-papel" class="clip" data-start="0" data-duration="4.8" data-layout-allow-overflow></div>
+    <div id="logo-camadas" class="clip" data-start="0" data-duration="4.8"></div>
+    <div id="logo-marca" class="clip" data-start="0" data-duration="4.8">
+      <img id="logo-img" src="assets/logo.png" alt="Cassi Print — Decoração e utensílios 3D" />
+    </div>
+    <div id="logo-cta" class="clip" data-start="0.9" data-duration="3.9">
+      <div class="pilula" data-var-text="cta">Encomende já a sua</div>
+      <div class="apoio" data-var-text="cta-apoio">chame a gente no direct</div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // as camadas laranja sobem por baixo (o card "termina de imprimir"), depois a chamada
+      tl.fromTo("#logo-camadas", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "steps(10)" }, 0.2);
+      tl.fromTo("#logo-cta .pilula", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 0.95);
+      tl.fromTo("#logo-cta .apoio", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 1.2);
+      tl.set({}, {}, 4.8);
+      window.__timelines["logo"] = tl;
+    })();
+  </script>
+</template>

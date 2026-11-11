@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-resolution="portrait" data-composition-variables="[
+    {&quot;id&quot;:&quot;color-ground&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Fundo&quot;,&quot;default&quot;:&quot;#1a2530&quot;},
+    {&quot;id&quot;:&quot;color-ink&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Texto&quot;,&quot;default&quot;:&quot;#f7f3ec&quot;},
+    {&quot;id&quot;:&quot;color-accent&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Destaque (filamento)&quot;,&quot;default&quot;:&quot;#e78d33&quot;},
+    {&quot;id&quot;:&quot;color-blue&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Azul da marca&quot;,&quot;default&quot;:&quot;#45839a&quot;},
+    {&quot;id&quot;:&quot;font-display&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Fonte&quot;,&quot;default&quot;:&quot;Nunito&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root { --color-ground: #1a2530; --color-ink: #f7f3ec; --color-accent: #e78d33; --color-blue: #45839a; --font-display: "Nunito"; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--color-ground); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display), sans-serif; }
+      .cena { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #fundo-host { z-index: 1; }
+      #cena-gancho { z-index: 2; overflow: hidden; }
+      #cena-1, #cena-2, #cena-3, #cena-4, #cena-5, #cena-6 { z-index: 3; }
+      #cena-peca { z-index: 4; }
+      #hud-host { z-index: 5; }
+      #cena-logo { z-index: 6; }
+      #lente-a { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #lente-a video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-88f4" id="root" data-composition-id="main" data-start="0" data-duration="28.4" data-width="1080" data-height="1920">
+      <div data-hf-id="hf-m134" id="fundo-host" class="clip" data-composition-id="fundo" data-composition-src="compositions/fundo.html" data-start="0" data-duration="28.4" data-track-index="0" data-track-kind="graphics"></div>
+
+      <!-- gancho: a peça pronta em tela cheia -->
+      <div data-hf-id="hf-dyk1" id="cena-gancho" class="cena">
+        <div data-hf-id="hf-miju" id="lente-a" data-layout-allow-overflow="">
+          <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.01,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.06,&quot;shadows&quot;:0.04,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.06,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-dsqt" id="v-gancho" class="clip" src="assets/montagem.mp4" data-start="0" data-duration="2.8" data-media-start="30.8" data-playback-rate="0.6" data-track-index="1" muted playsinline></video>
+        </div>
+        <div data-hf-id="hf-o6yt" id="abertura" class="clip" data-composition-id="abertura" data-composition-src="compositions/abertura.html" data-start="0" data-duration="2.8" data-track-index="2" data-track-kind="graphics"></div>
+      </div>
+
+      <!-- os seis passos da montagem, em cartões que correm para a esquerda -->
+      <div data-hf-id="hf-d554" id="cena-1" class="cena">
+        <div data-hf-id="hf-jlyy" id="passo-1" class="clip" data-composition-id="passo-1" data-composition-src="compositions/passo-1.html" data-start="2.8" data-duration="2.4" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+      <div data-hf-id="hf-o0mr" id="cena-2" class="cena">
+        <div data-hf-id="hf-q026" id="passo-2" class="clip" data-composition-id="passo-2" data-composition-src="compositions/passo-2.html" data-start="5.2" data-duration="2.4" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+      <div data-hf-id="hf-k2iq" id="cena-3" class="cena">
+        <div data-hf-id="hf-jkep" id="passo-3" class="clip" data-composition-id="passo-3" data-composition-src="compositions/passo-3.html" data-start="7.6" data-duration="2.0" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+      <div data-hf-id="hf-1at1" id="cena-4" class="cena">
+        <div data-hf-id="hf-f6ro" id="passo-4" class="clip" data-composition-id="passo-4" data-composition-src="compositions/passo-4.html" data-start="9.6" data-duration="2.4" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+      <div data-hf-id="hf-0j58" id="cena-5" class="cena">
+        <div data-hf-id="hf-4m5z" id="passo-5" class="clip" data-composition-id="passo-5" data-composition-src="compositions/passo-5.html" data-start="12.0" data-duration="2.4" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+      <div data-hf-id="hf-9713" id="cena-6" class="cena">
+        <div data-hf-id="hf-u131" id="passo-6" class="clip" data-composition-id="passo-6" data-composition-src="compositions/passo-6.html" data-start="14.4" data-duration="5.2" data-track-index="3" data-track-kind="graphics"></div>
+      </div>
+
+      <!-- a peça pronta sobe -->
+      <div data-hf-id="hf-tnya" id="cena-peca" class="cena">
+        <div data-hf-id="hf-pd20" id="peca" class="clip" data-composition-id="peca" data-composition-src="compositions/peca.html" data-start="19.6" data-duration="4" data-track-index="4" data-track-kind="graphics"></div>
+      </div>
+
+      <div data-hf-id="hf-rfb3" id="hud-host" class="clip" data-composition-id="hud" data-composition-src="compositions/hud.html" data-start="2.8" data-duration="16.8" data-track-index="5" data-track-kind="graphics"></div>
+
+      <!-- chegada do logo -->
+      <div data-hf-id="hf-khne" id="cena-logo" class="cena">
+        <div data-hf-id="hf-5xrz" id="logo" class="clip" data-composition-id="logo" data-composition-src="compositions/logo.html" data-start="23.6" data-duration="4.8" data-track-index="6" data-track-kind="graphics"></div>
+      </div>
+
+      <audio data-hf-id="hf-mxrt" id="trilha" class="clip" src="assets/trilha.mp3" data-start="0" data-duration="28.4" data-volume="0.85" data-track-index="10" data-media-start="0" data-fade-out="1.4"></audio>
+      <audio data-hf-id="hf-7n81" id="sfx-selo" class="clip" src="assets/sfx/pop.mp3" data-start="0.71" data-duration="0.6" data-volume="0.5" data-track-index="11"></audio>
+      <audio data-hf-id="hf-qytr" id="sfx-corte1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="2.67" data-duration="0.57" data-volume="0.4" data-track-index="12"></audio>
+      <audio data-hf-id="hf-g999" id="sfx-corte2" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="4.93" data-duration="0.8" data-volume="0.32" data-track-index="13" data-media-start="2.2" data-fade-out="0.3"></audio>
+      <audio data-hf-id="hf-ns80" id="sfx-corte3" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="7.43" data-duration="0.65" data-volume="0.34" data-track-index="14" data-playback-rate="0.8"></audio>
+      <audio data-hf-id="hf-qv0q" id="sfx-corte4" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="9.47" data-duration="0.57" data-volume="0.4" data-track-index="15"></audio>
+      <audio data-hf-id="hf-17tf" id="sfx-rabisco" class="clip" src="assets/sfx/click-soft.mp3" data-start="10.11" data-duration="0.37" data-volume="0.5" data-track-index="16"></audio>
+      <audio data-hf-id="hf-jque" id="sfx-corte5" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="11.73" data-duration="0.8" data-volume="0.32" data-track-index="17" data-media-start="2.2" data-fade-out="0.3"></audio>
+      <audio data-hf-id="hf-h7q3" id="sfx-corte6" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="14.23" data-duration="0.65" data-volume="0.34" data-track-index="18" data-playback-rate="0.8"></audio>
+      <audio data-hf-id="hf-hcaz" id="sfx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="16.16" data-duration="3.5" data-volume="0.3" data-track-index="19" data-media-start="0" data-fade-in="1" data-fade-out="0.1"></audio>
+      <audio data-hf-id="hf-qufb" id="sfx-impacto" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="19.56" data-duration="2.1" data-volume="0.6" data-track-index="20"></audio>
+      <audio data-hf-id="hf-ybue" id="sfx-logo" class="clip" src="assets/sfx/impact-bass-2.mp3" data-start="23.6" data-duration="1.2" data-volume="0.35" data-track-index="21" data-fade-out="0.4"></audio>
+      <audio data-hf-id="hf-t0xr" id="sfx-cta" class="clip" src="assets/sfx/pop.mp3" data-start="24.43" data-duration="0.6" data-volume="0.45" data-track-index="22"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // gancho: a câmera chega na peça pronta e assenta
+      tl.fromTo("#lente-a", { scale: 1.37, x: 128, y: 322, transformOrigin: "50% 50%" }, { scale: 1.32, x: 130, y: 300, duration: 1.1, ease: "expo.out" }, 0);
+
+      // <seams:auto> — generated by seam-stamp.mjs from ledger.json; do not hand-edit.
+      // Regenerate: node <motion-doctrine>/scripts/seam-stamp.mjs --ledger ledger.json --write index.html
+      gsap.set("#cena-gancho", { autoAlpha: 1, xPercent: 0, yPercent: 0, scale: 1, filter: "blur(0px)", transformOrigin: "50% 50%" });
+      gsap.set(["#cena-1","#cena-2","#cena-3","#cena-4","#cena-5","#cena-6","#cena-peca"], { autoAlpha: 0, xPercent: 0, yPercent: 0, scale: 1, filter: "blur(0px)", transformOrigin: "50% 50%" });
+      gsap.set("#cena-logo", { autoAlpha: 0, scale: 1.25, filter: "blur(18px)", xPercent: 0, yPercent: 0, transformOrigin: "50% 50%" });
+      
+      // SEAM — gancho→passo 1 : cut-the-curve LEFT (cut @2.8)
+      tl.to("#cena-gancho", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 2.46);
+      tl.set("#cena-gancho", { autoAlpha: 0 }, 2.8);
+      tl.fromTo("#cena-1", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 2.8);
+      
+      // SEAM — passo 1→passo 2 : cut-the-curve LEFT (cut @5.2)
+      tl.to("#cena-1", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 4.86);
+      tl.set("#cena-1", { autoAlpha: 0 }, 5.2);
+      tl.fromTo("#cena-2", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 5.2);
+      
+      // SEAM — passo 2→passo 3 : cut-the-curve LEFT (cut @7.6)
+      tl.to("#cena-2", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 7.26);
+      tl.set("#cena-2", { autoAlpha: 0 }, 7.6);
+      tl.fromTo("#cena-3", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 7.6);
+      
+      // SEAM — passo 3→passo 4 : cut-the-curve LEFT (cut @9.6)
+      tl.to("#cena-3", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 9.26);
+      tl.set("#cena-3", { autoAlpha: 0 }, 9.6);
+      tl.fromTo("#cena-4", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 9.6);
+      
+      // SEAM — passo 4→passo 5 : cut-the-curve LEFT (cut @12)
+      tl.to("#cena-4", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 11.66);
+      tl.set("#cena-4", { autoAlpha: 0 }, 12);
+      tl.fromTo("#cena-5", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 12);
+      
+      // SEAM — passo 5→passo 6 : cut-the-curve LEFT (cut @14.4)
+      tl.to("#cena-5", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 14.06);
+      tl.set("#cena-5", { autoAlpha: 0 }, 14.4);
+      tl.fromTo("#cena-6", { xPercent: 14, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 14.4);
+      
+      // SEAM — passo 6→peça pronta : cut-the-curve UP (elevação: a conclusão sobe) (cut @19.6)
+      tl.to("#cena-6", { yPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 19.26);
+      tl.set("#cena-6", { autoAlpha: 0 }, 19.6);
+      tl.fromTo("#cena-peca", { yPercent: 14, autoAlpha: 0.35 }, { yPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 19.6);
+      
+      // SEAM — peça pronta→logo : inverse zoom (chegada da marca) (cut @23.6)
+      tl.to("#cena-peca", { scale: 0.8, filter: "blur(18px)", duration: 0.21, ease: "power3.in" }, 23.39);
+      tl.to("#cena-peca", { autoAlpha: 0, duration: 0.21, ease: "none" }, 23.39);
+      tl.set("#cena-peca", { autoAlpha: 0 }, 23.6);
+      tl.fromTo("#cena-logo", { autoAlpha: 0.15, scale: 1.25, filter: "blur(18px)" }, { autoAlpha: 1, scale: 1.0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", immediateRender: false }, 23.6);
+      
+      // </seams:auto>
+
+      tl.set({}, {}, 28.4);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

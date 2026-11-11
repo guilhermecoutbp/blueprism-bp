@@ -1,0 +1,133 @@
+{
+  "fps": 30,
+  "seams": [
+    {
+      "id": "gancho→passo 1",
+      "cut": 2.8,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-gancho",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-1",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 1→passo 2",
+      "cut": 5.2,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-1",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-2",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 2→passo 3",
+      "cut": 7.6,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-2",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-3",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 3→passo 4",
+      "cut": 9.6,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-3",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-4",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 4→passo 5",
+      "cut": 12.0,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-4",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-5",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 5→passo 6",
+      "cut": 14.4,
+      "technique": "cut-the-curve LEFT",
+      "exit": {
+        "selector": "#cena-5",
+        "axis": "x",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-6",
+        "axis": "x",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "passo 6→peça pronta",
+      "cut": 19.6,
+      "technique": "cut-the-curve UP (elevação: a conclusão sobe)",
+      "exit": {
+        "selector": "#cena-6",
+        "axis": "y",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-peca",
+        "axis": "y",
+        "dir": -1,
+        "travel": 14
+      }
+    },
+    {
+      "id": "peça pronta→logo",
+      "cut": 23.6,
+      "technique": "inverse zoom (chegada da marca)",
+      "exit": {
+        "selector": "#cena-peca",
+        "axis": "z",
+        "dir": -1
+      },
+      "entry": {
+        "selector": "#cena-logo",
+        "axis": "z",
+        "dir": -1,
+        "scanRoot": "#cena-logo"
+      }
+    }
+  ]
+}

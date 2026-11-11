@@ -1,0 +1,43 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }
+    .cartao { position: absolute; left: 90px; top: 340px; width: 900px; height: 980px; border-radius: 44px; overflow: hidden;
+      background: #0f171f; box-shadow: 0 34px 80px rgba(0, 0, 0, 0.5); }
+    .lente { position: absolute; left: 0; top: 0; width: 900px; height: 980px; }
+    .lente video { position: absolute; left: 0; top: 0; width: 900px; height: 980px; object-fit: cover; }
+    .escurece { position: absolute; left: 0; top: 600px; width: 900px; height: 380px;
+      background: linear-gradient(to bottom, rgba(26, 37, 48, 0) 0%, rgba(26, 37, 48, 0.82) 100%); }
+    .moldura { position: absolute; inset: 0; border-radius: 44px; border: 7px solid var(--color-accent, #e78d33); }
+    .legenda { position: absolute; left: 136px; top: 1070px; width: 820px; color: var(--color-ink, #f7f3ec);
+      font-weight: 900; font-size: 100px; line-height: 1.02; letter-spacing: -0.02em; text-transform: uppercase; }
+    .legenda .linha { display: block; white-space: nowrap; }
+    .legenda .pal { display: inline-block; }
+    .legenda .marca { position: relative; display: inline-block; padding: 0 20px 6px; margin-left: -20px; }
+    .legenda .tarja { position: absolute; left: 0; top: 8px; right: 0; bottom: 0; border-radius: 16px;
+      background: var(--color-accent, #e78d33); }
+    .legenda .txt { position: relative; color: var(--color-ground, #1a2530); }
+  </style>
+  <div data-hf-id="hf-llqr" id="root" data-composition-id="passo-3" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-jp6t" id="passo-3-cartao" class="cartao">
+      <div data-hf-id="hf-ppfc" id="passo-3-lente" class="lente" data-layout-allow-overflow="">
+          <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.01,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.06,&quot;shadows&quot;:0.04,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.06,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-k4yz" id="v-chapeu" class="clip" src="assets/montagem.mp4" data-start="0" data-duration="2.0" data-media-start="11.0" data-playback-rate="1.2" data-track-index="0" muted playsinline style="object-position: 50% 45%"></video>
+      </div>
+      <div data-hf-id="hf-1wdv" class="escurece"></div>
+      <div data-hf-id="hf-69ke" class="moldura"></div>
+    </div>
+      <div data-hf-id="hf-s39s" id="passo-3-leg1" class="legenda">
+        <div data-hf-id="hf-n2zk" class="linha"><span data-hf-id="hf-gkwk" class="pal">Chapéu</span> <span data-hf-id="hf-2skz" class="pal">de</span></div>
+        <div data-hf-id="hf-g0yg" class="linha"><span data-hf-id="hf-48yj" class="marca"><span data-hf-id="hf-rcbp" class="tarja"></span><span data-hf-id="hf-78ue" class="pal txt">marinheiro.</span></span></div>
+      </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#passo-3-lente", { scale: 1.1, transformOrigin: "50% 40%" }, 1.2);
+      tl.fromTo("#passo-3-leg1 .pal", { opacity: 0, scale: 1.7, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out", stagger: 0.08 }, 0.3);
+      tl.fromTo("#passo-3-leg1 .tarja", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.42);
+      tl.set({}, {}, 2.0);
+      window.__timelines["passo-3"] = tl;
+    })();
+  </script>
+</template>

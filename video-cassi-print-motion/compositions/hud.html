@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }
+    #hud-painel { position: absolute; left: 90px; top: 182px; width: 900px; height: 132px; border-radius: 30px;
+      background: #22303d; border: 3px solid rgba(231, 141, 51, 0.6); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+    #hud-rotulo { position: absolute; left: 34px; top: 10px; color: var(--color-accent, #e78d33); font-weight: 800; font-size: 28px; line-height: 34px; letter-spacing: 0.14em; }
+    .janela { position: absolute; overflow: hidden; height: 74px; }
+    .janela .item { height: 74px; line-height: 74px; white-space: nowrap; }
+    #hud-jnum { left: 32px; top: 46px; width: 110px; }
+    #hud-nums { color: var(--color-ink, #f7f3ec); font-weight: 900; font-size: 62px; }
+    #hud-div { position: absolute; left: 150px; top: 24px; width: 3px; height: 72px; background: rgba(247, 243, 236, 0.18); }
+    #hud-jnome { left: 178px; top: 24px; width: 540px; }
+    #hud-nomes { color: var(--color-ink, #f7f3ec); font-weight: 900; font-size: 60px; letter-spacing: -0.01em; }
+    #hud-pct { position: absolute; right: 34px; top: 30px; width: 170px; text-align: right; color: var(--color-accent, #e78d33);
+      font-weight: 900; font-size: 52px; font-variant-numeric: tabular-nums; }
+    #hud-trilho { position: absolute; left: 178px; right: 34px; bottom: 18px; height: 10px; border-radius: 5px; background: rgba(247, 243, 236, 0.14); overflow: hidden; }
+    #hud-barra { position: absolute; left: 0; top: 0; width: 100%; height: 10px; border-radius: 5px; background: var(--color-accent, #e78d33); }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <div id="hud-painel" class="clip" data-start="0" data-duration="16.8">
+      <div id="hud-rotulo">PASSO</div>
+      <div id="hud-jnum" class="janela" data-layout-ignore><div id="hud-nums"><div class="item">01</div><div class="item">02</div><div class="item">03</div><div class="item">04</div><div class="item">05</div><div class="item">06</div><div class="item">06</div></div></div>
+      <div id="hud-div"></div>
+      <div id="hud-jnome" class="janela" data-layout-ignore><div id="hud-nomes"><div class="item">As peças</div><div class="item">O rosto</div><div class="item">O chapéu</div><div class="item">Os detalhes</div><div class="item">Os braços</div><div class="item">O barco</div><div class="item">Pronto!</div></div></div>
+      <div id="hud-pct">0%</div>
+      <div id="hud-trilho"><div id="hud-barra"></div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const pctEl = document.querySelector("#hud-pct");
+      const pct = { v: 0 };
+      const mostra = () => { pctEl.textContent = Math.round(pct.v) + "%"; };
+      // entra junto com o primeiro cartão, na corrente (para a esquerda)
+      tl.fromTo("#hud-painel", { xPercent: 12, opacity: 0.35 }, { xPercent: 0, opacity: 1, duration: 0.42, ease: "power4.out" }, 0);
+      tl.set("#hud-barra", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+      // a barra e a porcentagem avançam passo a passo; o nome e o número rolam a cada corte
+      tl.fromTo("#hud-barra", { scaleX: 0.0000 }, { scaleX: 0.1667, duration: 2.38, ease: "none", immediateRender: false }, 0);
+      tl.fromTo(pct, { v: 0.000 }, { v: 16.667, duration: 2.38, ease: "none", immediateRender: false, onUpdate: mostra }, 0);
+      tl.fromTo("#hud-barra", { scaleX: 0.1667 }, { scaleX: 0.3333, duration: 2.38, ease: "none", immediateRender: false }, 2.4);
+      tl.fromTo(pct, { v: 16.667 }, { v: 33.333, duration: 2.38, ease: "none", immediateRender: false, onUpdate: mostra }, 2.4);
+      tl.fromTo("#hud-barra", { scaleX: 0.3333 }, { scaleX: 0.5000, duration: 1.98, ease: "none", immediateRender: false }, 4.8);
+      tl.fromTo(pct, { v: 33.333 }, { v: 50.000, duration: 1.98, ease: "none", immediateRender: false, onUpdate: mostra }, 4.8);
+      tl.fromTo("#hud-barra", { scaleX: 0.5000 }, { scaleX: 0.6667, duration: 2.38, ease: "none", immediateRender: false }, 6.8);
+      tl.fromTo(pct, { v: 50.000 }, { v: 66.667, duration: 2.38, ease: "none", immediateRender: false, onUpdate: mostra }, 6.8);
+      tl.fromTo("#hud-barra", { scaleX: 0.6667 }, { scaleX: 0.8333, duration: 2.38, ease: "none", immediateRender: false }, 9.2);
+      tl.fromTo(pct, { v: 66.667 }, { v: 83.333, duration: 2.38, ease: "none", immediateRender: false, onUpdate: mostra }, 9.2);
+      tl.fromTo("#hud-barra", { scaleX: 0.8333 }, { scaleX: 1.0000, duration: 4.78, ease: "none", immediateRender: false }, 11.6);
+      tl.fromTo(pct, { v: 83.333 }, { v: 100.000, duration: 4.78, ease: "none", immediateRender: false, onUpdate: mostra }, 11.6);
+      tl.to("#hud-nomes", { y: -74, duration: 0.42, ease: "power4.out" }, 2.4);
+      tl.to("#hud-nums", { y: -74, duration: 0.42, ease: "power4.out" }, 2.4);
+      tl.to("#hud-nomes", { y: -148, duration: 0.42, ease: "power4.out" }, 4.8);
+      tl.to("#hud-nums", { y: -148, duration: 0.42, ease: "power4.out" }, 4.8);
+      tl.to("#hud-nomes", { y: -222, duration: 0.42, ease: "power4.out" }, 6.8);
+      tl.to("#hud-nums", { y: -222, duration: 0.42, ease: "power4.out" }, 6.8);
+      tl.to("#hud-nomes", { y: -296, duration: 0.42, ease: "power4.out" }, 9.2);
+      tl.to("#hud-nums", { y: -296, duration: 0.42, ease: "power4.out" }, 9.2);
+      tl.to("#hud-nomes", { y: -370, duration: 0.42, ease: "power4.out" }, 11.6);
+      tl.to("#hud-nums", { y: -370, duration: 0.42, ease: "power4.out" }, 11.6);
+      tl.to("#hud-nomes", { y: -444, duration: 0.42, ease: "power4.out" }, 16.4);
+      tl.to("#hud-nums", { y: -444, duration: 0.42, ease: "power4.out" }, 16.4);
+      tl.fromTo("#hud-painel", { borderColor: "rgba(231, 141, 51, 0.6)" }, { borderColor: "rgba(231, 141, 51, 1)", duration: 0.3, ease: "power2.out" }, 16.4);
+      // sai para cima junto com o corte de elevação (a conclusão sobe)
+      tl.to("#hud-painel", { yPercent: -120, opacity: 0, duration: 0.34, ease: "power3.in" }, 16.46);
+      tl.set({}, {}, 16.8);
+      window.__timelines["hud"] = tl;
+    })();
+  </script>
+</template>

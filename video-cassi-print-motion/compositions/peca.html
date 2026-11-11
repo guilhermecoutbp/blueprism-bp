@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }
+    #peca-raios { position: absolute; left: 540px; top: 760px; width: 0; height: 0; }
+    #peca-raios svg { position: absolute; left: -1300px; top: -1300px; overflow: visible; }
+    #peca-luz { position: absolute; left: 90px; top: 310px; width: 900px; height: 900px;
+      background: radial-gradient(circle at 50% 50%, rgba(247, 243, 236, 0.22) 0%, rgba(247, 243, 236, 0) 60%); }
+    #peca-figura { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: translate(113px, -190px) scale(1.04); }
+    #peca-figura-mov { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #peca-sombra { position: absolute; left: 250px; top: 1280px; width: 420px; height: 90px; border-radius: 50%;
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%); }
+    #peca-img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #peca-confete { position: absolute; left: 540px; top: 760px; width: 0; height: 0; }
+    .conf { position: absolute; left: 0; top: 0; border-radius: 4px; }
+    #peca-frase { position: absolute; left: 0; top: 1110px; width: 1080px; text-align: center; color: var(--color-ink, #f7f3ec);
+      font-weight: 900; font-size: 96px; line-height: 1.04; letter-spacing: -0.015em; text-transform: uppercase; }
+    #peca-frase .pal { display: inline-block; }
+    #peca-frase .marca { position: relative; display: inline-block; padding: 0 18px 6px; }
+    #peca-frase .tarja { position: absolute; left: 0; top: 8px; right: 0; bottom: 0; border-radius: 16px; background: var(--color-accent, #e78d33); }
+    #peca-frase .txt { position: relative; color: var(--color-ground, #1a2530); }
+  </style>
+  <div data-hf-id="hf-h7sk" id="root" data-composition-id="peca" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-bmaz" id="peca-raios" class="clip" data-start="0" data-duration="4" data-layout-allow-overflow="">
+      <svg data-hf-id="hf-c06f" id="peca-raios-svg" width="2600" height="2600" viewBox="-1300 -1300 2600 2600"><path data-hf-id="hf-h28u" d="M 0 0 L 1300.0 0.0 L 1280.3 225.7 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-r57x" d="M 0 0 L 1221.6 444.6 L 1125.8 650.0 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-i10i" d="M 0 0 L 995.9 835.6 L 835.6 995.9 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-1c0z" d="M 0 0 L 650.0 1125.8 L 444.6 1221.6 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-cs5m" d="M 0 0 L 225.7 1280.3 L 0.0 1300.0 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-q1rh" d="M 0 0 L -225.7 1280.3 L -444.6 1221.6 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-05rq" d="M 0 0 L -650.0 1125.8 L -835.6 995.9 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-4b6j" d="M 0 0 L -995.9 835.6 L -1125.8 650.0 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-512c" d="M 0 0 L -1221.6 444.6 L -1280.3 225.7 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-ig7w" d="M 0 0 L -1300.0 0.0 L -1280.3 -225.7 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-dtwe" d="M 0 0 L -1221.6 -444.6 L -1125.8 -650.0 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-lq93" d="M 0 0 L -995.9 -835.6 L -835.6 -995.9 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-ph4c" d="M 0 0 L -650.0 -1125.8 L -444.6 -1221.6 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-03of" d="M 0 0 L -225.7 -1280.3 L -0.0 -1300.0 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-n8ks" d="M 0 0 L 225.7 -1280.3 L 444.6 -1221.6 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-8mmh" d="M 0 0 L 650.0 -1125.8 L 835.6 -995.9 Z" fill="rgba(69,131,154,0.30)" /><path data-hf-id="hf-9aj2" d="M 0 0 L 995.9 -835.6 L 1125.8 -650.0 Z" fill="rgba(231,141,51,0.20)" /><path data-hf-id="hf-1mx9" d="M 0 0 L 1221.6 -444.6 L 1280.3 -225.7 Z" fill="rgba(69,131,154,0.30)" /></svg>
+    </div>
+    <div data-hf-id="hf-gk43" id="peca-luz" class="clip" data-start="0" data-duration="4"></div>
+    <div data-hf-id="hf-5f62" id="peca-figura" class="clip" data-start="0" data-duration="4">
+      <div data-hf-id="hf-4noo" id="peca-figura-mov">
+        <div data-hf-id="hf-5rtd" id="peca-sombra"></div>
+        <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.01,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.06,&quot;shadows&quot;:0.04,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.06,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-zuxg" id="peca-img" src="assets/peca-recorte.png" alt="Figura montada no barco">
+      </div>
+    </div>
+    <div data-hf-id="hf-ojxh" id="peca-confete" class="clip" data-start="0" data-duration="2" data-layout-allow-overflow="">
+      <div data-hf-id="hf-iv7x" id="peca-conf-0" class="conf" style="width:34px;height:16px;background:#e78d33"></div>
+      <div data-hf-id="hf-gfiu" id="peca-conf-1" class="conf" style="width:37px;height:19px;background:#45839a"></div>
+      <div data-hf-id="hf-j7ra" id="peca-conf-2" class="conf" style="width:28px;height:18px;background:#f7f3ec"></div>
+      <div data-hf-id="hf-012x" id="peca-conf-3" class="conf" style="width:31px;height:13px;background:#f3a6c0"></div>
+      <div data-hf-id="hf-ac70" id="peca-conf-4" class="conf" style="width:35px;height:19px;background:#3fbf5a"></div>
+      <div data-hf-id="hf-f2n0" id="peca-conf-5" class="conf" style="width:43px;height:18px;background:#e78d33"></div>
+      <div data-hf-id="hf-o84z" id="peca-conf-6" class="conf" style="width:40px;height:15px;background:#45839a"></div>
+      <div data-hf-id="hf-oy0n" id="peca-conf-7" class="conf" style="width:29px;height:19px;background:#f7f3ec"></div>
+      <div data-hf-id="hf-5jj1" id="peca-conf-8" class="conf" style="width:43px;height:15px;background:#f3a6c0"></div>
+      <div data-hf-id="hf-gdev" id="peca-conf-9" class="conf" style="width:40px;height:17px;background:#3fbf5a"></div>
+      <div data-hf-id="hf-wy8z" id="peca-conf-10" class="conf" style="width:33px;height:14px;background:#e78d33"></div>
+      <div data-hf-id="hf-i360" id="peca-conf-11" class="conf" style="width:42px;height:18px;background:#45839a"></div>
+      <div data-hf-id="hf-ohh5" id="peca-conf-12" class="conf" style="width:33px;height:16px;background:#f7f3ec"></div>
+      <div data-hf-id="hf-y512" id="peca-conf-13" class="conf" style="width:37px;height:17px;background:#f3a6c0"></div>
+      <div data-hf-id="hf-mudt" id="peca-conf-14" class="conf" style="width:31px;height:15px;background:#3fbf5a"></div>
+      <div data-hf-id="hf-rqmt" id="peca-conf-15" class="conf" style="width:39px;height:13px;background:#e78d33"></div>
+      <div data-hf-id="hf-rwc4" id="peca-conf-16" class="conf" style="width:36px;height:14px;background:#45839a"></div>
+      <div data-hf-id="hf-078l" id="peca-conf-17" class="conf" style="width:37px;height:15px;background:#f7f3ec"></div>
+      <div data-hf-id="hf-rhm2" id="peca-conf-18" class="conf" style="width:33px;height:12px;background:#f3a6c0"></div>
+      <div data-hf-id="hf-z830" id="peca-conf-19" class="conf" style="width:28px;height:13px;background:#3fbf5a"></div>
+      <div data-hf-id="hf-qhfb" id="peca-conf-20" class="conf" style="width:31px;height:15px;background:#e78d33"></div>
+      <div data-hf-id="hf-aof3" id="peca-conf-21" class="conf" style="width:34px;height:19px;background:#45839a"></div>
+    </div>
+    <div data-hf-id="hf-pri5" id="peca-frase" class="clip" data-start="0.45" data-duration="3.55">
+      <span data-hf-id="hf-0ehh" class="pal">Feito</span> <span data-hf-id="hf-oglq" class="pal">em</span> <span data-hf-id="hf-48yj" class="marca"><span data-hf-id="hf-rcbp" class="tarja"></span><span data-hf-id="hf-r36z" class="pal txt">3D.</span></span><br data-hf-id="hf-x5px">
+      <span data-hf-id="hf-9f0g" class="pal">Montado</span> <span data-hf-id="hf-awfs" class="pal">à</span> <span data-hf-id="hf-un4t" class="pal">mão.</span>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // a peça sobe junto com o corte para cima e assenta; os raios explodem uma vez e desaceleram até parar
+      tl.fromTo("#peca-figura-mov", { y: 90 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0);
+      tl.fromTo("#peca-raios-svg", { scale: 0.2, rotation: -20, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
+      tl.to("#peca-raios-svg", { rotation: 24, duration: 3.2, ease: "power2.out" }, 0.7);
+      tl.fromTo("#peca-luz", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 0);
+      tl.fromTo("#peca-sombra", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.2);
+      tl.fromTo("#peca-conf-0", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 334, y: 21, rotation: 42, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-0", { y: 281, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-1", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 395, y: -11, rotation: -91, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-1", { y: 249, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-2", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 310, y: 180, rotation: -33, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-2", { y: 440, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-3", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 293, y: 308, rotation: 91, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-3", { y: 568, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-4", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 109, y: 333, rotation: -241, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-4", { y: 593, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-5", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -64, y: 195, rotation: -123, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-5", { y: 455, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-6", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -132, y: 368, rotation: 29, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-6", { y: 628, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-7", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -303, y: 262, rotation: 339, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-7", { y: 522, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-8", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -370, y: 89, rotation: 231, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-8", { y: 349, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-9", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -569, y: -79, rotation: -231, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-9", { y: 181, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-10", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -439, y: -167, rotation: 357, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-10", { y: 93, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-11", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -495, y: -158, rotation: 228, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-11", { y: 102, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-12", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -293, y: -368, rotation: -42, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-12", { y: -108, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-13", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -294, y: -492, rotation: 307, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-13", { y: -232, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-14", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: -225, y: -475, rotation: -47, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-14", { y: -215, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-15", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 18, y: -546, rotation: 104, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-15", { y: -286, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-16", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 33, y: -492, rotation: -128, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-16", { y: -232, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-17", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 164, y: -398, rotation: 187, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-17", { y: -138, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-18", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 231, y: -414, rotation: 40, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-18", { y: -154, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-19", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 408, y: -299, rotation: 116, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-19", { y: -39, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-20", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 316, y: -201, rotation: -58, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-20", { y: 59, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-conf-21", { x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }, { x: 372, y: -106, rotation: -262, scale: 1, duration: 0.7, ease: "power3.out" }, 0.12);
+      tl.to("#peca-conf-21", { y: 154, opacity: 0, duration: 0.9, ease: "power2.in" }, 0.82);
+      tl.fromTo("#peca-frase .pal", { opacity: 0, scale: 1.7, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out", stagger: 0.08 }, 0.5);
+      tl.fromTo("#peca-frase .tarja", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.66);
+      tl.set({}, {}, 4);
+      window.__timelines["peca"] = tl;
+    })();
+  </script>
+</template>

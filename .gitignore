@@ -22,3 +22,9 @@ video-cassi-print/.hyperframes/
 video-cassi-print/.media/
 video-cassi-print/renders/*.part*
 video-cassi-print/renders/work-*/
+
+# Vídeo Cassi Print (motion): provas e cache do HyperFrames
+video-cassi-print-motion/.hyperframes/
+video-cassi-print-motion/.media/
+video-cassi-print-motion/renders/*.part*
+video-cassi-print-motion/renders/work-*/
