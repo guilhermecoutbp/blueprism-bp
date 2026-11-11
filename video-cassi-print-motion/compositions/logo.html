@@ -9,6 +9,9 @@
     #logo-cta { position: absolute; left: 0; top: 1140px; width: 1080px; text-align: center; }
     #logo-cta .pilula { display: inline-block; padding: 22px 52px 28px; border-radius: 999px; background: var(--color-ground, #1a2530);
       color: var(--color-ink, #f7f3ec); font-weight: 900; font-size: 64px; line-height: 1; }
+    #logo-cta-caixa { position: relative; display: inline-block; border-radius: 999px; overflow: hidden; }
+    #logo-brilho { position: absolute; left: 0; top: -20px; width: 90px; height: 160px; transform: skewX(-20deg);
+      background: linear-gradient(to right, rgba(247, 243, 236, 0) 0%, rgba(247, 243, 236, 0.55) 50%, rgba(247, 243, 236, 0) 100%); }
     #logo-cta .apoio { margin-top: 26px; color: var(--color-ground, #1a2530); font-weight: 800; font-size: 40px; letter-spacing: 0.02em; }
   </style>
   <div id="root" data-composition-id="logo" data-width="1080" data-height="1920"
@@ -19,7 +22,7 @@
       <img id="logo-img" src="assets/logo.png" alt="Cassi Print — Decoração e utensílios 3D" />
     </div>
     <div id="logo-cta" class="clip" data-start="0.9" data-duration="3.9">
-      <div class="pilula" data-var-text="cta">Encomende já a sua</div>
+      <div id="logo-cta-caixa"><div class="pilula" data-var-text="cta">Encomende já a sua</div><div id="logo-brilho"></div></div>
       <div class="apoio" data-var-text="cta-apoio">chame a gente no direct</div>
     </div>
   </div>
@@ -28,7 +31,8 @@
       const tl = gsap.timeline({ paused: true });
       // as camadas laranja sobem por baixo (o card "termina de imprimir"), depois a chamada
       tl.fromTo("#logo-camadas", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "steps(10)" }, 0.2);
-      tl.fromTo("#logo-cta .pilula", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 0.95);
+      tl.fromTo("#logo-cta-caixa", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 0.95);
+      tl.fromTo("#logo-brilho", { x: -160 }, { x: 760, duration: 0.55, ease: "power2.inOut" }, 1.45);
       tl.fromTo("#logo-cta .apoio", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 1.2);
       tl.set({}, {}, 4.8);
       window.__timelines["logo"] = tl;

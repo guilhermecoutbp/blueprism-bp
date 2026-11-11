@@ -60,7 +60,11 @@ def passo_html(pid, dur, videos, legendas, punches, extra_html="", extra_css="",
                  f'data-media-start="{src}" data-playback-rate="{rate}" data-track-index="0" muted playsinline '
                  f'style="object-position: {pos}"></video>\n')
     legs = "".join(legenda_html(pid, i + 1, l1, dest) for i, (_, _, l1, dest) in enumerate(legendas))
-    js = ""
+    js = (f'      // entrada em arco: o cartão chega "arrastado" e assenta; a sombra chega depois (secundária)\n'
+          f'      tl.fromTo("#{pid}-cartao", {{ rotation: 3, transformOrigin: "50% 100%" }}, {{ rotation: 0, duration: 0.5, ease: "back.out(1.4)" }}, 0);\n'
+          f'      tl.fromTo("#{pid}-cartao", {{ boxShadow: "0 10px 24px rgba(0, 0, 0, 0.25)" }}, {{ boxShadow: "0 34px 80px rgba(0, 0, 0, 0.5)", duration: 0.5, ease: "power2.out" }}, 0.08);\n'
+          f'      // saída: inclina para a frente, na direção do movimento\n'
+          f'      tl.to("#{pid}-cartao", {{ rotation: -2.5, duration: 0.34, ease: "power3.in" }}, {round(dur - 0.34, 2)});\n')
     for t, s, o in punches:
         js += f'      tl.set("#{pid}-lente", {{ scale: {s}, transformOrigin: "{o}" }}, {t});\n'
     for i, (ent, sai, _, _) in enumerate(legendas):
@@ -237,8 +241,8 @@ open(f"{P}/compositions/hud.html", "w").write(HUD)
 SEAMS_ESQ = [2.8, 5.2, 7.6, 9.6, 12.0, 14.4]
 mov_js = ""
 for k, t in enumerate(SEAMS_ESQ):
-    mov_js += (f'      tl.to("#fundo-faixa1", {{ x: {-(k+1)*300}, duration: 0.76, ease: "power2.inOut" }}, {round(t-0.34,2)});\n'
-               f'      tl.to("#fundo-faixa2", {{ x: {-(k+1)*460}, duration: 0.76, ease: "power2.inOut" }}, {round(t-0.34,2)});\n')
+    mov_js += (f'      tl.to("#fundo-faixa1", {{ x: {-(k+1)*160}, duration: 0.76, ease: "power2.inOut" }}, {round(t-0.34,2)});\n'
+               f'      tl.to("#fundo-faixa2", {{ x: {-(k+1)*100}, duration: 0.76, ease: "power2.inOut" }}, {round(t-0.34,2)});\n')
 FUNDO = f"""<template>
   <style>
     #root {{ position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }}
@@ -295,8 +299,8 @@ for i in range(22):
     w, h = (26 + int(rnd(i + 5) * 18), 12 + int(rnd(i + 9) * 8))
     conf_html += (f'      <div id="peca-conf-{i}" class="conf" style="width:{w}px;height:{h}px;background:{CORES[i % 5]}"></div>\n')
     conf_js += (f'      tl.fromTo("#peca-conf-{i}", {{ x: 0, y: 0, rotation: 0, opacity: 1, scale: 0.4 }}, '
-                f'{{ x: {dx:.0f}, y: {dy:.0f}, rotation: {rot:.0f}, scale: 1, duration: 0.7, ease: "power3.out" }}, 0.12);\n'
-                f'      tl.to("#peca-conf-{i}", {{ y: {dy+260:.0f}, opacity: 0, duration: 0.9, ease: "power2.in" }}, 0.82);\n')
+                f'{{ x: {dx:.0f}, y: {dy:.0f}, rotation: {rot:.0f}, scale: 1, duration: 0.7, ease: "power3.out" }}, 0.44);\n'
+                f'      tl.to("#peca-conf-{i}", {{ y: {dy+260:.0f}, opacity: 0, duration: 0.9, ease: "power2.in" }}, 1.14);\n')
 PECA = f"""<template>
   <style>
     #root {{ position: absolute; inset: 0; overflow: hidden; font-family: var(--font-display, "Nunito"), sans-serif; }}
@@ -323,15 +327,15 @@ PECA = f"""<template>
       <svg id="peca-raios-svg" width="2600" height="2600" viewBox="-1300 -1300 2600 2600">{raios}</svg>
     </div>
     <div id="peca-luz" class="clip" data-start="0" data-duration="4"></div>
+    <div id="peca-confete" class="clip" data-start="0" data-duration="2.2" data-layout-allow-overflow>
+{conf_html}    </div>
     <div id="peca-figura" class="clip" data-start="0" data-duration="4">
       <div id="peca-figura-mov">
         <div id="peca-sombra"></div>
         <img id="peca-img" src="assets/peca-recorte.png" alt="Figura montada no barco" />
       </div>
     </div>
-    <div id="peca-confete" class="clip" data-start="0" data-duration="2" data-layout-allow-overflow>
-{conf_html}    </div>
-    <div id="peca-frase" class="clip" data-start="0.45" data-duration="3.55">
+    <div id="peca-frase" class="clip" data-start="0.58" data-duration="3.42">
       <span class="pal">Feito</span> <span class="pal">em</span> <span class="marca"><span class="tarja"></span><span class="pal txt">3D.</span></span><br />
       <span class="pal">Montado</span> <span class="pal">à</span> <span class="pal">mão.</span>
     </div>
@@ -340,13 +344,18 @@ PECA = f"""<template>
     (() => {{
       const tl = gsap.timeline({{ paused: true }});
       // a peça sobe junto com o corte para cima e assenta; os raios explodem uma vez e desaceleram até parar
-      tl.fromTo("#peca-figura-mov", {{ y: 90 }}, {{ y: 0, duration: 0.6, ease: "expo.out" }}, 0);
+      tl.fromTo("#peca-figura-mov", {{ y: 90 }}, {{ y: -28, duration: 0.3, ease: "power3.out" }}, 0);
+      tl.to("#peca-figura-mov", {{ y: 0, duration: 0.14, ease: "power2.in" }}, 0.3);
+      // pouso: achata (squash) por 2 quadros e se recupera com overshoot
+      tl.to("#peca-figura-mov", {{ scaleX: 1.06, scaleY: 0.93, transformOrigin: "427px 1335px", duration: 0.07, ease: "power2.out" }}, 0.44);
+      tl.to("#peca-figura-mov", {{ scaleX: 1, scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }}, 0.51);
       tl.fromTo("#peca-raios-svg", {{ scale: 0.2, rotation: -20, opacity: 0 }}, {{ scale: 1, rotation: 0, opacity: 1, duration: 0.7, ease: "expo.out" }}, 0);
       tl.to("#peca-raios-svg", {{ rotation: 24, duration: 3.2, ease: "power2.out" }}, 0.7);
       tl.fromTo("#peca-luz", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }}, 0);
-      tl.fromTo("#peca-sombra", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4, ease: "power2.out" }}, 0.2);
-{conf_js}      tl.fromTo("#peca-frase .pal", {{ opacity: 0, scale: 1.7, filter: "blur(10px)" }}, {{ opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out", stagger: 0.08 }}, 0.5);
-      tl.fromTo("#peca-frase .tarja", {{ scaleX: 0, transformOrigin: "0% 50%" }}, {{ scaleX: 1, duration: 0.3, ease: "expo.out" }}, 0.66);
+      tl.fromTo("#peca-sombra", {{ opacity: 0, scaleX: 0.7 }}, {{ opacity: 1, scaleX: 1.15, duration: 0.44, ease: "power2.in" }}, 0);
+      tl.to("#peca-sombra", {{ scaleX: 1, duration: 0.32, ease: "back.out(1.7)" }}, 0.51);
+{conf_js}      tl.fromTo("#peca-frase .pal", {{ opacity: 0, scale: 1.7, filter: "blur(10px)" }}, {{ opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out", stagger: 0.08 }}, 0.62);
+      tl.fromTo("#peca-frase .tarja", {{ scaleX: 0, transformOrigin: "0% 50%" }}, {{ scaleX: 1, duration: 0.3, ease: "expo.out" }}, 0.78);
       tl.set({{}}, {{}}, 4);
       window.__timelines["peca"] = tl;
     }})();
@@ -367,6 +376,9 @@ LOGO = f"""<template>
     #logo-cta {{ position: absolute; left: 0; top: 1140px; width: 1080px; text-align: center; }}
     #logo-cta .pilula {{ display: inline-block; padding: 22px 52px 28px; border-radius: 999px; background: var(--color-ground, {NAVY});
       color: var(--color-ink, {INK}); font-weight: 900; font-size: 64px; line-height: 1; }}
+    #logo-cta-caixa {{ position: relative; display: inline-block; border-radius: 999px; overflow: hidden; }}
+    #logo-brilho {{ position: absolute; left: 0; top: -20px; width: 90px; height: 160px; transform: skewX(-20deg);
+      background: linear-gradient(to right, rgba(247, 243, 236, 0) 0%, rgba(247, 243, 236, 0.55) 50%, rgba(247, 243, 236, 0) 100%); }}
     #logo-cta .apoio {{ margin-top: 26px; color: var(--color-ground, {NAVY}); font-weight: 800; font-size: 40px; letter-spacing: 0.02em; }}
   </style>
   <div id="root" data-composition-id="logo" data-width="1080" data-height="1920"
@@ -377,7 +389,7 @@ LOGO = f"""<template>
       <img id="logo-img" src="assets/logo.png" alt="Cassi Print — Decoração e utensílios 3D" />
     </div>
     <div id="logo-cta" class="clip" data-start="0.9" data-duration="3.9">
-      <div class="pilula" data-var-text="cta">Encomende já a sua</div>
+      <div id="logo-cta-caixa"><div class="pilula" data-var-text="cta">Encomende já a sua</div><div id="logo-brilho"></div></div>
       <div class="apoio" data-var-text="cta-apoio">chame a gente no direct</div>
     </div>
   </div>
@@ -386,7 +398,8 @@ LOGO = f"""<template>
       const tl = gsap.timeline({{ paused: true }});
       // as camadas laranja sobem por baixo (o card "termina de imprimir"), depois a chamada
       tl.fromTo("#logo-camadas", {{ clipPath: "inset(100% 0% 0% 0%)" }}, {{ clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "steps(10)" }}, 0.2);
-      tl.fromTo("#logo-cta .pilula", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }}, 0.95);
+      tl.fromTo("#logo-cta-caixa", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }}, 0.95);
+      tl.fromTo("#logo-brilho", {{ x: -160 }}, {{ x: 760, duration: 0.55, ease: "power2.inOut" }}, 1.45);
       tl.fromTo("#logo-cta .apoio", {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }}, 1.2);
       tl.set({{}}, {{}}, 4.8);
       window.__timelines["logo"] = tl;
@@ -416,8 +429,8 @@ AUD = [
     ("sfx-rabisco", "sfx/click-soft.mp3", 10.11, 0.37, 0.5, ""),
     ("sfx-corte5", "sfx/whoosh-cinematic.mp3", 11.73, 0.8, 0.32, 'data-media-start="2.2" data-fade-out="0.3"'),
     ("sfx-corte6", "sfx/whoosh-short.mp3", 14.23, 0.65, 0.34, 'data-playback-rate="0.8"'),
-    ("sfx-riser", "sfx/riser.mp3", 16.16, 3.5, 0.3, 'data-media-start="0" data-fade-in="1" data-fade-out="0.1"'),
-    ("sfx-impacto", "sfx/impact-bass-1.mp3", 19.56, 2.1, 0.6, ""),
+    ("sfx-riser", "sfx/riser.mp3", 16.6, 3.5, 0.3, 'data-media-start="0" data-fade-in="1" data-fade-out="0.1"'),
+    ("sfx-impacto", "sfx/impact-bass-1.mp3", 20.0, 2.1, 0.6, ""),
     ("sfx-logo", "sfx/impact-bass-2.mp3", 23.6, 1.2, 0.35, 'data-fade-out="0.4"'),
     ("sfx-cta", "sfx/pop.mp3", 24.43, 0.6, 0.45, ""),
 ]

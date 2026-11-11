@@ -11,3 +11,19 @@
 - **Som (medido, não ouvido):** −13.9 LUFS, pico −1.1 dBTP, sem clipping. Whooshes em 3 versões alternadas nos
   cortes, clique no círculo, riser → impacto na peça pronta, impacto grave na chegada do logo, pop no selo e na chamada.
 - Limites: fonte 720p (cartões ampliam 1.25×); nos primeiros 0.3 s do passo 4 a câmera ainda está se mexendo.
+
+## Revisão com a skill motion-design (LottieFiles)
+
+Personalidade escolhida: brincalhona/energética (combina com o logo e a peça). Ajustes aplicados:
+- **Follow-through e arco nos cartões:** entram inclinados 3° ("arrastados") e assentam com `back.out(1.4)`; na saída
+  inclinam −2.5° na direção do movimento; a sombra cresce 80 ms depois do cartão (camada secundária).
+- **Squash e causa na peça pronta:** sobe, passa do ponto (−28 px), cai e achata 2 quadros (1.06 × 0.93) ao pousar,
+  recupera com overshoot; a sombra acompanha. O pouso dispara o confete (agora saindo por trás da peça), o texto
+  e o impacto grave — o riser culmina no pouso (T 20.04 s).
+- **Parallax corrigido:** as faixas do fundo andavam mais que os cartões; agora andam 160/100 px por corte
+  (~25–30% do primeiro plano), como camada distante.
+- **Ação secundária na chamada:** um brilho atravessa a pílula uma vez, 50 ms depois de ela pousar.
+- Não aplicado: "pulso/respiração" ambiente em loop — o motion-doctrine do projeto proíbe movimento ocioso; a
+  camada ambiente é o fundo que anda nos cortes.
+
+Check ok; Seam Gate 8/8 PASS (na cópia sem vídeo); áudio −13.9 LUFS, pico −1.0 dBTP.

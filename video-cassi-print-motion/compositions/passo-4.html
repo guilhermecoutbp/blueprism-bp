@@ -40,6 +40,11 @@
   <script>
     (() => {
       const tl = gsap.timeline({ paused: true });
+      // entrada em arco: o cartão chega "arrastado" e assenta; a sombra chega depois (secundária)
+      tl.fromTo("#passo-4-cartao", { rotation: 3, transformOrigin: "50% 100%" }, { rotation: 0, duration: 0.5, ease: "back.out(1.4)" }, 0);
+      tl.fromTo("#passo-4-cartao", { boxShadow: "0 10px 24px rgba(0, 0, 0, 0.25)" }, { boxShadow: "0 34px 80px rgba(0, 0, 0, 0.5)", duration: 0.5, ease: "power2.out" }, 0.08);
+      // saída: inclina para a frente, na direção do movimento
+      tl.to("#passo-4-cartao", { rotation: -2.5, duration: 0.34, ease: "power3.in" }, 2.06);
       tl.set("#passo-4-lente", { scale: 1.14, transformOrigin: "50% 57%" }, 1.2);
       tl.fromTo("#passo-4-leg1 .pal", { opacity: 0, scale: 1.7, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out", stagger: 0.08 }, 0.3);
       tl.fromTo("#passo-4-leg1 .tarja", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.42);
