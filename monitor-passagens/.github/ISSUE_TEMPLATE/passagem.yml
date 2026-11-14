@@ -1,0 +1,135 @@
+name: "✈️ Monitorar passagem"
+description: Cadastre uma viagem para o robô acompanhar o preço e avisar por e-mail.
+title: "[Passagem] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Complete o título com um nome para a viagem (ex.: `[Passagem] Lisboa em julho`) e mantenha o `[Passagem]` no início.
+        O monitoramento começa em cerca de 1 minuto. Para alterar a busca, edite a issue; para parar, feche-a.
+  - type: input
+    id: origem
+    attributes:
+      label: Origem
+      description: Código IATA do aeroporto. Aceita vários, separados por vírgula.
+      placeholder: "GRU,CGH,VCP"
+    validations:
+      required: true
+  - type: input
+    id: destino
+    attributes:
+      label: Destino
+      description: Código IATA do aeroporto. Aceita vários, separados por vírgula.
+      placeholder: "LIS"
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de viagem
+      options:
+        - Ida e volta
+        - Somente ida
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: data_ida
+    attributes:
+      label: Data de ida
+      description: Formato DD/MM/AAAA.
+      placeholder: "15/03/2027"
+    validations:
+      required: true
+  - type: input
+    id: data_volta
+    attributes:
+      label: Data de volta
+      description: Formato DD/MM/AAAA. Deixe em branco se for somente ida.
+      placeholder: "29/03/2027"
+  - type: input
+    id: adultos
+    attributes:
+      label: Adultos
+      description: Número de passageiros com 12 anos ou mais.
+      value: "1"
+    validations:
+      required: true
+  - type: input
+    id: criancas
+    attributes:
+      label: Idade de cada criança
+      description: "Uma idade por criança, separadas por vírgula. De 2 a 11 anos conta como criança; menor de 2, como bebê; 12 ou mais, como adulto."
+      placeholder: "7, 4, 1"
+  - type: checkboxes
+    id: bebes_colo
+    attributes:
+      label: Bebês no colo
+      description: Vale para os menores de 2 anos. Desmarcado, cada bebê viaja com assento próprio.
+      options:
+        - label: Os bebês viajam no colo
+  - type: dropdown
+    id: classe
+    attributes:
+      label: Classe
+      options:
+        - Econômica
+        - Econômica premium
+        - Executiva
+        - Primeira classe
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: escalas
+    attributes:
+      label: Escalas
+      options:
+        - Qualquer
+        - Direto
+        - Máx. 1 escala
+        - Máx. 2 escalas
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: bagagens
+    attributes:
+      label: Bagagens de mão
+      description: Quantidade total de bagagens de mão (no máximo uma por passageiro com assento).
+      value: "0"
+    validations:
+      required: true
+  - type: input
+    id: preco_alvo
+    attributes:
+      label: Preço-alvo (R$)
+      description: "Opcional. Total para todos os passageiros. Aviso quando o preço chegar a este valor ou menos."
+      placeholder: "3.500,00"
+  - type: dropdown
+    id: frequencia
+    attributes:
+      label: Frequência de verificação
+      description: "Cada verificação gasta 1 consulta da SerpApi (o plano grátis dá 250 por mês)."
+      options:
+        - 1 h
+        - 2 h
+        - 3 h
+        - 6 h
+        - 12 h
+        - 24 h
+      default: 2
+    validations:
+      required: true
+  - type: input
+    id: monitorar_ate
+    attributes:
+      label: Monitorar até
+      description: "Opcional, DD/MM/AAAA. Em branco, monitora até a véspera da ida."
+      placeholder: "01/03/2027"
+  - type: input
+    id: email
+    attributes:
+      label: E-mail para avisos
+      description: Opcional. Em branco, usa o e-mail padrão configurado no repositório.
+      placeholder: "voce@exemplo.com"
