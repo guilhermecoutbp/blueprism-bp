@@ -28,6 +28,11 @@ inferior tem posição, reinício e som.
   a página renderiza a trilha num `OfflineAudioContext` e a toca por um `<audio>` (assim ela
   soa mesmo com o iPhone no silencioso); se isso falhar, toca no `AudioContext` ao vivo.
 
+## Vídeo pronto
+
+`renders/rota-ate-teresopolis.mp4`: 1920×1080, 30 qps, 20 s, H.264 + AAC, com 16 subquadros
+por quadro e a trilha da própria página.
+
 ## Renderizar em vídeo
 
 `index.html#capture` esconde os controles e deixa o palco em 1920×1080. A página
